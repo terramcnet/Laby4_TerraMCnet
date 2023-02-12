@@ -1,0 +1,61 @@
+@import super();
+
+Button {
+  width: 90;
+  padding-left: 2;
+  padding-right: 2;
+}
+
+.btn-proxy-re {
+  bottom: 20;
+  left: 5;
+}
+
+.left-first {
+  left: 5;
+}
+
+.left-second {
+  left: 120;
+}
+
+.right-first {
+  right: 5;
+}
+
+.right-second {
+  right: 120;
+}
+
+.right-third {
+  right: 240;
+}
+
+.right-fourth {
+  right: 360;
+}
+
+
+.top-first-b1 {
+  top: 2;
+}
+
+.top-first-b2 {
+  top: 22;
+}
+
+.top-second-b1 {
+  top: 62;
+}
+
+.top-second-b2 {
+  top: 82;
+}
+
+.top-third-b1 {
+  top: 122;
+}
+
+.top-third-b2 {
+  top: 142;
+}

@@ -1,0 +1,10 @@
+@import super();
+
+.stats-update {
+  bottom: 3;
+  right: 3;
+  height: 16;
+  width: fit-content;
+  padding-left: 2;
+  padding-right: 2;
+}
