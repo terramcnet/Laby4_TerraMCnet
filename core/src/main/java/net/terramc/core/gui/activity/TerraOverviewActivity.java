@@ -10,6 +10,7 @@ import net.labymod.api.client.render.matrix.Stack;
 import net.labymod.api.util.I18n;
 import net.terramc.core.TerraAddon;
 import net.terramc.core.data.AddonData;
+import net.terramc.core.util.Util;
 import org.jetbrains.annotations.Nullable;
 
 @AutoActivity
@@ -32,12 +33,12 @@ public class TerraOverviewActivity extends Activity {
 
       // Global-Coins
       //drawUtils.drawItem(new ItemStack(Item.getItemById(266)), x -100, 55, "");
-      drawString(textRenderer, stack, TerraAddon.doubleLine + "§7GlobalCoins §8» §6" + AddonData.getCoins(), x - 75, 59);
+      drawString(textRenderer, stack, TerraAddon.doubleLine + "§7GlobalCoins §8» §6" + Util.format(AddonData.getCoins()), x - 75, 59);
 
       // Global-Points
 
       //drawUtils.drawItem(new ItemStack(Item.getItemById(388)), x -100, 75, "");
-      drawString(textRenderer, stack, TerraAddon.doubleLine + "§7GlobalPoints §8» §a" + AddonData.getPoints(), x - 75, 79);
+      drawString(textRenderer, stack, TerraAddon.doubleLine + "§7GlobalPoints §8» §a" + Util.format(AddonData.getPoints()), x - 75, 79);
       drawString(textRenderer, stack, "§8● §7GlobalPoints Rang §8» §a" + (AddonData.getPointsRank() != null ? AddonData.getPointsRank() : "§cFehler"), x -73, 99);
 
       // Nick
@@ -55,7 +56,7 @@ public class TerraOverviewActivity extends Activity {
 
       // Joins
       //drawUtils.drawItem(new ItemStack(Item.getItemById(381)), x -100, 175, "");
-      drawString(textRenderer, stack, TerraAddon.doubleLine + "§7Netzwerk betreten §8» §e" + AddonData.getJoins() + "§7mal", x -75, 179);
+      drawString(textRenderer, stack, TerraAddon.doubleLine + "§7Netzwerk betreten §8» §e" + Util.format(AddonData.getJoins()) + "§7mal", x -75, 179);
 
     } else {
 

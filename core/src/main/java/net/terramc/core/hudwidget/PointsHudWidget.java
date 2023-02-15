@@ -5,6 +5,7 @@ import net.labymod.api.client.gui.hud.hudwidget.text.TextHudWidgetConfig;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextLine;
 import net.terramc.core.TerraAddon;
 import net.terramc.core.data.AddonData;
+import net.terramc.core.util.Util;
 
 public class PointsHudWidget extends TextHudWidget<TextHudWidgetConfig> {
 
@@ -31,7 +32,7 @@ public class PointsHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   }
 
   private void updateTextLine() {
-    this.textLine.updateAndFlush(AddonData.getPoints());
+    this.textLine.updateAndFlush(Util.format(AddonData.getPoints()));
     this.textLine.setVisible(this.addon.configuration().enabled().get() & TerraAddon.isConnectedTerra());
   }
 

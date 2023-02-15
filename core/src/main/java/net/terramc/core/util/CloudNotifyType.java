@@ -6,7 +6,7 @@ public enum CloudNotifyType {
   NOTIFICATION("Notification"),
   HIDE("Hide");
 
-  private String name;
+  private final String name;
 
   CloudNotifyType(String name) {
     this.name = name;
