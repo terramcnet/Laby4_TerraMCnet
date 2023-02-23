@@ -37,7 +37,7 @@ public class TerraStaffActivity extends Activity {
           this.addon.apiUtil().sendStaffSetting(Laby.references().gameUserService().clientGameUser()
               .getUniqueId(), "CloudNotify", value.getName());
         });
-    cloudNotify.translationKeyPrefix("terramc.ui.staff.cloudNotify");
+    cloudNotify.translationKeyPrefix("terramc.ui.staff.cloudNotify.name");
     cloudNotify.addAll(CloudNotifyType.values());
     cloudNotify.top().set(20.0F);
     cloudNotify.left().set(50.0F);
