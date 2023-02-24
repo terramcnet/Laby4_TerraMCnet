@@ -123,12 +123,7 @@
         "noAccess": "§4Du bist nicht berechtigt um diese Seite zu sehen."
       },
       "staff": {
-        "cloudNotify": {
-          "name": "§eCloud-Benachrichtigung",
-          "notification": "Laby-Benachrichtigung",
-          "chat": "Chat",
-          "hide": "Verstecken"
-        }
+        "cloudNotify": "§eCloud-Benachrichtigung"
       },
       "activity": {
         "overview": "Übersicht",
