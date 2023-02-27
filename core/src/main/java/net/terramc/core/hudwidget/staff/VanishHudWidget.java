@@ -3,6 +3,8 @@ package net.terramc.core.hudwidget.staff;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextHudWidget;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextHudWidgetConfig;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextLine;
+import net.labymod.api.client.gui.icon.Icon;
+import net.labymod.api.client.resources.ResourceLocation;
 import net.terramc.core.TerraAddon;
 import net.terramc.core.data.AddonData;
 
@@ -16,6 +18,7 @@ public class VanishHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   public VanishHudWidget(TerraAddon addon) {
     super("vanish");
     this.addon = addon;
+    setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/vanish.png")));
   }
 
   @Override

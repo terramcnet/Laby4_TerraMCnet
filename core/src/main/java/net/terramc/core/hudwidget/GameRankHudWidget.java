@@ -3,6 +3,8 @@ package net.terramc.core.hudwidget;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextHudWidget;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextHudWidgetConfig;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextLine;
+import net.labymod.api.client.gui.icon.Icon;
+import net.labymod.api.client.resources.ResourceLocation;
 import net.terramc.core.TerraAddon;
 import net.terramc.core.data.AddonData;
 
@@ -15,6 +17,7 @@ public class GameRankHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   public GameRankHudWidget(TerraAddon addon) {
     super("gameRank");
     this.addon = addon;
+    setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/game_ranking.png")));
   }
 
   @Override

@@ -3,6 +3,8 @@ package net.terramc.core.hudwidget;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextHudWidget;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextHudWidgetConfig;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextLine;
+import net.labymod.api.client.gui.icon.Icon;
+import net.labymod.api.client.resources.ResourceLocation;
 import net.terramc.core.TerraAddon;
 import net.terramc.core.data.AddonData;
 import net.terramc.core.util.Util;
@@ -16,6 +18,7 @@ public class PointsHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   public PointsHudWidget(TerraAddon addon) {
     super("points");
     this.addon = addon;
+    setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/star.png")));
   }
 
   @Override

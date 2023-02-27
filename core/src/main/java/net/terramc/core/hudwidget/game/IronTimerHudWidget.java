@@ -4,6 +4,7 @@ import net.labymod.api.Laby;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.gui.hud.hudwidget.HudWidgetConfig;
 import net.labymod.api.client.gui.hud.hudwidget.item.ItemHudWidget;
+import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.client.world.item.ItemStack;
 import net.terramc.core.TerraAddon;
@@ -17,6 +18,7 @@ public class IronTimerHudWidget extends ItemHudWidget<HudWidgetConfig> {
   public IronTimerHudWidget(TerraAddon addon) {
     super("ironTimer");
     this.addon = addon;
+    setIcon(Icon.texture(ResourceLocation.create("minecraft", "textures/items/iron_ingot.png")));
   }
 
   @Override
@@ -45,4 +47,8 @@ public class IronTimerHudWidget extends ItemHudWidget<HudWidgetConfig> {
     return this.addon.configuration().enabled().get() & TerraAddon.isConnectedTerra() & AddonData.getBedWarsGame() != null;
   }
 
+  @Override
+  public Icon createPlaceholderIcon() {
+    return Icon.texture(ResourceLocation.create("minecraft", "textures/items/iron_ingot.png"));
+  }
 }

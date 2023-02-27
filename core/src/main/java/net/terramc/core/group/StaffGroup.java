@@ -6,13 +6,13 @@ import java.awt.*;
 
 public enum StaffGroup {
 
-  INHABER("Inhaber", 0, "§4", Color.decode("#2A0000"), "§4Inhaber", Icon.texture(ResourceLocation.create("terramc", "textures/icon_admin.png"))),
-  ADMIN("Admin", 1, "§4", Color.decode("#2A0000"), "§4Administrator", Icon.texture(ResourceLocation.create("terramc", "textures/icon_admin.png"))),
-  DEVELOPMENT("Development", 2, "§c", Color.decode("#3F1515"), "§cDevelopment", Icon.texture(ResourceLocation.create("terramc", "textures/icon_dev.png"))),
-  MODERATION("Moderation", 3, "§6", Color.decode("#2A2A00"), "§6Moderation", Icon.texture(ResourceLocation.create("terramc", "textures/icon_mod.png"))),
-  SUPPORT("Support", 4, "§e", Color.decode("#3F3F15"), "§eSupport", Icon.texture(ResourceLocation.create("terramc", "textures/icon_sup.png"))),
-  DESIGN("Design", 5, "§f", Color.decode("#3F3F3F"), "§fDesign", Icon.texture(ResourceLocation.create("terramc", "textures/icon_design.png"))),
-  BUILDING("Building", 6, "§3", Color.decode("#002A2A"), "§3Building", Icon.texture(ResourceLocation.create("terramc", "textures/icon_build.png"))),
+  INHABER("Inhaber", 0, "§4", Color.decode("#2A0000"), "§4Inhaber", Icon.texture(ResourceLocation.create("terramc", "textures/staff_icons/admin.png"))),
+  ADMIN("Admin", 1, "§4", Color.decode("#2A0000"), "§4Administrator", Icon.texture(ResourceLocation.create("terramc", "textures/staff_icons/admin.png"))),
+  DEVELOPMENT("Development", 2, "§c", Color.decode("#3F1515"), "§cDevelopment", Icon.texture(ResourceLocation.create("terramc", "textures/staff_icons/development.png"))),
+  MODERATION("Moderation", 3, "§6", Color.decode("#2A2A00"), "§6Moderation", Icon.texture(ResourceLocation.create("terramc", "textures/staff_icons/moderation.png"))),
+  SUPPORT("Support", 4, "§e", Color.decode("#3F3F15"), "§eSupport", Icon.texture(ResourceLocation.create("terramc", "textures/staff_icons/support.png"))),
+  DESIGN("Design", 5, "§f", Color.decode("#3F3F3F"), "§fDesign", Icon.texture(ResourceLocation.create("terramc", "textures/staff_icons/design.png"))),
+  BUILDING("Building", 6, "§3", Color.decode("#002A2A"), "§3Building", Icon.texture(ResourceLocation.create("terramc", "textures/staff_icons/build.png"))),
   STAFF("Team", 7, "§a", Color.decode("#153F15"), "§aTeam", Icon.texture(ResourceLocation.create("terramc", "textures/icon.png")));
 
   private final String name;
