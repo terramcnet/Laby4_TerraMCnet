@@ -7,10 +7,12 @@ import net.labymod.api.client.gui.hud.hudwidget.item.ItemHudWidget;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.client.world.item.ItemStack;
+import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.terramc.core.TerraAddon;
 import net.terramc.core.game.BedWarsGame;
 import net.terramc.core.data.AddonData;
 
+@SpriteSlot(y = 1, x = 1)
 public class IronTimerHudWidget extends ItemHudWidget<HudWidgetConfig> {
 
   private final TerraAddon addon;
@@ -18,7 +20,7 @@ public class IronTimerHudWidget extends ItemHudWidget<HudWidgetConfig> {
   public IronTimerHudWidget(TerraAddon addon) {
     super("ironTimer");
     this.addon = addon;
-    setIcon(Icon.texture(ResourceLocation.create("minecraft", "textures/items/iron_ingot.png")));
+    //setIcon(Icon.texture(ResourceLocation.create("minecraft", "textures/items/iron_ingot.png")));
   }
 
   @Override

@@ -7,10 +7,12 @@ import net.labymod.api.client.gui.hud.hudwidget.item.ItemHudWidget;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.client.world.item.ItemStack;
+import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.terramc.core.TerraAddon;
 import net.terramc.core.game.BedWarsGame;
 import net.terramc.core.data.AddonData;
 
+@SpriteSlot(y = 1, x = 2)
 public class GoldTimerHudWidget extends ItemHudWidget<HudWidgetConfig> {
 
   private final TerraAddon addon;
@@ -18,7 +20,7 @@ public class GoldTimerHudWidget extends ItemHudWidget<HudWidgetConfig> {
   public GoldTimerHudWidget(TerraAddon addon) {
     super("goldTimer");
     this.addon = addon;
-    setIcon(Icon.texture(ResourceLocation.create("minecraft", "textures/items/gold_ingot.png")));
+    //setIcon(Icon.texture(ResourceLocation.create("minecraft", "textures/items/gold_ingot.png")));
   }
 
   @Override

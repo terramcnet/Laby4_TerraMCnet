@@ -5,10 +5,12 @@ import net.labymod.api.client.gui.hud.hudwidget.text.TextHudWidgetConfig;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextLine;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.resources.ResourceLocation;
+import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.terramc.core.TerraAddon;
 import net.terramc.core.data.AddonData;
 import net.terramc.core.util.Util;
 
+@SpriteSlot(x = 1)
 public class PointsHudWidget extends TextHudWidget<TextHudWidgetConfig> {
 
   private TerraAddon addon;
@@ -18,7 +20,7 @@ public class PointsHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   public PointsHudWidget(TerraAddon addon) {
     super("points");
     this.addon = addon;
-    setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/star.png")));
+    //setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/star.png")));
   }
 
   @Override

@@ -5,9 +5,11 @@ import net.labymod.api.client.gui.hud.hudwidget.text.TextHudWidgetConfig;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextLine;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.resources.ResourceLocation;
+import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.terramc.core.TerraAddon;
 import net.terramc.core.data.AddonData;
 
+@SpriteSlot(x = 4)
 public class VanishHudWidget extends TextHudWidget<TextHudWidgetConfig> {
 
   private TerraAddon addon;
@@ -18,7 +20,7 @@ public class VanishHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   public VanishHudWidget(TerraAddon addon) {
     super("vanish");
     this.addon = addon;
-    setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/vanish.png")));
+    //setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/vanish.png")));
   }
 
   @Override

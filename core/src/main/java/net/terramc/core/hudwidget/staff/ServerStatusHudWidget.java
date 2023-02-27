@@ -5,9 +5,11 @@ import net.labymod.api.client.gui.hud.hudwidget.text.TextHudWidgetConfig;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextLine;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.resources.ResourceLocation;
+import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.terramc.core.TerraAddon;
 import net.terramc.core.data.ServerData;
 
+@SpriteSlot(x = 5)
 public class ServerStatusHudWidget extends TextHudWidget<TextHudWidgetConfig> {
 
   private TerraAddon addon;
@@ -19,7 +21,7 @@ public class ServerStatusHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   public ServerStatusHudWidget(TerraAddon addon) {
     super("serverStatus");
     this.addon = addon;
-    setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/server_status.png")));
+    //setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/server_status.png")));
   }
 
   @Override

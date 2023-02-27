@@ -5,9 +5,11 @@ import net.labymod.api.client.gui.hud.hudwidget.text.TextHudWidgetConfig;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextLine;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.resources.ResourceLocation;
+import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.terramc.core.TerraAddon;
 import net.terramc.core.data.AddonData;
 
+@SpriteSlot(y = 1)
 public class NickHudWidget extends TextHudWidget<TextHudWidgetConfig> {
 
   private TerraAddon addon;
@@ -17,7 +19,7 @@ public class NickHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   public NickHudWidget(TerraAddon addon) {
     super("nickname");
     this.addon = addon;
-    setIcon(Icon.texture(ResourceLocation.create("minecraft", "textures/items/name_tag.png")));
+    //setIcon(Icon.texture(ResourceLocation.create("minecraft", "textures/items/name_tag.png")));
   }
 
   @Override

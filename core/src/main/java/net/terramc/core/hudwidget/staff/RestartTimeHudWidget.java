@@ -5,9 +5,11 @@ import net.labymod.api.client.gui.hud.hudwidget.text.TextHudWidgetConfig;
 import net.labymod.api.client.gui.hud.hudwidget.text.TextLine;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.resources.ResourceLocation;
+import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.terramc.core.TerraAddon;
 import net.terramc.core.data.ServerData;
 
+@SpriteSlot(x = 6)
 public class RestartTimeHudWidget extends TextHudWidget<TextHudWidgetConfig> {
 
   private TerraAddon addon;
@@ -17,7 +19,7 @@ public class RestartTimeHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   public RestartTimeHudWidget(TerraAddon addon) {
     super("restartTime");
     this.addon = addon;
-    setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/clock.png")));
+    //setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/clock.png")));
   }
 
   @Override

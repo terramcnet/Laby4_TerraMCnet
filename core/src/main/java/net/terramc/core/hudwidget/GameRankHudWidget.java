@@ -8,6 +8,7 @@ import net.labymod.api.client.resources.ResourceLocation;
 import net.terramc.core.TerraAddon;
 import net.terramc.core.data.AddonData;
 
+//@SpriteSlot(x = 2)
 public class GameRankHudWidget extends TextHudWidget<TextHudWidgetConfig> {
 
   private TerraAddon addon;
