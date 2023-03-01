@@ -207,16 +207,16 @@ public class CloudMainActivity extends Activity {
       // - - - Left Line 4 - - -
 
     // CityBuild
-    ButtonWidget communityRe = ButtonWidget.text("§aComm. §7- " + restart);
+    ButtonWidget communityRe = ButtonWidget.text("§aTerraUnity §7- " + restart);
     communityRe.addId("right-fourth");
     communityRe.addId("top-first-b1");
-    communityRe.setActionListener(() -> this.addon.apiUtil().sendControlToProxy("restart", "Community"));
+    communityRe.setActionListener(() -> this.addon.apiUtil().sendControlToProxy("restart", "TerraUnity"));
     buttonList.add(communityRe);
 
-    ButtonWidget communityMa = ButtonWidget.text("§aComm. §7- " + maintenance);
+    ButtonWidget communityMa = ButtonWidget.text("§aTerraUnity §7- " + maintenance);
     communityMa.addId("right-fourth");
     communityMa.addId("top-first-b2");
-    communityMa.setActionListener(() -> this.addon.apiUtil().sendControlToProxy("maintenance", "Community"));
+    communityMa.setActionListener(() -> this.addon.apiUtil().sendControlToProxy("maintenance", "TerraUnity"));
     buttonList.add(communityMa);
 
     buttonList.forEach(this.document::addChild);
