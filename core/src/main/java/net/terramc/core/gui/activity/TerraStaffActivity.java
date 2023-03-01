@@ -61,7 +61,7 @@ public class TerraStaffActivity extends Activity {
       return;
     }
 
-    drawString(textRenderer, stack, I18n.translate("terramc.ui.staff.cloudNotify"), 50F, 10F);
+    drawString(textRenderer, stack, I18n.translate("terramc.ui.staff.cloudNotify.title"), 50F, 10F);
 
   }
 
