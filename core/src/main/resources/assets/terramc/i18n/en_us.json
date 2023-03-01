@@ -118,9 +118,10 @@
         "main_ui": "TerraMC"
       },
       "general": {
-        "noInfoAvailable": "§aNo information can be provided.",
+        "noInfoAvailable": "§4No information can be provided.",
         "connectToServer": "§cPlease connect to TerraMC.net",
-        "noAccess": "§4You have no access to this site."
+        "noAccess": "§4You have no access to this site.",
+        "connect": "§eConnect"
       },
       "staff": {
         "cloudNotify": {

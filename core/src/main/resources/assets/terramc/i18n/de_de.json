@@ -120,7 +120,8 @@
       "general": {
         "noInfoAvailable": "§4Es können keine Informationen bereitgestellt werden.",
         "connectToServer": "§cBitte verbinde dich auf TerraMC.net",
-        "noAccess": "§4Du bist nicht berechtigt um diese Seite zu sehen."
+        "noAccess": "§4Du bist nicht berechtigt um diese Seite zu sehen.",
+        "connect": "§eVerbinden"
       },
       "staff": {
         "cloudNotify": {

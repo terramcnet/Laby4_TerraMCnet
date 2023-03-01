@@ -1,12 +1,17 @@
 package net.terramc.addon.gui.activity;
 
+import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.mouse.MutableMouse;
 import net.labymod.api.client.gui.screen.LabyScreen;
+import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
+import net.labymod.api.client.gui.screen.widget.attributes.WidgetAlignment;
 import net.labymod.api.client.gui.screen.widget.attributes.bounds.Bounds;
+import net.labymod.api.client.gui.screen.widget.widgets.input.ButtonWidget;
 import net.labymod.api.client.render.font.text.TextRenderer;
 import net.labymod.api.client.render.matrix.Stack;
+import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.util.I18n;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.ServerInfoData;
@@ -20,6 +25,22 @@ public class TerraServerActivity extends Activity {
 
   public TerraServerActivity(TerraAddon addon) {
     this.addon = addon;
+  }
+
+  @Override
+  public void initialize(Parent parent) {
+    super.initialize(parent);
+
+    if(!TerraAddon.isConnectedTerra()) {
+      ButtonWidget connect = ButtonWidget.text(I18n.translate("terramc.ui.general.connect"),
+          Icon.texture(ResourceLocation.create("terramc", "textures/ui/Connect.png")), () -> {});
+      connect.setActionListener(() -> this.labyAPI.serverController().joinServer("terramc.net"));
+      connect.top().set(this.bounds().getCenterY() + 20);
+      connect.alignmentX().set(WidgetAlignment.CENTER);
+
+      this.document.addChild(connect);
+    }
+
   }
 
   @Override
