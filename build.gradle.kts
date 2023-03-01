@@ -22,14 +22,14 @@ tasks.withType<Javadoc>{
 }
 
 labyMod {
-    defaultPackageName = "net.terramc" //change this to your main package name (used by all modules)
+    defaultPackageName = "net.terramc.addon" //change this to your main package name (used by all modules)
     addonInfo {
         namespace = "terramc"
         displayName = "TerraMCnet"
         author = "MisterCore"
         description = "This addon offers you advanced informations on TerraMC.net. For example it will show you your current nickname, gamerank and much more."
         minecraftVersion = "*"
-        version = System.getenv().getOrDefault("VERSION", "1.0.0")
+        version = System.getenv().getOrDefault("VERSION", "1.0.2")
     }
 
     minecraft {

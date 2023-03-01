@@ -7,7 +7,7 @@ Button {
 }
 
 .btn-proxy-re {
-  bottom: 20;
+  bottom: 30;
   left: 5;
 }
 
