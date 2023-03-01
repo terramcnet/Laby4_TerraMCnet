@@ -6,6 +6,7 @@ import net.labymod.api.client.gui.screen.LabyScreen;
 import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
+import net.labymod.api.client.gui.screen.activity.Link;
 import net.labymod.api.client.gui.screen.widget.attributes.WidgetAlignment;
 import net.labymod.api.client.gui.screen.widget.attributes.bounds.Bounds;
 import net.labymod.api.client.gui.screen.widget.widgets.input.ButtonWidget;
@@ -19,6 +20,7 @@ import net.terramc.addon.util.ActivityUtil;
 import org.jetbrains.annotations.Nullable;
 
 @AutoActivity
+@Link("activity.lss")
 public class TerraServerActivity extends Activity {
 
   private TerraAddon addon;
