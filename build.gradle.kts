@@ -29,7 +29,7 @@ labyMod {
         author = "MisterCore"
         description = "This addon offers you advanced informations on TerraMC.net. For example it will show you your current nickname, gamerank and much more."
         minecraftVersion = "*"
-        version = System.getenv().getOrDefault("VERSION", "1.0.2")
+        version = System.getenv().getOrDefault("VERSION", "1.0.3")
     }
 
     minecraft {
@@ -41,7 +41,7 @@ labyMod {
                 "1.18.2",
                 "1.19.2",
                 "1.19.3",
-                "1.19.4-pre1"
+                "1.19.4-rc1"
         ) { version, provider ->
             configureRun(provider, version)
         }
