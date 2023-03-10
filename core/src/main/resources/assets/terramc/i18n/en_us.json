@@ -143,7 +143,17 @@
         },
         "stats": {
           "title": "Statistics",
-          "updateButton": "§aUpdate"
+          "updateButton": "§aUpdate",
+          "kills": "Kills",
+          "deaths": "Deaths",
+          "kd": "K/D",
+          "points": "Points",
+          "wins": "Wins",
+          "looses": "Looses",
+          "levelRecord": "Level-Record",
+          "brokenBeds": "Broken Beds",
+          "bowls": "Bowls",
+          "soups": "Soups"
         }
       }
     }

@@ -45,6 +45,8 @@ public class StaffGroupTextTag extends NameTag {
     Player player = (Player) entity;
     if(player.getUniqueId() == null) return null;
 
+    if(!this.addon.configuration().enabled().get()) return null;
+
     if(!(this.addon.configuration().nameTagConfiguration.enabled().get() & this.addon.configuration().nameTagConfiguration.showTag().get())) return null;
 
     if(!AddonData.getStaffRankMap().containsKey(player.getUniqueId())) return null;

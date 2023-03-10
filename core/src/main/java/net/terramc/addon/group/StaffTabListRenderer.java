@@ -20,7 +20,6 @@ public class StaffTabListRenderer implements BadgeRenderer {
       if(staffGroup != null) {
         //staffGroup.getIcon().render(stack, x - 4.0F, y +1.0F, 10.0F, 6.0F);
         staffGroup.getIcon().render(stack, x, y, 8.0F);
-        //staffGroup.getIcon().render(stack, x, y, 8.0F, false, staffGroup.getColor().getRGB());
       }
   }
 
@@ -31,6 +30,8 @@ public class StaffTabListRenderer implements BadgeRenderer {
 
   private StaffGroup visibleGroup(NetworkPlayerInfo player) {
     if(player.profile().getUniqueId() == null) return null;
+
+    if(!this.addon.configuration().enabled().get()) return null;
 
     if(!(this.addon.configuration().nameTagConfiguration.enabled().get() & this.addon.configuration().nameTagConfiguration.showIconInTab().get())) return null;
 

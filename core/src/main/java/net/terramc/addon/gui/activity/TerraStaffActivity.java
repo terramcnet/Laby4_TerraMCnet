@@ -2,7 +2,6 @@ package net.terramc.addon.gui.activity;
 
 import net.labymod.api.Laby;
 import net.labymod.api.client.gui.mouse.MutableMouse;
-import net.labymod.api.client.gui.screen.LabyScreen;
 import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
@@ -15,7 +14,6 @@ import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.StaffSettings;
 import net.terramc.addon.util.ActivityUtil;
 import net.terramc.addon.util.CloudNotifyType;
-import org.jetbrains.annotations.Nullable;
 
 @AutoActivity
 public class TerraStaffActivity extends Activity {
@@ -72,8 +70,4 @@ public class TerraStaffActivity extends Activity {
     renderer.text(text).pos(x, y).render(stack);
   }
 
-  @Override
-  public <T extends LabyScreen> @Nullable T renew() {
-    return null;
-  }
 }

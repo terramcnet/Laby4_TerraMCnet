@@ -3,7 +3,6 @@ package net.terramc.addon.gui.cloud;
 import java.util.ArrayList;
 import java.util.List;
 import net.labymod.api.client.gui.mouse.MutableMouse;
-import net.labymod.api.client.gui.screen.LabyScreen;
 import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
@@ -14,7 +13,6 @@ import net.labymod.api.client.render.font.text.TextRenderer;
 import net.labymod.api.client.render.matrix.Stack;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.util.ActivityUtil;
-import org.jetbrains.annotations.Nullable;
 
 @AutoActivity
 @Link("cloud.lss")
@@ -249,11 +247,6 @@ public class CloudMainActivity extends Activity {
           .render(stack);
     }*/
 
-  }
-
-  @Override
-  public <T extends LabyScreen> @Nullable T renew() {
-    return null;
   }
 
 }

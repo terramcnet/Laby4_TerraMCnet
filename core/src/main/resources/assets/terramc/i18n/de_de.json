@@ -143,7 +143,17 @@
         },
         "stats": {
           "title": "Statistiken",
-          "updateButton": "§aAktualisieren"
+          "updateButton": "§aAktualisieren",
+          "kills": "Kills",
+          "deaths": "Tode",
+          "kd": "K/D",
+          "points": "Punkte",
+          "wins": "Gewonnen",
+          "looses": "Verloren",
+          "levelRecord": "Level-Rekord",
+          "brokenBeds": "Abgebaute Betten",
+          "bowls": "Schüsseln",
+          "soups": "Suppen"
         }
       }
     }

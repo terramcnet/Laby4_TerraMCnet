@@ -17,18 +17,6 @@ public class TerraConfiguration extends AddonConfig {
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
-  /*@SettingSection(value = "gui", center = true)
-
-  @SwitchSetting
-  private final ConfigProperty<Boolean> guiEnabled = new ConfigProperty<>(true);
-
-  public ConfigProperty<Boolean> guiEnabled() {
-    return this.guiEnabled;
-  }
-
-  @KeyBindSetting
-  private final ConfigProperty<Key> guiKey = new ConfigProperty<>(Key.MULTIPLY);*/
-
   @SettingSection(value = "general", center = true)
 
   @SpriteSlot()

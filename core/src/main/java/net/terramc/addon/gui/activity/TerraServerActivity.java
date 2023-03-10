@@ -2,7 +2,6 @@ package net.terramc.addon.gui.activity;
 
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.mouse.MutableMouse;
-import net.labymod.api.client.gui.screen.LabyScreen;
 import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
@@ -17,7 +16,6 @@ import net.labymod.api.util.I18n;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.ServerInfoData;
 import net.terramc.addon.util.ActivityUtil;
-import org.jetbrains.annotations.Nullable;
 
 @AutoActivity
 @Link("activity.lss")
@@ -35,7 +33,7 @@ public class TerraServerActivity extends Activity {
 
     if(!TerraAddon.isConnectedTerra()) {
       ButtonWidget connect = ButtonWidget.text(I18n.translate("terramc.ui.general.connect"),
-          Icon.texture(ResourceLocation.create("terramc", "textures/ui/Connect.png")), () -> {});
+          Icon.texture(ResourceLocation.create("terramc", "textures/ui/update.png")));
       connect.setActionListener(() -> this.labyAPI.serverController().joinServer("terramc.net"));
       connect.top().set(this.bounds().getCenterY() + 20);
       connect.alignmentX().set(WidgetAlignment.CENTER);
@@ -96,11 +94,6 @@ public class TerraServerActivity extends Activity {
 
   private void drawString(TextRenderer renderer, Stack stack, String text, float x, float y) {
     renderer.text(text).pos(x, y).render(stack);
-  }
-
-  @Override
-  public <T extends LabyScreen> @Nullable T renew() {
-    return null;
   }
 
 }
