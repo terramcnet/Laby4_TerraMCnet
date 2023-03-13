@@ -20,7 +20,6 @@ public class IronTimerHudWidget extends ItemHudWidget<HudWidgetConfig> {
   public IronTimerHudWidget(TerraAddon addon) {
     super("ironTimer");
     this.addon = addon;
-    //setIcon(Icon.texture(ResourceLocation.create("minecraft", "textures/items/iron_ingot.png")));
   }
 
   @Override
@@ -33,7 +32,7 @@ public class IronTimerHudWidget extends ItemHudWidget<HudWidgetConfig> {
   }
 
   @Override
-  public void onTick() {
+  public void onTick(boolean isEditorContext) {
     BedWarsGame bedWarsGame = AddonData.getBedWarsGame();
     if(bedWarsGame != null) {
       int elapsedTime = (int) ((System.currentTimeMillis() - bedWarsGame.getGameStarted()) /1000);

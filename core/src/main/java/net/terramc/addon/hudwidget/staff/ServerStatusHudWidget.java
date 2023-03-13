@@ -19,7 +19,6 @@ public class ServerStatusHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   public ServerStatusHudWidget(TerraAddon addon) {
     super("serverStatus");
     this.addon = addon;
-    //setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/server_status.png")));
   }
 
   @Override
@@ -33,7 +32,7 @@ public class ServerStatusHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   }
 
   @Override
-  public void onTick() {
+  public void onTick(boolean isEditorContext) {
     updateTextLine();
   }
 

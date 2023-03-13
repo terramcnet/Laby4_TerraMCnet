@@ -20,7 +20,6 @@ public class GoldTimerHudWidget extends ItemHudWidget<HudWidgetConfig> {
   public GoldTimerHudWidget(TerraAddon addon) {
     super("goldTimer");
     this.addon = addon;
-    //setIcon(Icon.texture(ResourceLocation.create("minecraft", "textures/items/gold_ingot.png")));
   }
 
   @Override
@@ -33,7 +32,7 @@ public class GoldTimerHudWidget extends ItemHudWidget<HudWidgetConfig> {
   }
 
   @Override
-  public void onTick() {
+  public void onTick(boolean isEditorContext) {
     BedWarsGame bedWarsGame = AddonData.getBedWarsGame();
     if(bedWarsGame != null) {
       int elapsedTime = (int) ((System.currentTimeMillis() - bedWarsGame.getGameStarted()) /1000);

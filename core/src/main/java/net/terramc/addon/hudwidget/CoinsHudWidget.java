@@ -18,7 +18,6 @@ public class CoinsHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   public CoinsHudWidget(TerraAddon addon) {
     super("coins");
     this.addon = addon;
-    //setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/coin.png")));
   }
 
   @Override
@@ -30,7 +29,7 @@ public class CoinsHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   }
 
   @Override
-  public void onTick() {
+  public void onTick(boolean isEditorContext) {
     updateTextLine();
   }
 

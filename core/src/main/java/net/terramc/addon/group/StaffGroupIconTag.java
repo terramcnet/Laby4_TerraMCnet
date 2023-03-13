@@ -23,8 +23,6 @@ public class StaffGroupIconTag extends IconTag {
 
   @Override
   public int getColor() {
-    //StaffGroup group = this.visibleGroup(entity);
-    //return group != null ? group.getColor().getRGB() : super.getColor();
     return super.getColor();
   }
 
@@ -32,7 +30,6 @@ public class StaffGroupIconTag extends IconTag {
   public Icon getIcon() {
     StaffGroup group = this.visibleGroup(entity);
     return group != null ? group.getIcon() : super.getIcon();
-    //return group != null ? Icon.texture(ResourceLocation.create("terramc", "textures/icon.png")) : super.getIcon();
   }
 
   private StaffGroup visibleGroup(Entity entity) {

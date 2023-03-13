@@ -18,7 +18,6 @@ public class VanishHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   public VanishHudWidget(TerraAddon addon) {
     super("vanish");
     this.addon = addon;
-    //setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/vanish.png")));
   }
 
   @Override
@@ -31,7 +30,7 @@ public class VanishHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   }
 
   @Override
-  public void onTick() {
+  public void onTick(boolean isEditorContext) {
     updateTextLine();
   }
 

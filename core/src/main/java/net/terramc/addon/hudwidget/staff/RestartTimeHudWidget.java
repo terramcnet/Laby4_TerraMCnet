@@ -17,7 +17,6 @@ public class RestartTimeHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   public RestartTimeHudWidget(TerraAddon addon) {
     super("restartTime");
     this.addon = addon;
-    //setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/clock.png")));
   }
 
   @Override
@@ -29,7 +28,7 @@ public class RestartTimeHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   }
 
   @Override
-  public void onTick() {
+  public void onTick(boolean isEditorContext) {
     updateTextLine();
   }
 

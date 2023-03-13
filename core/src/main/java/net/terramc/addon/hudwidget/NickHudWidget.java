@@ -17,7 +17,6 @@ public class NickHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   public NickHudWidget(TerraAddon addon) {
     super("nickname");
     this.addon = addon;
-    //setIcon(Icon.texture(ResourceLocation.create("minecraft", "textures/items/name_tag.png")));
   }
 
   @Override
@@ -29,7 +28,7 @@ public class NickHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   }
 
   @Override
-  public void onTick() {
+  public void onTick(boolean isEditorContext) {
     updateTextLine();
   }
 

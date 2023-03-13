@@ -18,7 +18,6 @@ public class PointsHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   public PointsHudWidget(TerraAddon addon) {
     super("points");
     this.addon = addon;
-    //setIcon(Icon.texture(ResourceLocation.create("terramc", "textures/hud/star.png")));
   }
 
   @Override
@@ -30,7 +29,7 @@ public class PointsHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   }
 
   @Override
-  public void onTick() {
+  public void onTick(boolean isEditorContext) {
     updateTextLine();
   }
 
