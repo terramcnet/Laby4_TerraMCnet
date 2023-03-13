@@ -43,6 +43,13 @@ public class CloudMainActivity extends Activity {
     proxyRe.setActionListener(() -> this.addon.apiUtil().sendControlToProxy("restart", "Proxy"));
     buttonList.add(proxyRe);
 
+    // DevLobby
+
+    ButtonWidget devLobbyRe = ButtonWidget.text("§bDevLobby §7- " + restart);
+    devLobbyRe.addId("btn-devLobby-re");
+    devLobbyRe.setActionListener(() -> this.addon.apiUtil().sendControlToProxy("restart", "DevLobby"));
+    buttonList.add(devLobbyRe);
+
     // Lobby
     ButtonWidget lobbyRe = ButtonWidget.text("§aLobby §7- " + restart);
     lobbyRe.addId("left-first");

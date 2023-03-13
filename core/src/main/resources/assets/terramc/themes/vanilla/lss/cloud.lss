@@ -11,6 +11,11 @@ Button {
   left: 5;
 }
 
+.btn-devLobby-re {
+  bottom: 30;
+  left: 120;
+}
+
 .left-first {
   left: 5;
 }
