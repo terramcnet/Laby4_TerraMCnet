@@ -1,0 +1,189 @@
+{
+  "labymod": {
+    "hudWidgetCategory": {
+      "terramc": {
+        "name": "TerraMC",
+        "description": "Shows you information for TerraMC"
+      },
+      "terramc_staff": {
+        "name": "TerraMC - Staff",
+        "description": "Shows you information for TerraMC - Staff"
+      }
+    }
+  },
+  
+  "terramc": {
+    "settings": {
+      "name": "TerraMCnet",
+      "header": {
+        "general": {
+          "name": "§7§l§o▎§8§l§o▏ §7General Functions"
+        },
+        "premium": {
+          "name": "§7§l§o▎§8§l§o▏ §6Premium Functions"
+        }
+      },
+      "enabled": {
+        "name": "§7» §fEnabled"
+      },
+      "nameTagConfiguration": {
+        "name": "§7» §fShow Staff NameTag",
+        "description": "Displays the Rank of a Staff member.",
+        "header": {
+          "general": {
+            "name": "§7§l§o▎§8§l§o▏ §6Tag Settings"
+          },
+          "customization": {
+            "name": "§7§l§o▎§8§l§o▏ §6Tag Customization"
+          }
+        },
+        "showTag": {
+          "name": "§7» §fShow Text-Tag",
+          "description": "Displays the Rank of a Staff member above their name."
+        },
+        "showIconTag": {
+          "name": "§7» §fShow Icon-Tag",
+          "description": "Displays the TerraMC Logo next to a staff member's name."
+        },
+        "showIconInTab": {
+          "name": "§7» §fShow Icon in Tablist",
+          "description": "Displays the TerraMC logo in front of a team member's name in the tab list."
+        },
+        "nameTagColor": {
+          "name": "§7» §fColor of the Text-Tag",
+          "description": "Change the color of the 'TERRAMC' text in the Text-Tag"
+        },
+        "textDecoration": {
+          "name": "§7» §fText decoration",
+          "description": "Change the text decoration of the 'TERRAMC' text in the Text-Tag",
+          "none": "None",
+          "obfuscated": "Obfuscated",
+          "bold": "Bold",
+          "strikethrough": "Strikethrough",
+          "underlined": "Underlined",
+          "italic": "Italic"
+        }
+      },
+      "updateStatsOnJoin": {
+        "name": "Update stats on join",
+        "description": "When enabled, your stats will get updated if you join on TerraMC.net."
+      },
+      "enableAutoGG": {
+        "name": "§7» §fAutoGG",
+        "description": "Sends automatically a 'GG' on the end of the round in the chat."
+      }
+    },
+	
+    "notification": {
+      "error": {
+        "title": "§7§l§o▎§8§l§o▏ §4TerraMC - Error",
+        "stats-coolDown": "§cYou can only update your stats every 5 minutes.",
+        "api": {
+          "stats": "§cAn error occurred while loading your stats.",
+          "data": "§cAn error occurred while loading the data.",
+          "general": "§cThe data could not be loaded due to an API error.",
+          "serverStats": "§cAn error occurred while loading the server stats.",
+          "reason": "§cReason§8: §4"
+        }
+      },
+      "success": {
+        "title": "§7§l§o▎§8§l§o▏ §2TerraMC",
+        "stats-updated": "§aYour stats has been successfully updated."
+      }
+    },
+	
+    "hudWidget": {
+      "nickname": {
+        "name": "NickName"
+      },
+      "coins": {
+        "name": "GCoins"
+      },
+      "points": {
+        "name": "GPoints"
+      },
+      "gameRank": {
+        "name": "Ranking"
+      },
+      "pointsRank": {
+        "name": "Points-Rank"
+      },
+      "ironTimer": {
+        "name": "Iron-Timer"
+      },
+      "goldTimer": {
+        "name": "Gold-Timer"
+      },
+      "vanish": {
+        "name": "Vanish"
+      },
+      "serverStatus": {
+        "name": "ServerStatus"
+      },
+      "restartTime": {
+        "name": "Restart-Time"
+      }
+    },
+	
+    "ui": {
+      "navigation": {
+        "main_ui": "TerraMC"
+      },
+      "general": {
+        "noInfoAvailable": "§4No information can be provided.",
+        "connectToServer": "§cPlease connect to TerraMC.net",
+        "noAccess": "§4You have no access to this site.",
+        "connect": "§eConnect"
+      },
+      "staff": {
+        "cloudNotify": {
+          "title": "§eCloud-Notifications",
+          "description": "§7Define how the server start/stop notifications of the cloud should be displayed.",
+          "chat": "§eChat",
+          "notification": "§bLaby-Notification",
+          "hide": "§cHide"
+        },
+        "showTagAlways": {
+          "title": "§eShow Tags always",
+          "description": "§7Shows team members' tags even if they are nicked or in ToggleRank."
+        }
+      },
+      "activity": {
+        "serverInfo": "Server-Info",
+        "staff": "Staff",
+        "cloud": {
+          "navigation": "Cloud",
+          "main": "§aGeneral",
+          "bw": "§cBedWars",
+          "tdm": "§4TeamDeathMatch"
+        },
+        "overview": {
+          "title": "Overview",
+          "rank": "Rank",
+          "nickName": "Nickname",
+          "gameRank": "Gamemode Rang",
+          "playTime": "Playtime",
+          "networkJoined": "Network joined",
+          "error": "Error",
+          "notNicked": "not nicked",
+          "notInGame": "not in a round",
+          "noTime": "no time recorded yet"
+        },
+        "stats": {
+          "title": "Statistics",
+          "updateButton": "§aUpdate",
+          "kills": "Kills",
+          "deaths": "Deaths",
+          "kd": "K/D",
+          "points": "Points",
+          "wins": "Wins",
+          "looses": "Looses",
+          "levelRecord": "Level-Record",
+          "brokenBeds": "Broken Beds",
+          "bowls": "Bowls",
+          "soups": "Soups"
+        }
+      }
+    }
+  }
+}

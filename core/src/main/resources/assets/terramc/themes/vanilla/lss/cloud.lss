@@ -1,0 +1,52 @@
+Button {
+  width: 70;
+}
+
+Scroll {
+   top: 5;
+   width: 100%;
+   height: 90%;
+
+   .grid-control {
+      top: 0;
+      left: 0;
+      height: fit-content;
+      width: 100%;
+      tiles-per-line: 5;
+      tile-height: 70;
+   }
+
+   Scrollbar {
+      left: 0;
+      top: 0;
+      width: 5;
+      height: 100%;
+      margin-right: 5;
+   }
+}
+
+CloudControl {
+
+  .container {
+    alignment-x: center;
+    top: 0;
+    width: 80;
+    height: 100%;
+  }
+
+  .title {
+    top: 0;
+    alignment-x: center;
+  }
+
+  .restartBtn {
+    top: 15;
+    alignment-x: center;
+  }
+
+  .maintenanceBtn {
+    top: 35;
+    alignment-x: center;
+  }
+
+}

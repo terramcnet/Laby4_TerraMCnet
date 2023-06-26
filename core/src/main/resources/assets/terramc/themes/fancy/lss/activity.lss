@@ -1,0 +1,65 @@
+@import super();
+
+Button {
+  width: 90;
+  padding-left: 2;
+  padding-right: 2;
+}
+
+.connect-btn {
+  top: 60vh;
+  alignment-x: center;
+}
+
+.stats-update-btn {
+  bottom: 3;
+  right: 3;
+  height: 16;
+  width: fit-content;
+  padding-left: 2;
+  padding-right: 2;
+}
+
+.gridWidget-overview {
+  top: 30;
+  left: 0;
+  height: fit-content;
+  width: 100%;
+  tiles-per-line: 4;
+  tile-height: 75;
+}
+
+.gridWidget-stats {
+  top: 5;
+  left: 0;
+  height: fit-content;
+  width: 100%;
+  tiles-per-line: 5;
+  tile-height: 100;
+}
+
+Overview {
+  .entryIcon {
+    alignment-x: center;
+    top: 0;
+    height: 20;
+    width: 20;
+  }
+  .entryTitle {
+    alignment-x: center;
+    top: 30%;
+  }
+}
+
+Stats {
+  .entryIcon {
+    alignment-x: center;
+    top: 0;
+    height: 25;
+    width: 100;
+  }
+  .entryTitle {
+    alignment-x: center;
+    top: 30%;
+  }
+}

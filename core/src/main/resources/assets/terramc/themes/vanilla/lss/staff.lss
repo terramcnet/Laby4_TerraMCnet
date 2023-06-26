@@ -1,0 +1,21 @@
+.cloudNotify-title {
+  top: 10;
+  left: 50;
+}
+
+.cloudNotify {
+  top: 20;
+  left: 50;
+}
+
+.showTagAlways-title {
+  top: 50;
+  left: 50;
+}
+
+.showTagAlways {
+  top: 65;
+  left: 50;
+  height: 20;
+  width: fit-content;
+}
