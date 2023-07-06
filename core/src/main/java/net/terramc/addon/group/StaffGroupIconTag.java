@@ -36,15 +36,10 @@ public class StaffGroupIconTag extends IconTag {
     if(!(entity instanceof Player)) return null;
     Player player = (Player) entity;
     if(player.getUniqueId() == null) return null;
-
     if(!this.addon.configuration().enabled().get()) return null;
-
     if(!(this.addon.configuration().nameTagConfiguration.enabled().get() & this.addon.configuration().nameTagConfiguration.showIconTag().get())) return null;
-
     if(!AddonData.getStaffRankMap().containsKey(player.getUniqueId())) return null;
-
     if(shouldHide(player)) return null;
-
     return AddonData.getStaffRankMap().get(player.getUniqueId());
 
   }

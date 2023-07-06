@@ -1,16 +1,17 @@
 package net.terramc.addon.gui.activity;
 
 import net.labymod.api.Laby;
+import net.labymod.api.client.component.Component;
+import net.labymod.api.client.component.format.TextColor;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.mouse.MutableMouse;
 import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
 import net.labymod.api.client.gui.screen.activity.Link;
-import net.labymod.api.client.gui.screen.widget.attributes.bounds.Bounds;
+import net.labymod.api.client.gui.screen.widget.widgets.ComponentWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.input.ButtonWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.TilesGridWidget;
-import net.labymod.api.client.render.font.text.TextRenderer;
 import net.labymod.api.client.render.matrix.Stack;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.util.I18n;
@@ -39,13 +40,15 @@ public class TerraStatsActivity extends Activity {
     updateButton.setActionListener(() -> {
       long remaining = (PlayerStats.updateCoolDown + PlayerStats.updateTime - System.currentTimeMillis());
       if(remaining > 0) {
-        this.addon.pushNotification(I18n.translate("terramc.notification.error.title"), I18n.translate("terramc.notification.error.stats-coolDown"));
+        this.addon.pushNotification(Component.translatable("terramc.notification.error.title"), Component.translatable("terramc.notification.error.stats-coolDown").color(
+            TextColor.color(255, 85, 85)));
       } else {
         if(Laby.references().gameUserService().clientGameUser().getUniqueId() != null) {
           if(this.addon.apiUtil().loadPlayerStats(Laby.references().gameUserService().clientGameUser().getUniqueId())) {
             PlayerStats.updateCoolDown = System.currentTimeMillis();
             this.reload();
-            this.addon.pushNotification(I18n.translate("terramc.notification.success.title"), I18n.translate("terramc.notification.success.stats-updated"));
+            this.addon.pushNotification(Component.translatable("terramc.notification.success.title"), Component.translatable("terramc.notification.success.stats-updated").color(
+                TextColor.color(85, 255, 85)));
           }
         }
       }
@@ -137,6 +140,19 @@ public class TerraStatsActivity extends Activity {
 
       this.document.addChild(gridWidget);
 
+    } else {
+      ComponentWidget apiError = ComponentWidget.i18n("terramc.notification.error.api.general");
+      apiError.addId("api-error");
+      this.document.addChild(apiError);
+
+      Component reason = Component.translatable("terramc.notification.error.api.reason").color(TextColor.color(255, 85, 85)).append(
+          Component.text(":").color(TextColor.color(85, 85, 85))
+      ).append(
+          Component.text(" " + PlayerStats.notLoadedReason).color(TextColor.color(170, 0 ,0))
+      );
+      ComponentWidget apiErrorReason = ComponentWidget.component(reason);
+      apiErrorReason.addId("api-error-reason");
+      this.document.addChild(apiErrorReason);
     }
 
   }
@@ -144,21 +160,7 @@ public class TerraStatsActivity extends Activity {
   @Override
   public void render(Stack stack, MutableMouse mouse, float partialTicks) {
     super.render(stack, mouse, partialTicks);
-
-    Bounds bounds = this.bounds();
-    TextRenderer textRenderer = this.labyAPI.renderPipeline().textRenderer();
-
-    Util.drawCredits(this.labyAPI, bounds, stack);
-    if(!PlayerStats.loadedSuccessful) {
-      textRenderer.text(I18n.translate("terramc.notification.error.api.general"))
-          .pos(bounds.getCenterX(), bounds.getCenterY() -5)
-          .centered(true)
-          .render(stack);
-      textRenderer.text(I18n.translate("terramc.notification.error.api.reason") + PlayerStats.notLoadedReason)
-          .pos(bounds.getCenterX(), bounds.getCenterY() +5)
-          .centered(true)
-          .render(stack);
-    }
+    Util.drawCredits(this.labyAPI, this.bounds(), stack);
   }
 
 }

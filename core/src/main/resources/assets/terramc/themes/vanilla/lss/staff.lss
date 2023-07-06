@@ -1,6 +1,7 @@
 .cloudNotify-title {
   top: 10;
   left: 50;
+  text-color: yellow;
 }
 
 .cloudNotify {
@@ -11,6 +12,7 @@
 .showTagAlways-title {
   top: 50;
   left: 50;
+  text-color: yellow;
 }
 
 .showTagAlways {

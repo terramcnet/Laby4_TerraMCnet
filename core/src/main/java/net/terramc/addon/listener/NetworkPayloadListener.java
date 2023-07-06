@@ -2,6 +2,7 @@ package net.terramc.addon.listener;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import net.labymod.api.client.component.Component;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.network.server.NetworkPayloadEvent;
@@ -29,7 +30,7 @@ public class NetworkPayloadListener {
         String messageKey = reader.readString();
         String messageContent = reader.readString();
 
-        if(messageKey.equals("TerraMod")) {
+        if(messageKey.equals("TerraMod") & this.addon.isConnected()) {
           JsonElement serverMessage = WebResolver.GSON.fromJson(messageContent, JsonElement.class);
           if(!serverMessage.isJsonObject()) return;
           JsonObject object = serverMessage.getAsJsonObject();
@@ -52,9 +53,6 @@ public class NetworkPayloadListener {
           if(object.has("gPointRank")) {
             AddonData.setPointsRank(object.get("gPointRank").getAsString());
           }
-        /*if(object.has("addonVersion")) {
-          AddonData.checkUpdate(object.get("addonVersion").getAsString());
-        }*/
           if(object.has("playerRank")) {
             AddonData.setRank(object.get("playerRank").getAsString());
             this.addon.terraMainActivity.updateStaffActivity();
@@ -71,12 +69,6 @@ public class NetworkPayloadListener {
 
           // Staff
 
-          if(object.has("vanish")) {
-            AddonData.setVanish(object.get("vanish").getAsBoolean());
-          }
-          if(object.has("autoVanish")) {
-            AddonData.setAutoVanish(object.get("autoVanish").getAsBoolean());
-          }
           if(object.has("serverTPS")) {
             ServerData.setServerTps(object.get("serverTPS").getAsString());
           }
@@ -89,13 +81,6 @@ public class NetworkPayloadListener {
           if(object.has("restartTime")) {
             ServerData.setRestartTime(object.get("restartTime").getAsString());
           }
-
-          /*if(object.has("serverInfo")) {
-            ServerInfoData.Information.loadData(object.get("serverInfo").getAsString());
-          }
-          if(object.has("serverMaxPlayer")) {
-            ServerInfoData.MaxPlayers.data = object.get("serverMaxPlayer").getAsString();
-          }*/
 
           if(object.has("toggleRank")) {
             AddonData.setRankToggled(object.get("toggleRank").getAsBoolean());
@@ -120,10 +105,10 @@ public class NetworkPayloadListener {
             String uuid = raw[1];
             //this.addon.pushNotification("§7§l§o▎§8§l§o▏ §eNick-System", "§7Skin §8[§e" + nickName + "§8] §7wurde aus dem Cache geladen.");
             if(!uuid.equals("NONE")) {
-              this.addon.pushNotificationIcon("§7§l§o▎§8§l§o▏ §eNick-System", "§7Skin §8[§e" + nickName + "§8] §7wurde aus dem Cache geladen.",
+              this.addon.pushNotificationIcon(Component.text("§7§l§o▎§8§l§o▏ §eNick-System"), Component.text("§7Skin §8[§e" + nickName + "§8] §7wurde aus dem Cache geladen."),
                   Icon.head(UUID.fromString(uuid)).enableHat());
             } else {
-              this.addon.pushNotification("§7§l§o▎§8§l§o▏ §eNick-System", "§7Skin §8[§e" + nickName + "§8] §7wurde aus dem Cache geladen.");
+              this.addon.pushNotification(Component.text("§7§l§o▎§8§l§o▏ §eNick-System"), Component.text("§7Skin §8[§e" + nickName + "§8] §7wurde aus dem Cache geladen."));
             }
           }
 
@@ -133,10 +118,10 @@ public class NetworkPayloadListener {
             String uuid = raw[1];
             //this.addon.pushNotification("§7§l§o▎§8§l§o▏ §eNick-System", "§7Skin §8[§e" + nickName + "§8] §7wurde gespeichert.");
             if(!uuid.equals("NONE")) {
-              this.addon.pushNotificationIcon("§7§l§o▎§8§l§o▏ §eNick-System", "§7Skin §8[§e" + nickName + "§8] §7wurde gespeichert.",
+              this.addon.pushNotificationIcon(Component.text("§7§l§o▎§8§l§o▏ §eNick-System"), Component.text("§7Skin §8[§e" + nickName + "§8] §7wurde gespeichert."),
                   Icon.head(UUID.fromString(uuid)).enableHat());
             } else {
-              this.addon.pushNotification("§7§l§o▎§8§l§o▏ §eNick-System", "§7Skin §8[§e" + nickName + "§8] §7wurde gespeichert.");
+              this.addon.pushNotification(Component.text("§7§l§o▎§8§l§o▏ §eNick-System"), Component.text("§7Skin §8[§e" + nickName + "§8] §7wurde gespeichert."));
             }
           }
 
@@ -146,10 +131,10 @@ public class NetworkPayloadListener {
             String uuid = raw[1];
             //this.addon.pushNotification("§7§l§o▎§8§l§o▏ §eNick-System", "§7Skin §8[§e" + nickName + "§8] §7wurde erneut gespeichert.");
             if(!uuid.equals("NONE")) {
-              this.addon.pushNotificationIcon("§7§l§o▎§8§l§o▏ §eNick-System", "§7Skin §8[§e" + nickName + "§8] §7wurde erneut gespeichert.",
+              this.addon.pushNotificationIcon(Component.text("§7§l§o▎§8§l§o▏ §eNick-System"), Component.text("§7Skin §8[§e" + nickName + "§8] §7wurde erneut gespeichert."),
                   Icon.head(UUID.fromString(uuid)).enableHat());
             } else {
-              this.addon.pushNotification("§7§l§o▎§8§l§o▏ §eNick-System", "§7Skin §8[§e" + nickName + "§8] §7wurde erneut gespeichert.");
+              this.addon.pushNotification(Component.text("§7§l§o▎§8§l§o▏ §eNick-System"), Component.text("§7Skin §8[§e" + nickName + "§8] §7wurde erneut gespeichert."));
             }
           }
 

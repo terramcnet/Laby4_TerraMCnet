@@ -1,5 +1,6 @@
 package net.terramc.addon.listener;
 
+import net.labymod.api.client.component.Component;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.chat.ChatReceiveEvent;
 import net.terramc.addon.TerraAddon;
@@ -16,6 +17,8 @@ public class ChatMessageListener {
 
   @Subscribe
   public void onChatReceive(ChatReceiveEvent event) {
+    if(!this.addon.configuration().enabled().get()) return;
+    if(!this.addon.isConnected()) return;
     //String formatted = event.chatMessage().getOriginalFormattedText();
     String plain = event.chatMessage().getOriginalPlainText();
 
@@ -109,27 +112,25 @@ public class ChatMessageListener {
     if(plain.startsWith(cloudPrefix + "Der Service ") & plain.contains(" wird gestoppt...")) {
       String service = plain.replace(cloudPrefix + "Der Service ", "").replace(" wird gestoppt...", "");
       switch (this.addon.configuration().cloudNotifyType().get()) {
-        case NOTIFICATION:
-          this.addon.pushNotification("§7§l§o▎§8§l§o▏ §aCloud", "§7Cloud-Service §e" + service + " §7wird §cgestoppt§7...");
+        case NOTIFICATION -> {
+          this.addon.pushNotification(Component.text("§7§l§o▎§8§l§o▏ §aCloud"),
+              Component.text("§7Cloud-Service §e" + service + " §7wird §cgestoppt§7..."));
           event.setCancelled(true);
-          break;
-        case HIDE:
-          event.setCancelled(true);
-          break;
+        }
+        case HIDE -> event.setCancelled(true);
       }
     }
 
     if(plain.startsWith(cloudPrefix + "Der Service ") & plain.contains(" wird gestartet...")) {
         String service = plain.replace(cloudPrefix + "Der Service ", "").replace(" wird gestartet...", "");
-        switch (this.addon.configuration().cloudNotifyType().get()) {
-          case NOTIFICATION:
-            this.addon.pushNotification("§7§l§o▎§8§l§o▏ §aCloud", "§7Cloud-Service §e" + service + " §7wird §agestartet§7...");
-            event.setCancelled(true);
-            break;
-          case HIDE:
-            event.setCancelled(true);
-            break;
+      switch (this.addon.configuration().cloudNotifyType().get()) {
+        case NOTIFICATION -> {
+          this.addon.pushNotification(Component.text("§7§l§o▎§8§l§o▏ §aCloud"),
+              Component.text("§7Cloud-Service §e" + service + " §7wird §agestartet§7..."));
+          event.setCancelled(true);
         }
+        case HIDE -> event.setCancelled(true);
+      }
     }
 
   }

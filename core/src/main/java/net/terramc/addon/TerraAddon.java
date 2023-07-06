@@ -10,10 +10,10 @@ import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.models.addon.annotation.AddonMain;
 import net.labymod.api.notification.Notification;
 import net.labymod.api.notification.Notification.Type;
+import net.terramc.addon.data.AddonData;
 import net.terramc.addon.group.StaffGroupIconTag;
 import net.terramc.addon.group.StaffGroupTextTag;
 import net.terramc.addon.group.StaffTabListRenderer;
-import net.terramc.addon.gui.TerraNavigationElement;
 import net.terramc.addon.gui.activity.TerraMainActivity;
 import net.terramc.addon.hudwidget.CoinsHudWidget;
 import net.terramc.addon.hudwidget.GameRankHudWidget;
@@ -22,9 +22,6 @@ import net.terramc.addon.hudwidget.PointsHudWidget;
 import net.terramc.addon.hudwidget.PointsRankHudWidget;
 import net.terramc.addon.hudwidget.game.GoldTimerHudWidget;
 import net.terramc.addon.hudwidget.game.IronTimerHudWidget;
-import net.terramc.addon.hudwidget.staff.RestartTimeHudWidget;
-import net.terramc.addon.hudwidget.staff.ServerStatusHudWidget;
-import net.terramc.addon.hudwidget.staff.VanishHudWidget;
 import net.terramc.addon.listener.ChatMessageListener;
 import net.terramc.addon.listener.NetworkListener;
 import net.terramc.addon.listener.NetworkPayloadListener;
@@ -37,7 +34,6 @@ import java.util.UUID;
 public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
   public static final HudWidgetCategory TERRA = new HudWidgetCategory("terramc");
-  public static final HudWidgetCategory TERRA_STAFF = new HudWidgetCategory("terramc_staff");
 
   public TerraMainActivity terraMainActivity;
 
@@ -71,45 +67,39 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
     this.registerListener(new NetworkPayloadListener(this));
 
-    labyAPI().navigationService().register("terramc_main_ui", new TerraNavigationElement(this));
-
-    labyAPI().hudWidgetRegistry().categoryRegistry().register(TERRA);
-    labyAPI().hudWidgetRegistry().categoryRegistry().register(TERRA_STAFF);
-
     labyAPI().tagRegistry().register("terramc_role", PositionType.ABOVE_NAME, new StaffGroupTextTag(this));
     labyAPI().tagRegistry().register("terramc_role_icon", PositionType.RIGHT_TO_NAME, new StaffGroupIconTag(this));
     Laby.references().badgeRegistry().register("terra_role_tab", net.labymod.api.client.entity.player.badge.PositionType.LEFT_TO_NAME, new StaffTabListRenderer(this));
 
+    labyAPI().hudWidgetRegistry().categoryRegistry().register(TERRA);
     labyAPI().hudWidgetRegistry().register(new NickHudWidget(this));
     labyAPI().hudWidgetRegistry().register(new CoinsHudWidget(this));
     labyAPI().hudWidgetRegistry().register(new PointsHudWidget(this));
     labyAPI().hudWidgetRegistry().register(new GameRankHudWidget(this));
     labyAPI().hudWidgetRegistry().register(new PointsRankHudWidget(this));
 
-    labyAPI().hudWidgetRegistry().register(new VanishHudWidget(this));
-    labyAPI().hudWidgetRegistry().register(new ServerStatusHudWidget(this));
-    labyAPI().hudWidgetRegistry().register(new RestartTimeHudWidget(this));
-
     labyAPI().hudWidgetRegistry().register(new IronTimerHudWidget(this));
     labyAPI().hudWidgetRegistry().register(new GoldTimerHudWidget(this));
+
+    this.logger().info("Staff: " + AddonData.getRank());
 
     this.logger().info("[TerraMCnet] Addon enabled.");
 
   }
 
-  public void pushNotification(String title, String text) {
+  public void pushNotification(Component title, Component text) {
     Notification.Builder builder = Notification.builder()
-        .title(Component.text(title))
-        .text(Component.text(text))
+        .title(title)
+        .text(text)
         .icon(Icon.texture(ResourceLocation.create("terramc", "textures/icon.png")))
         .type(Type.ADVANCEMENT);
     labyAPI().notificationController().push(builder.build());
   }
 
-  public void pushNotificationIcon(String title, String text, Icon icon) {
+  public void pushNotificationIcon(Component title, Component text, Icon icon) {
     Notification.Builder builder = Notification.builder()
-        .title(Component.text(title))
-        .text(Component.text(text))
+        .title(title)
+        .text(text)
         .icon(icon)
         .type(Type.ADVANCEMENT);
     labyAPI().notificationController().push(builder.build());

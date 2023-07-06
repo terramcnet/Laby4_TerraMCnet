@@ -41,7 +41,7 @@ public class TerraMainActivity extends TabbedActivity {
 
     if(this.addon.rankUtil().canControlCloud()) {
       if(this.getElementById(cloudId) == null) {
-        this.register(cloudId, new DefaultComponentTab(Component.translatable("terramc.ui.activity.cloud.navigation"), new TerraCloudActivity(this.addon)));
+        this.register(cloudId, new DefaultComponentTab(Component.translatable("terramc.ui.activity.cloud"), new TerraCloudActivity(this.addon)));
       }
     } else {
       this.unregister(cloudId);

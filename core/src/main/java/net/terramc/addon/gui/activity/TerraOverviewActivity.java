@@ -6,10 +6,9 @@ import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
 import net.labymod.api.client.gui.screen.activity.Link;
-import net.labymod.api.client.gui.screen.widget.attributes.bounds.Bounds;
+import net.labymod.api.client.gui.screen.widget.widgets.ComponentWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.input.ButtonWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.TilesGridWidget;
-import net.labymod.api.client.render.font.text.TextRenderer;
 import net.labymod.api.client.render.matrix.Stack;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.util.I18n;
@@ -33,6 +32,15 @@ public class TerraOverviewActivity extends Activity {
     super.initialize(parent);
 
     if(!this.addon.isConnected()) {
+
+      ComponentWidget noInfoWidget = ComponentWidget.i18n("terramc.ui.general.noInfoAvailable");
+      noInfoWidget.addId("not-connected-info");
+      this.document.addChild(noInfoWidget);
+
+      ComponentWidget connectTextWidget = ComponentWidget.i18n("terramc.ui.general.connectToServer");
+      connectTextWidget.addId("connect-text");
+      this.document.addChild(connectTextWidget);
+
       ButtonWidget connect = ButtonWidget.text(I18n.translate("terramc.ui.general.connect"),
           Icon.texture(ResourceLocation.create("terramc", "textures/ui/update.png")));
       connect.setActionListener(() -> this.labyAPI.serverController().joinServer("terramc.net"));
@@ -74,24 +82,7 @@ public class TerraOverviewActivity extends Activity {
   @Override
   public void render(Stack stack, MutableMouse mouse, float partialTicks) {
     super.render(stack, mouse, partialTicks);
-
-    Bounds bounds = this.bounds();
-    TextRenderer textRenderer = this.labyAPI.renderPipeline().textRenderer();
-
-    Util.drawCredits(this.labyAPI, bounds, stack);
-
-    if(!this.addon.isConnected()) {
-      textRenderer.text(I18n.translate("terramc.ui.general.noInfoAvailable"))
-          .pos(bounds.getCenterX(), bounds.getCenterY())
-          .centered(true)
-          .render(stack);
-
-      textRenderer.text(I18n.translate("terramc.ui.general.connectToServer"))
-          .pos(bounds.getCenterX(), bounds.getCenterY() + 10)
-          .centered(true)
-          .render(stack);
-    }
-
+    Util.drawCredits(this.labyAPI, this.bounds(), stack);
   }
 
 }

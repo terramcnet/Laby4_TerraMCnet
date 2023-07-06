@@ -17,44 +17,44 @@
       "name": "TerraMCnet",
       "header": {
         "general": {
-          "name": "§7§l§o▎§8§l§o▏ §7General Functions"
+          "name": "General Functions"
         },
         "premium": {
-          "name": "§7§l§o▎§8§l§o▏ §6Premium Functions"
+          "name": "Premium Functions"
         }
       },
       "enabled": {
-        "name": "§7» §fEnabled"
+        "name": "Enabled"
       },
       "nameTagConfiguration": {
-        "name": "§7» §fShow Staff NameTag",
+        "name": "Show Staff NameTag",
         "description": "Displays the Rank of a Staff member.",
         "header": {
           "general": {
-            "name": "§7§l§o▎§8§l§o▏ §6Tag Settings"
+            "name": "Tag Settings"
           },
           "customization": {
-            "name": "§7§l§o▎§8§l§o▏ §6Tag Customization"
+            "name": "Tag Customization"
           }
         },
         "showTag": {
-          "name": "§7» §fShow Text-Tag",
+          "name": "Show Text-Tag",
           "description": "Displays the Rank of a Staff member above their name."
         },
         "showIconTag": {
-          "name": "§7» §fShow Icon-Tag",
+          "name": "Show Icon-Tag",
           "description": "Displays the TerraMC Logo next to a staff member's name."
         },
         "showIconInTab": {
-          "name": "§7» §fShow Icon in Tablist",
+          "name": "Show Icon in Tablist",
           "description": "Displays the TerraMC logo in front of a team member's name in the tab list."
         },
         "nameTagColor": {
-          "name": "§7» §fColor of the Text-Tag",
+          "name": "Color of the Text-Tag",
           "description": "Change the color of the 'TERRAMC' text in the Text-Tag"
         },
         "textDecoration": {
-          "name": "§7» §fText decoration",
+          "name": "Text decoration",
           "description": "Change the text decoration of the 'TERRAMC' text in the Text-Tag",
           "none": "None",
           "obfuscated": "Obfuscated",
@@ -69,7 +69,7 @@
         "description": "When enabled, your stats will get updated if you join on TerraMC.net."
       },
       "enableAutoGG": {
-        "name": "§7» §fAutoGG",
+        "name": "AutoGG",
         "description": "Sends automatically a 'GG' on the end of the round in the chat."
       }
     },
@@ -77,18 +77,18 @@
     "notification": {
       "error": {
         "title": "§7§l§o▎§8§l§o▏ §4TerraMC - Error",
-        "stats-coolDown": "§cYou can only update your stats every 5 minutes.",
+        "stats-coolDown": "You can only update your stats every 5 minutes.",
         "api": {
-          "stats": "§cAn error occurred while loading your stats.",
-          "data": "§cAn error occurred while loading the data.",
-          "general": "§cThe data could not be loaded due to an API error.",
-          "serverStats": "§cAn error occurred while loading the server stats.",
-          "reason": "§cReason§8: §4"
+          "stats": "An error occurred while loading your stats.",
+          "data": "An error occurred while loading the data.",
+          "general": "The data could not be loaded due to an API error.",
+          "serverStats": "An error occurred while loading the server stats.",
+          "reason": "Reason"
         }
       },
       "success": {
         "title": "§7§l§o▎§8§l§o▏ §2TerraMC",
-        "stats-updated": "§aYour stats has been successfully updated."
+        "stats-updated": "Your stats has been successfully updated."
       }
     },
 	
@@ -113,15 +113,6 @@
       },
       "goldTimer": {
         "name": "Gold-Timer"
-      },
-      "vanish": {
-        "name": "Vanish"
-      },
-      "serverStatus": {
-        "name": "ServerStatus"
-      },
-      "restartTime": {
-        "name": "Restart-Time"
       }
     },
 	
@@ -130,33 +121,28 @@
         "main_ui": "TerraMC"
       },
       "general": {
-        "noInfoAvailable": "§4No information can be provided.",
-        "connectToServer": "§cPlease connect to TerraMC.net",
-        "noAccess": "§4You have no access to this site.",
-        "connect": "§eConnect"
+        "noInfoAvailable": "No information can be provided.",
+        "connectToServer": "Please connect to TerraMC.net",
+        "noAccess": "You have no access to this site.",
+        "connect": "Connect"
       },
       "staff": {
         "cloudNotify": {
-          "title": "§eCloud-Notifications",
-          "description": "§7Define how the server start/stop notifications of the cloud should be displayed.",
-          "chat": "§eChat",
-          "notification": "§bLaby-Notification",
-          "hide": "§cHide"
+          "title": "Cloud-Notifications",
+          "description": "Define how the server start/stop notifications of the cloud should be displayed.",
+          "chat": "Chat",
+          "notification": "Laby-Notification",
+          "hide": "Hide"
         },
         "showTagAlways": {
-          "title": "§eShow Tags always",
-          "description": "§7Shows team members' tags even if they are nicked or in ToggleRank."
+          "title": "Show Staff-Nametags always",
+          "description": "Shows team members' tags even if they are nicked or in ToggleRank."
         }
       },
       "activity": {
         "serverInfo": "Server-Info",
         "staff": "Staff",
-        "cloud": {
-          "navigation": "Cloud",
-          "main": "§aGeneral",
-          "bw": "§cBedWars",
-          "tdm": "§4TeamDeathMatch"
-        },
+        "cloud": "Cloud",
         "overview": {
           "title": "Overview",
           "rank": "Rank",

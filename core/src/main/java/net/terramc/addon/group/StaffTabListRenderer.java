@@ -30,15 +30,10 @@ public class StaffTabListRenderer implements BadgeRenderer {
 
   private StaffGroup visibleGroup(NetworkPlayerInfo player) {
     if(player.profile().getUniqueId() == null) return null;
-
     if(!this.addon.configuration().enabled().get()) return null;
-
     if(!(this.addon.configuration().nameTagConfiguration.enabled().get() & this.addon.configuration().nameTagConfiguration.showIconInTab().get())) return null;
-
     if(!AddonData.getStaffRankMap().containsKey(player.profile().getUniqueId())) return null;
-
     if(shouldHide(player)) return null;
-
     return AddonData.getStaffRankMap().get(player.profile().getUniqueId());
 
   }

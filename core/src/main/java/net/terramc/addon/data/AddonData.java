@@ -154,22 +154,6 @@ public class AddonData {
     AddonData.bedWarsGame = bedWarsGame;
   }
 
-  public static boolean isVanish() {
-    return vanish;
-  }
-
-  public static void setVanish(boolean vanish) {
-    AddonData.vanish = vanish;
-  }
-
-  public static boolean isAutoVanish() {
-    return autoVanish;
-  }
-
-  public static void setAutoVanish(boolean autoVanish) {
-    AddonData.autoVanish = autoVanish;
-  }
-
   public static boolean isRankToggled() {
     return rankToggled;
   }

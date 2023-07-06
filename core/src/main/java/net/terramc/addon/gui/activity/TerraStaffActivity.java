@@ -1,6 +1,7 @@
 package net.terramc.addon.gui.activity;
 
 import net.labymod.api.client.component.Component;
+import net.labymod.api.client.component.format.TextColor;
 import net.labymod.api.client.gui.mouse.MutableMouse;
 import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.activity.Activity;
@@ -41,11 +42,11 @@ public class TerraStaffActivity extends Activity {
     DropdownWidget<AddonData.CloudNotifyType> cloudNotify = DropdownWidget.create(this.addon.configuration().cloudNotifyType().get(),
         value -> {
           this.addon.configuration().cloudNotifyType().set(value);
-          this.addon.pushNotification(TerraAddon.doubleLine + " §eEinstellungen", "§7CloudNotify wurde zu §6" + I18n.translate("terramc.ui.staff.cloudNotify."+value.name().toLowerCase()) + " §7geändert.");
+          this.addon.pushNotification(Component.text(TerraAddon.doubleLine + " §eEinstellungen"), Component.text("§7CloudNotify wurde zu §6" + I18n.translate("terramc.ui.staff.cloudNotify."+value.name().toLowerCase()) + " §7geändert."));
         });
     cloudNotify.setTranslationKeyPrefix("terramc.ui.staff.cloudNotify");
     cloudNotify.addAll(AddonData.CloudNotifyType.values());
-    cloudNotify.setHoverComponent(Component.translatable("terramc.ui.staff.cloudNotify.description"));
+    cloudNotify.setHoverComponent(Component.translatable("terramc.ui.staff.cloudNotify.description").color(TextColor.color(170, 170, 170)));
     cloudNotify.addId("cloudNotify");
 
     this.document.addChild(cloudNotify);
@@ -59,10 +60,11 @@ public class TerraStaffActivity extends Activity {
 
       SwitchWidget showTagAlways = SwitchWidget.create(value -> {
         this.addon.configuration().showTagAlways().set(value);
-        this.addon.pushNotification(TerraAddon.doubleLine + " §eEinstellungen", "§7ShowTagsAlways wurde zu " + (value ? "§aaktiviert" : "§cdeaktiviert") + " §7geändert.");
+        this.addon.pushNotification(Component.text(TerraAddon.doubleLine + " §eEinstellungen"), Component.text("§7ShowTagsAlways wurde zu " + (value ? "§aaktiviert" : "§cdeaktiviert") + " §7geändert."));
       });
       showTagAlways.setValue(this.addon.configuration().showTagAlways().get());
-      showTagAlways.setHoverComponent(Component.translatable("terramc.ui.staff.showTagAlways.description"));
+      showTagAlways.setHoverComponent(Component.translatable("terramc.ui.staff.showTagAlways.description").color(
+          TextColor.color(170, 170, 170)));
       showTagAlways.addId("showTagAlways");
 
       this.document.addChild(showTagAlways);

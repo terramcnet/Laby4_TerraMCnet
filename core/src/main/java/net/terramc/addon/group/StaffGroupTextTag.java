@@ -19,15 +19,6 @@ public class StaffGroupTextTag extends NameTag {
     this.addon = addon;
   }
 
-  /*@Override
-  protected RenderableComponent getRenderableComponent() {
-    StaffGroup group = this.visibleGroup(entity);
-    if(group != null) {
-      return RenderableComponent.of(Component.text("§f§lTERRAMC " + group.getDisplayTitle()));
-    }
-    return null;
-  }*/
-
   @Override
   protected @Nullable RenderableComponent getRenderableComponent() {
     StaffGroup group = this.visibleGroup(entity);
@@ -36,7 +27,7 @@ public class StaffGroupTextTag extends NameTag {
       if(this.addon.configuration().nameTagConfiguration.textDecoration().get() != CustomTextDecoration.NONE) {
         component.decorate(this.addon.configuration().nameTagConfiguration.textDecoration().get().getLabyDecoration());
       }
-      component.append(Component.text(group.getMinecraftColor() + " " + group.getDisplayTitle()));
+      component.append(Component.text(" " + group.getName()).color(group.getTextColor()));
       return RenderableComponent.of(component);
     }
     return null;
@@ -61,15 +52,10 @@ public class StaffGroupTextTag extends NameTag {
     if(!(entity instanceof Player)) return null;
     Player player = (Player) entity;
     if(player.getUniqueId() == null) return null;
-
     if(!this.addon.configuration().enabled().get()) return null;
-
     if(!(this.addon.configuration().nameTagConfiguration.enabled().get() & this.addon.configuration().nameTagConfiguration.showTag().get())) return null;
-
     if(!AddonData.getStaffRankMap().containsKey(player.getUniqueId())) return null;
-
     if(shouldHide(player)) return null;
-
     return AddonData.getStaffRankMap().get(player.getUniqueId());
 
   }

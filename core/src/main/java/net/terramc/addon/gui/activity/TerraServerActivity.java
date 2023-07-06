@@ -6,10 +6,11 @@ import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
 import net.labymod.api.client.gui.screen.activity.Link;
 import net.labymod.api.client.gui.screen.widget.attributes.bounds.Bounds;
+import net.labymod.api.client.gui.screen.widget.widgets.ComponentWidget;
 import net.labymod.api.client.render.font.text.TextRenderer;
 import net.labymod.api.client.render.matrix.Stack;
-import net.labymod.api.util.I18n;
 import net.terramc.addon.TerraAddon;
+import net.terramc.addon.data.ServerData;
 import net.terramc.addon.data.ServerInfoData;
 import net.terramc.addon.util.Util;
 
@@ -26,6 +27,12 @@ public class TerraServerActivity extends Activity {
   @Override
   public void initialize(Parent parent) {
     super.initialize(parent);
+
+    if(!this.addon.rankUtil().isAdmin()) {
+      ComponentWidget noAccessWidget = ComponentWidget.i18n("terramc.ui.general.noAccess");
+      noAccessWidget.addId("no-access");
+      this.document.addChild(noAccessWidget);
+    }
 
     /*if(!TerraAddon.isConnectedTerra()) {
       ButtonWidget connect = ButtonWidget.text(I18n.translate("terramc.ui.general.connect"),
@@ -60,18 +67,14 @@ public class TerraServerActivity extends Activity {
       return;
     }*/
 
-    if(!this.addon.rankUtil().isAdmin()) {
-      textRenderer.text(I18n.translate("terramc.ui.general.noAccess"))
-          .pos(bounds.getCenterX(), bounds.getCenterY())
-          .centered(true)
-          .render(stack);
-      return;
-    }
-
     drawString(textRenderer, stack,"§7Registrierte Spieler §8» §e" + ServerInfoData.Information.getRegisteredPlayers(), 60, 20);
     drawString(textRenderer, stack,"§7Maximale Spieler [Gesamt] §8» §e" + ServerInfoData.Information.getMaxPlayers(), 60, 35);
     drawString(textRenderer, stack,"§7Maximale Spieler [Heute] §8» §e" + ServerInfoData.Information.getMaxPlayersToday(), 60, 50);
     drawString(textRenderer, stack,"§7Votes §8» §e" + ServerInfoData.Information.getVotes(), 60, 65);
+
+    drawString(textRenderer, stack, "§7Aktuelle Server-TPS §8» §e" + ServerData.getServerTps(), 60, 120);
+    drawString(textRenderer, stack, "§7Aktuelle CPU-Auslastung §8» §e" + ServerData.getCpuUsage(), 60, 135);
+    drawString(textRenderer, stack, "§7Aktuelle RAM-Auslastung §8» §e" + ServerData.getRamUsage(), 60, 150);
 
     float dataY = 20;
     float dataX = bounds.getWidth() -300;

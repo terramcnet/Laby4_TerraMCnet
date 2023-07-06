@@ -6,9 +6,38 @@ Button {
   padding-right: 2;
 }
 
-.connect-btn {
-  top: 60vh;
+.not-connected-info {
   alignment-x: center;
+  top: 40vh;
+  text-color: dark_red;
+}
+
+.connect-text {
+  alignment-x: center;
+  top: 45vh;
+  text-color: red;
+}
+
+.connect-btn {
+  alignment-x: center;
+  top: 50vh;
+}
+
+.api-error {
+  alignment-x: center;
+  top: 50vh;
+  text-color: red;
+}
+
+.api-error-reason {
+  alignment-x: center;
+  top: 55vh;
+}
+
+.no-access {
+  alignment-x: center;
+  top: 50vh;
+  text-color: dark_red;
 }
 
 .stats-update-btn {
