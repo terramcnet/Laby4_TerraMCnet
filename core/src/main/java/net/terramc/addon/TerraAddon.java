@@ -67,7 +67,7 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
     this.registerListener(new NetworkPayloadListener(this));
 
-    labyAPI().tagRegistry().register("terramc_role", PositionType.ABOVE_NAME, new StaffGroupTextTag(this));
+    labyAPI().tagRegistry().registerAfter("labymod_role", "terramc_role", PositionType.ABOVE_NAME, new StaffGroupTextTag(this));
     labyAPI().tagRegistry().register("terramc_role_icon", PositionType.RIGHT_TO_NAME, new StaffGroupIconTag(this));
     Laby.references().badgeRegistry().register("terra_role_tab", net.labymod.api.client.entity.player.badge.PositionType.LEFT_TO_NAME, new StaffTabListRenderer(this));
 
