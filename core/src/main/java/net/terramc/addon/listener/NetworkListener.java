@@ -52,7 +52,9 @@ public class NetworkListener {
   public void onNetworkDisconnect(ServerDisconnectEvent event) {
     AddonData.resetValues();
     this.addon.setConnected(false);
-    this.addon.labyAPI().navigationService().unregister("terramc_main_ui");
+    if(!this.addon.rankUtil().isStaff()) {
+      this.addon.labyAPI().navigationService().unregister("terramc_main_ui");
+    }
   }
 
 }
