@@ -29,7 +29,7 @@ labyMod {
         author = "MisterCore"
         description = "This addon offers you advanced information on TerraMC.net. For example it will show you your current nickname, game rank and much more."
         minecraftVersion = "*"
-        version = System.getenv().getOrDefault("VERSION", "1.2.6")
+        version = System.getenv().getOrDefault("VERSION", "1.3.0")
     }
 
     minecraft {
