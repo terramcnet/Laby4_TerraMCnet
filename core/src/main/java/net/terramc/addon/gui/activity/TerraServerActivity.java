@@ -75,7 +75,7 @@ public class TerraServerActivity extends Activity {
     drawString(textRenderer, stack, "§7Aktuelle Server-TPS §8» §e" + ServerData.getServerTps(), 60, 120);
     drawString(textRenderer, stack, "§7Aktuelle CPU-Auslastung §8» §e" + ServerData.getCpuUsage(), 60, 135);
     drawString(textRenderer, stack, "§7Aktuelle RAM-Auslastung §8» §e" + ServerData.getRamUsage(), 60, 150);
-    drawString(textRenderer, stack, "§7Automatischer Server Neustart §8» §e" + ServerData.getRestartTime(), 60, 150);
+    drawString(textRenderer, stack, "§7Automatischer Server Neustart §8» §e" + ServerData.getRestartTime(), 60, 175);
 
     float dataY = 20;
     float dataX = bounds.getWidth() -300;
