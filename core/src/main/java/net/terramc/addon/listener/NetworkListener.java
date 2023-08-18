@@ -6,11 +6,13 @@ import net.labymod.api.client.component.format.TextColor;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.network.server.ServerDisconnectEvent;
 import net.labymod.api.event.client.network.server.ServerLoginEvent;
+import net.labymod.api.util.concurrent.task.Task;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
 import net.terramc.addon.gui.TerraNavigationElement;
 import net.terramc.addon.util.PlayerStats;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 public class NetworkListener {
 
@@ -31,7 +33,9 @@ public class NetworkListener {
       this.addon.setConnected(true);
 
       if(this.addon.labyAPI().navigationService().getById("terramc_main_ui") == null) {
-        this.addon.labyAPI().navigationService().register("terramc_main_ui", new TerraNavigationElement(this.addon));
+        Task task = Task.builder(() -> this.addon.labyAPI().navigationService().register("terramc_main_ui", new TerraNavigationElement(this.addon)))
+            .delay(1, TimeUnit.SECONDS).build();
+        task.execute();
       }
 
       if(this.addon.configuration().updateStatsOnJoin().get()) {
