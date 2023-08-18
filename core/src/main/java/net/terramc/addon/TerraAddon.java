@@ -81,8 +81,6 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     labyAPI().hudWidgetRegistry().register(new IronTimerHudWidget(this));
     labyAPI().hudWidgetRegistry().register(new GoldTimerHudWidget(this));
 
-    this.logger().info("Staff: " + AddonData.getRank());
-
     this.logger().info("[TerraMCnet] Addon enabled.");
 
   }
