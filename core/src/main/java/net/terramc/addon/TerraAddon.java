@@ -1,5 +1,6 @@
 package net.terramc.addon;
 
+import java.util.UUID;
 import net.labymod.api.Laby;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.client.component.Component;
@@ -10,7 +11,6 @@ import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.models.addon.annotation.AddonMain;
 import net.labymod.api.notification.Notification;
 import net.labymod.api.notification.Notification.Type;
-import net.terramc.addon.data.AddonData;
 import net.terramc.addon.group.StaffGroupIconTag;
 import net.terramc.addon.group.StaffGroupTextTag;
 import net.terramc.addon.group.StaffTabListRenderer;
@@ -28,7 +28,6 @@ import net.terramc.addon.listener.NetworkPayloadListener;
 import net.terramc.addon.listener.SessionListener;
 import net.terramc.addon.util.ApiUtil;
 import net.terramc.addon.util.RankUtil;
-import java.util.UUID;
 
 @AddonMain
 public class TerraAddon extends LabyAddon<TerraConfiguration> {
