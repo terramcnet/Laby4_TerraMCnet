@@ -8,8 +8,11 @@ import net.terramc.addon.TerraAddon;
 
 public class TerraNavigationElement extends ScreenNavigationElement {
 
+  private TerraAddon addon;
+
   public TerraNavigationElement(TerraAddon addon) {
     super(addon.terraMainActivity);
+    this.addon = addon;
   }
 
   @Override
@@ -25,5 +28,10 @@ public class TerraNavigationElement extends ScreenNavigationElement {
   @Override
   public Icon getIcon() {
     return Icon.texture(ResourceLocation.create("terramc", "textures/icon.png"));
+  }
+
+  @Override
+  public boolean isVisible() {
+    return this.addon.rankUtil().isStaff() || this.addon.isConnected();
   }
 }

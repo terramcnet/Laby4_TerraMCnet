@@ -1,11 +1,10 @@
 package net.terramc.addon.listener;
 
+import java.util.UUID;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.session.SessionUpdateEvent;
 import net.terramc.addon.TerraAddon;
-import net.terramc.addon.gui.TerraNavigationElement;
 import net.terramc.addon.util.PlayerStats;
-import java.util.UUID;
 
 public class SessionListener {
 
@@ -23,13 +22,6 @@ public class SessionListener {
     }
     this.addon.apiUtil().loadRankData(newUUID);
     this.addon.apiUtil().loadServerData(newUUID);
-    if(this.addon.rankUtil().isStaff()) {
-      if(this.addon.labyAPI().navigationService().getById("terramc_main_ui") == null) {
-        this.addon.labyAPI().navigationService().register("terramc_main_ui", new TerraNavigationElement(this.addon));
-      }
-    } else {
-      this.addon.labyAPI().navigationService().unregister("terramc_main_ui");
-    }
   }
 
 }

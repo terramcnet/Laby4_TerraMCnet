@@ -14,6 +14,7 @@ import net.labymod.api.notification.Notification.Type;
 import net.terramc.addon.group.StaffGroupIconTag;
 import net.terramc.addon.group.StaffGroupTextTag;
 import net.terramc.addon.group.StaffTabListRenderer;
+import net.terramc.addon.gui.TerraNavigationElement;
 import net.terramc.addon.gui.activity.TerraMainActivity;
 import net.terramc.addon.hudwidget.CoinsHudWidget;
 import net.terramc.addon.hudwidget.GameRankHudWidget;
@@ -65,6 +66,8 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     this.registerListener(new SessionListener(this));
 
     this.registerListener(new NetworkPayloadListener(this));
+
+    labyAPI().navigationService().register("terramc_main_ui", new TerraNavigationElement(this));
 
     labyAPI().tagRegistry().registerAfter("labymod_role", "terramc_role", PositionType.ABOVE_NAME, new StaffGroupTextTag(this));
     labyAPI().tagRegistry().register("terramc_role_icon", PositionType.RIGHT_TO_NAME, new StaffGroupIconTag(this));

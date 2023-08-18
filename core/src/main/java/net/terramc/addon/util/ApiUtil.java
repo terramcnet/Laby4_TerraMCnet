@@ -10,7 +10,6 @@ import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
 import net.terramc.addon.data.ServerInfoData;
 import net.terramc.addon.group.StaffGroup;
-import net.terramc.addon.gui.TerraNavigationElement;
 
 public class ApiUtil {
 
@@ -90,14 +89,6 @@ public class ApiUtil {
           AddonData.setRank(jsonObject.get("Global").getAsJsonObject().get("Rank").getAsString());
 
           addon.terraMainActivity.updateStaffActivity();
-
-          if(this.addon.rankUtil().isStaff()) {
-            if(this.addon.labyAPI().navigationService().getById("terramc_main_ui") == null) {
-              this.addon.labyAPI().navigationService().register("terramc_main_ui", new TerraNavigationElement(this.addon));
-            }
-          } else {
-            this.addon.labyAPI().navigationService().unregister("terramc_main_ui");
-          }
 
           JsonArray rankArray = jsonObject.get("Ranks").getAsJsonArray();
           for(int i = 0; i < rankArray.size(); i++) {
