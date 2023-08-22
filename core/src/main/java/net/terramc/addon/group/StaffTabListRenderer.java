@@ -6,7 +6,7 @@ import net.labymod.api.client.render.matrix.Stack;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
 
-public class StaffTabListRenderer implements BadgeRenderer {
+public class StaffTabListRenderer extends BadgeRenderer {
 
   private TerraAddon addon;
 
