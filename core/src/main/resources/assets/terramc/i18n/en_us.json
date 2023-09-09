@@ -89,6 +89,18 @@
       "success": {
         "title": "§7§l§o▎§8§l§o▏ §2TerraMC",
         "stats-updated": "Your stats has been successfully updated."
+      },
+      "cloud": {
+        "error": {
+          "title": "§7§l§o▎§8§l§o▏ §4Cloud-Control",
+          "parameter": "Parameter error",
+          "notAuthorized": "User is not authorized",
+          "groupNotFound": "Group was not found",
+          "unknown": "Unknown error (%s)"
+        },
+        "success": {
+          "title": "§7§l§o▎§8§l§o▏ §aCloud-Control"
+        }
       }
     },
 	
@@ -167,7 +179,14 @@
           "levelRecord": "Level-Record",
           "brokenBeds": "Broken Beds",
           "bowls": "Bowls",
-          "soups": "Soups"
+          "soups": "Soups",
+          "apiResponse": {
+            "400": "Bad Request",
+            "401": "Source is not trusted",
+            "403": "No Addon Version is provided",
+            "404": "User does not exists",
+            "406": "Unable to fetch Stats! Make sure that you are using the latest version of the addon"
+          }
         }
       }
     }

@@ -89,6 +89,18 @@
       "success": {
         "title": "§7§l§o▎§8§l§o▏ §2TerraMC",
         "stats-updated": "Deine Statistiken wurden erfolgreich aktualisiert."
+      },
+      "cloud": {
+        "error": {
+          "title": "§7§l§o▎§8§l§o▏ §4Cloud-Steuerung",
+          "parameter": "Parameter Fehler",
+          "notAuthorized": "User nicht autorisiert",
+          "groupNotFound": "Gruppe existiert nicht",
+          "unknown": "Unbekannter Fehler (%s)"
+        },
+        "success": {
+          "title": "§7§l§o▎§8§l§o▏ §aCloud-Steuerung"
+        }
       }
     },
 
@@ -167,7 +179,14 @@
           "levelRecord": "Level-Rekord",
           "brokenBeds": "Abgebaute Betten",
           "bowls": "Schüsseln",
-          "soups": "Suppen"
+          "soups": "Suppen",
+          "apiResponse": {
+            "400": "Bad Request",
+            "401": "Source ist nicht bekannt",
+            "403": "Keine Addon Version übergeben",
+            "404": "Angeforderter Spieler existiert nicht",
+            "406": "Fehler bei der Verarbeitung! Bitte stelle sicher, dass du die neuste Addon Version benutzt"
+          }
         }
       }
     }
