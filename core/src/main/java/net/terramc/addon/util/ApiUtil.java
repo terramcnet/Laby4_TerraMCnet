@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import java.util.UUID;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.TextColor;
+import net.labymod.api.util.I18n;
 import net.labymod.api.util.io.web.request.Request;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
@@ -19,7 +20,7 @@ public class ApiUtil {
     this.addon = addon;
   }
 
-  private static String baseUrl = "http://api.terramc.net/";
+  private static String BASE_URL = "http://api.terramc.net/";
 
   // actions = [restart, maintenance]
   public void sendCloudControl(UUID uuid, String action, String group) {
@@ -29,28 +30,44 @@ public class ApiUtil {
         .url("http://45.88.108.143:3610/cloud?uuid="+uuid+"&action="+action+"&group="+group, new Object[0])
         .async()
         .execute(response -> {
-          if(response.getStatusCode() != 200) {
-            this.addon.pushNotification(Component.text("§4TMC-Proxy Fehler"), Component.text("§cResponse-Code '" + response.getStatusCode() + "' von Proxy bekommen."));
+          if(response.getStatusCode() == 400) {
+            this.addon.pushNotification(Component.translatable("terramc.notification.cloud.error.title"),
+                Component.translatable("terramc.notification.cloud.error.parameter").color(
+                    TextColor.color(255, 85, 85)));
             return;
           }
-          String result = response.get();
-          if(result.startsWith("200")) {
-            this.addon.pushNotification(Component.text("§7§l§o▎§8§l§o▏ §aCloud-Steuerung"), Component.text("§aErfolgreich §8[§e" + result + "§8]"));
-          } else {
-            this.addon.pushNotification(Component.text("§7§l§o▎§8§l§o▏ §aCloud-Steuerung"), Component.text("§cFehler §8[§e" + result + "§8]"));
+          if(response.getStatusCode() == 401) {
+            this.addon.pushNotification(Component.translatable("terramc.notification.cloud.error.title"),
+                Component.translatable("terramc.notification.cloud.error.notAuthorized").color(
+                    TextColor.color(255, 85, 85)));
+            return;
           }
+          if(response.getStatusCode() == 404) {
+            this.addon.pushNotification(Component.translatable("terramc.notification.cloud.error.title"),
+                Component.translatable("terramc.notification.cloud.error.groupNotFound").color(
+                    TextColor.color(255, 85, 85)));
+            return;
+          }
+          if(response.getStatusCode() != 200) {
+            this.addon.pushNotification(Component.translatable("terramc.notification.cloud.error.title"),
+                Component.translatable("terramc.notification.cloud.error.unknown", Component.text(response.getStatusCode())).color(
+                    TextColor.color(255, 85, 85)));
+            return;
+          }
+          this.addon.pushNotification(Component.translatable("terramc.notification.cloud.success.title"), Component.text("§e" + response.get()));
         });
   }
 
   public void loadServerData(UUID uuid) {
     Request.ofGson(JsonObject.class)
-        .url(baseUrl + "staff?req=serverData&uuid="+uuid, new Object[0])
+        .url(BASE_URL + "staff?req=serverData&uuid="+uuid, new Object[0])
         .async()
         .execute(response -> {
           if(response.getStatusCode() != 200) {
             if(response.getStatusCode() == 401) return;
-            this.addon.pushNotification(Component.translatable("terramc.notification.error.title"), Component.translatable("terramc.notification.error.api.serverStats").color(
-                TextColor.color(255, 85, 85)));
+            this.addon.pushNotification(Component.translatable("terramc.notification.error.title"),
+                Component.translatable("terramc.notification.error.api.serverStats").color(
+                    TextColor.color(255, 85, 85)));
             return;
           }
           JsonObject jsonObject = response.get();
@@ -76,12 +93,13 @@ public class ApiUtil {
     AddonData.getNickedMap().clear();
 
     Request.ofGson(JsonObject.class)
-        .url(baseUrl + "staff?req=staffData&uuid="+playerUuid+"&source=Addon_LM4", new Object[0])
+        .url(BASE_URL + "staff?req=staffData&uuid="+playerUuid+"&source=Addon_LM4", new Object[0])
         .async()
         .execute(response -> {
           if(response.getStatusCode() != 200) {
-            this.addon.pushNotification(Component.translatable("terramc.notification.error.title"), Component.translatable("terramc.notification.error.api.data").color(
-                TextColor.color(255, 85, 851)));
+            this.addon.pushNotification(Component.translatable("terramc.notification.error.title"),
+                Component.translatable("terramc.notification.error.api.data").color(
+                    TextColor.color(255, 85, 851)));
             return;
           }
           JsonObject jsonObject = response.get();
@@ -130,7 +148,7 @@ public class ApiUtil {
 
   public boolean loadPlayerStats(UUID uuid) {
     Request.ofGson(JsonObject.class)
-        .url(baseUrl + "stats?uuid="+uuid+"&source=Addon_LM4", new Object[0])
+        .url(BASE_URL + "stats?uuid="+uuid+"&source=Addon_LM4", new Object[0])
         .async()
         .execute(response -> {
           if(response.getStatusCode() != 200) {
@@ -138,11 +156,11 @@ public class ApiUtil {
             this.addon.pushNotification(Component.translatable("terramc.notification.error.title"), Component.translatable("terramc.notification.error.api.stats").color(
                 TextColor.color(255, 85, 85)));
             switch (response.getStatusCode()) {
-              case 400 -> PlayerStats.notLoadedReason = "Bad Request";
-              case 401 -> PlayerStats.notLoadedReason = "Source is not trusted";
-              case 403 -> PlayerStats.notLoadedReason = "No Addon Version provided";
-              case 404 -> PlayerStats.notLoadedReason = "User does not exists";
-              case 406 -> PlayerStats.notLoadedReason = "Unable to fetch Stats! Make sure, that you are using the newest version of the addon";
+              case 400 -> PlayerStats.notLoadedReason = I18n.translate("terramc.ui.activity.stats.apiResponse.400");
+              case 401 -> PlayerStats.notLoadedReason = I18n.translate("terramc.ui.activity.stats.apiResponse.401");
+              case 403 -> PlayerStats.notLoadedReason = I18n.translate("terramc.ui.activity.stats.apiResponse.403");
+              case 404 -> PlayerStats.notLoadedReason = I18n.translate("terramc.ui.activity.stats.apiResponse.404");
+              case 406 -> PlayerStats.notLoadedReason = I18n.translate("terramc.ui.activity.stats.apiResponse.406");
             }
             return;
           }
