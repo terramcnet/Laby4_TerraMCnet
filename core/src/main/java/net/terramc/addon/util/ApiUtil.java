@@ -11,6 +11,7 @@ import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
 import net.terramc.addon.data.ServerInfoData;
 import net.terramc.addon.group.StaffGroup;
+import net.terramc.addon.util.PlayerStats.Stats;
 
 public class ApiUtil {
 
@@ -170,101 +171,134 @@ public class ApiUtil {
           JsonArray bedWarsArray = jsonObject.get("BedWars").getAsJsonArray();
           for(int i = 0; i < bedWarsArray.size(); i++) {
             JsonObject object = bedWarsArray.get(i).getAsJsonObject();
-            PlayerStats.BedWars.kills = object.get("Kills").getAsInt();
-            PlayerStats.BedWars.deaths = object.get("Deaths").getAsInt();
-            PlayerStats.BedWars.kd = PlayerStats.getKD(PlayerStats.BedWars.kills, PlayerStats.BedWars.deaths);
-            PlayerStats.BedWars.wins = object.get("Wins").getAsInt();
-            PlayerStats.BedWars.looses = object.get("Looses").getAsInt();
-            PlayerStats.BedWars.beds = object.get("Beds").getAsInt();
+            PlayerStats.bedWars = new Stats(
+                object.get("Kills").getAsInt(),
+                object.get("Deaths").getAsInt(),
+                0,
+                object.get("Wins").getAsInt(),
+                object.get("Looses").getAsInt(),
+                object.get("Played").getAsInt()
+            ).additional(new int[] { object.get("Beds").getAsInt() });
           }
 
           JsonArray buildFfaArray = jsonObject.get("BuildFFA").getAsJsonArray();
           for(int i = 0; i < buildFfaArray.size(); i++) {
             JsonObject object = buildFfaArray.get(i).getAsJsonObject();
-            PlayerStats.BuildFFA.kills = object.get("Kills").getAsInt();
-            PlayerStats.BuildFFA.deaths = object.get("Deaths").getAsInt();
-            PlayerStats.BuildFFA.kd = PlayerStats.getKD(PlayerStats.BuildFFA.kills, PlayerStats.BuildFFA.deaths);
-            PlayerStats.BuildFFA.points = object.get("Points").getAsInt();
+            PlayerStats.buildFFA = new Stats(
+                object.get("Kills").getAsInt(),
+                object.get("Deaths").getAsInt(),
+                object.get("Points").getAsInt()
+            );
           }
 
           JsonArray kbFfaArray = jsonObject.get("KnockBackFFA").getAsJsonArray();
           for(int i = 0; i < kbFfaArray.size(); i++) {
             JsonObject object = kbFfaArray.get(i).getAsJsonObject();
-            PlayerStats.KnockBackFFA.kills = object.get("Kills").getAsInt();
-            PlayerStats.KnockBackFFA.deaths = object.get("Deaths").getAsInt();
-            PlayerStats.KnockBackFFA.kd = PlayerStats.getKD(PlayerStats.KnockBackFFA.kills, PlayerStats.KnockBackFFA.deaths);
-            PlayerStats.KnockBackFFA.points = object.get("Points").getAsInt();
+            PlayerStats.knockBackFFA = new Stats(
+                object.get("Kills").getAsInt(),
+                object.get("Deaths").getAsInt(),
+                object.get("Points").getAsInt()
+            );
           }
 
           JsonArray skyWarsArray = jsonObject.get("SkyWars").getAsJsonArray();
           for(int i = 0; i < skyWarsArray.size(); i++) {
             JsonObject object = skyWarsArray.get(i).getAsJsonObject();
-            PlayerStats.SkyWars.kills = object.get("Kills").getAsInt();
-            PlayerStats.SkyWars.deaths = object.get("Deaths").getAsInt();
-            PlayerStats.SkyWars.kd = PlayerStats.getKD(PlayerStats.SkyWars.kills, PlayerStats.SkyWars.deaths);
-            PlayerStats.SkyWars.wins = object.get("Wins").getAsInt();
-            PlayerStats. SkyWars.looses = object.get("Looses").getAsInt();
+            PlayerStats.skyWars = new Stats(
+                object.get("Kills").getAsInt(),
+                object.get("Deaths").getAsInt(),
+                0,
+                object.get("Wins").getAsInt(),
+                object.get("Looses").getAsInt(),
+                0
+            );
           }
 
           JsonArray labArray = jsonObject.get("TheLab").getAsJsonArray();
           for(int i = 0; i < labArray.size(); i++) {
             JsonObject object = labArray.get(i).getAsJsonObject();
-            PlayerStats.TheLab.wins = object.get("Wins").getAsInt();
-            PlayerStats.TheLab.looses = object.get("Looses").getAsInt();
+            PlayerStats.theLab = new Stats(
+                  0,
+                0,
+                0,
+                object.get("Wins").getAsInt(),
+                object.get("Looses").getAsInt(),
+                0
+            );
           }
 
           JsonArray ggArray = jsonObject.get("GunGame").getAsJsonArray();
           for(int i = 0; i < ggArray.size(); i++) {
             JsonObject object = ggArray.get(i).getAsJsonObject();
-            PlayerStats.GunGame.kills = object.get("Kills").getAsInt();
-            PlayerStats.GunGame.deaths = object.get("Deaths").getAsInt();
-            PlayerStats.GunGame.kd = PlayerStats.getKD(PlayerStats.GunGame.kills, PlayerStats.GunGame.deaths);
-            PlayerStats.GunGame.points = object.get("Points").getAsInt();
-            PlayerStats.GunGame.levelRecord = object.get("LevelRecord").getAsInt();
+            PlayerStats.gunGame = new Stats(
+                object.get("Kills").getAsInt(),
+                object.get("Deaths").getAsInt(),
+                object.get("Points").getAsInt(),
+                0,
+                0,
+                0
+            ).additional(new int[] { object.get("LevelRecord").getAsInt() });
           }
 
           JsonArray waterFfaArray = jsonObject.get("WaterFFA").getAsJsonArray();
           for(int i = 0; i < waterFfaArray.size(); i++) {
             JsonObject object = waterFfaArray.get(i).getAsJsonObject();
-            PlayerStats.WaterFFA.kills = object.get("Kills").getAsInt();
-            PlayerStats.WaterFFA.deaths =object.get("Kills").getAsInt();
-            PlayerStats.WaterFFA.kd = PlayerStats.getKD(PlayerStats.WaterFFA.kills, PlayerStats.WaterFFA.deaths);
-            PlayerStats.WaterFFA.points = object.get("Points").getAsInt();
+            PlayerStats.waterFFA = new Stats(
+                object.get("Kills").getAsInt(),
+                object.get("Deaths").getAsInt(),
+                object.get("Points").getAsInt(),
+                0,
+                0,
+                0
+            );
           }
 
           JsonArray ffaArray = jsonObject.get("FFA").getAsJsonArray();
           for(int i = 0; i < ffaArray.size(); i++) {
             JsonObject object = ffaArray.get(i).getAsJsonObject();
-            PlayerStats.FFA.kills = object.get("Kills").getAsInt();
-            PlayerStats.FFA.deaths = object.get("Deaths").getAsInt();
-            PlayerStats.FFA.kd = PlayerStats.getKD(PlayerStats.FFA.kills, PlayerStats.FFA.deaths);
-            PlayerStats.FFA.points = object.get("Points").getAsInt();
+            PlayerStats.ffa = new Stats(
+                object.get("Kills").getAsInt(),
+                object.get("Deaths").getAsInt(),
+                object.get("Points").getAsInt(),
+                0,
+                0,
+                0
+            );
           }
 
           JsonArray tdmArray = jsonObject.get("TeamDeathMatch").getAsJsonArray();
           for(int i = 0; i < tdmArray.size(); i++) {
             JsonObject object = tdmArray.get(i).getAsJsonObject();
-            PlayerStats.TDM.kills = object.get("Kills").getAsInt();
-            PlayerStats.TDM.deaths = object.get("Deaths").getAsInt();
-            PlayerStats.TDM.kd = PlayerStats.getKD(PlayerStats.TDM.kills, PlayerStats.TDM.deaths);
-            PlayerStats.TDM.wins = object.get("Wins").getAsInt();
-            PlayerStats.TDM.looses = object.get("Looses").getAsInt();
+            PlayerStats.teamDeathMatch = new Stats(
+                object.get("Kills").getAsInt(),
+                object.get("Deaths").getAsInt(),
+                0,
+                object.get("Wins").getAsInt(),
+                object.get("Looses").getAsInt(),
+                object.get("Played").getAsInt()
+            );
           }
 
           JsonArray xpArray = jsonObject.get("XP").getAsJsonArray();
           for(int i = 0; i < xpArray.size(); i++) {
             JsonObject object = xpArray.get(i).getAsJsonObject();
-            PlayerStats.XP.kills = object.get("Kills").getAsInt();
-            PlayerStats.XP.deaths = object.get("Deaths").getAsInt();
-            PlayerStats.XP.kd = PlayerStats.getKD(PlayerStats.XP.kills, PlayerStats.XP.deaths);
-            PlayerStats.XP.wins = object.get("Wins").getAsInt();
+            PlayerStats.xp = new Stats(
+                object.get("Kills").getAsInt(),
+                object.get("Deaths").getAsInt(),
+                0,
+                object.get("Wins").getAsInt(),
+                0,
+                0
+            ).additional(new int[]{object.get("BrokenOres").getAsInt()});
           }
 
           JsonArray trainerArray = jsonObject.get("SoupTrainer").getAsJsonArray();
           for(int i = 0; i < trainerArray.size(); i++) {
             JsonObject object = trainerArray.get(i).getAsJsonObject();
-            PlayerStats.SoupTrainer.bowls = object.get("Bowls").getAsInt();
-            PlayerStats.SoupTrainer.soups = object.get("Soups").getAsInt();
+            PlayerStats.soupTrainer = new Stats().additional(new int[] {
+                object.get("Bowls").getAsInt(),
+                object.get("Soups").getAsInt()
+            });
           }
         });
     return PlayerStats.loadedSuccessful;
