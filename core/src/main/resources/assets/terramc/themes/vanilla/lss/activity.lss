@@ -7,11 +7,13 @@ Button {
 .not-connected-info {
   alignment-x: center;
   top: 40vh;
+  text-color: dark_red;
 }
 
 .connect-text {
   alignment-x: center;
   top: 45vh;
+  text-color: red;
 }
 
 .connect-btn {
@@ -22,6 +24,7 @@ Button {
 .api-error {
   alignment-x: center;
   top: 45vh;
+  text-color: red;
 }
 
 .api-error-reason {
@@ -38,7 +41,7 @@ Button {
 .stats-update-btn {
   bottom: 3;
   right: 3;
-  height: 18;
+  height: 22;
   width: fit-content;
   padding-left: 5;
   padding-right: 5;
@@ -54,13 +57,27 @@ Button {
   tile-height: 75;
 }
 
-.gridWidget-stats {
-  top: 30;
-  left: 0;
-  height: fit-content;
-  width: 100%;
-  tiles-per-line: 5;
-  tile-height: 100;
+Scroll {
+   top: 5;
+   width: 100%;
+   height: 90%;
+
+   .gridWidget-stats {
+     top: 30;
+     left: 0;
+     height: fit-content;
+     width: 100%;
+     tiles-per-line: 5;
+     tile-height: 150;
+   }
+
+   Scrollbar {
+      left: 0;
+      top: 0;
+      width: 5;
+      height: 100%;
+      margin-right: 5;
+   }
 }
 
 Overview {
@@ -80,11 +97,11 @@ Stats {
   .entryIcon {
     alignment-x: center;
     top: 0;
-    height: 25;
-    width: 100;
+    height: 35%;
+    width: 99%;
   }
   .entryTitle {
     alignment-x: center;
-    top: 30%;
+    top: 40%;
   }
 }

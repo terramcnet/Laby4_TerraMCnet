@@ -174,10 +174,12 @@
           "deaths": "Deaths",
           "kd": "K/D",
           "points": "Points",
+          "played": "Played",
           "wins": "Wins",
           "looses": "Looses",
           "levelRecord": "Level-Record",
           "brokenBeds": "Broken Beds",
+          "brokenOres": "Broken Ores",
           "bowls": "Bowls",
           "soups": "Soups",
           "apiResponse": {

@@ -174,10 +174,12 @@
           "deaths": "Tode",
           "kd": "K/D",
           "points": "Punkte",
+          "played": "Gespielt",
           "wins": "Gewonnen",
           "looses": "Verloren",
           "levelRecord": "Level-Rekord",
           "brokenBeds": "Abgebaute Betten",
+          "brokenOres": "Abgebaute Erze",
           "bowls": "Schüsseln",
           "soups": "Suppen",
           "apiResponse": {
