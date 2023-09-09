@@ -21,12 +21,12 @@ Button {
 
 .api-error {
   alignment-x: center;
-  top: 50vh;
+  top: 45vh;
 }
 
 .api-error-reason {
   alignment-x: center;
-  top: 55vh;
+  top: 50vh;
 }
 
 .no-access {
