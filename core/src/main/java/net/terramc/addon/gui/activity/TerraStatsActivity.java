@@ -9,8 +9,10 @@ import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
 import net.labymod.api.client.gui.screen.activity.Link;
+import net.labymod.api.client.gui.screen.widget.action.ListSession;
 import net.labymod.api.client.gui.screen.widget.widgets.ComponentWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.input.ButtonWidget;
+import net.labymod.api.client.gui.screen.widget.widgets.layout.ScrollWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.TilesGridWidget;
 import net.labymod.api.client.render.matrix.Stack;
 import net.labymod.api.client.resources.ResourceLocation;
@@ -62,83 +64,87 @@ public class TerraStatsActivity extends Activity {
       String deaths =  I18n.translate("terramc.ui.activity.stats.deaths");
       String kd =  I18n.translate("terramc.ui.activity.stats.kd");
       String points =  I18n.translate("terramc.ui.activity.stats.points");
+      String played =  I18n.translate("terramc.ui.activity.stats.played");
       String wins =  I18n.translate("terramc.ui.activity.stats.wins");
       String looses =  I18n.translate("terramc.ui.activity.stats.looses");
 
       TilesGridWidget<StatsWidget> gridWidget = new TilesGridWidget<>();
       gridWidget.addId("gridWidget-stats");
 
+      gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/bedwars.png")),
+          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.bedWars.kills() + "\n" +
+              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.bedWars.deaths() + "\n" +
+              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.bedWars.kd() + "\n" +
+              TerraAddon.doubleDots + " §7" + played + " §8» §e" + PlayerStats.bedWars.played() + "\n" +
+              TerraAddon.doubleDots + " §7" + wins + " §8» §e" + PlayerStats.bedWars.wins() + "\n" +
+              TerraAddon.doubleDots + " §7" + looses + " §8» §e" + PlayerStats.bedWars.looses() + "\n" +
+              TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.brokenBeds") + " §8» §e" + PlayerStats.bedWars.additional()[0]));
+
       gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/buildffa.png")),
-          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.BuildFFA.kills + "\n" +
-              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.BuildFFA.deaths + "\n" +
-              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.BuildFFA.kd + "\n" +
-              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.BuildFFA.points));
+          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.buildFFA.kills() + "\n" +
+              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.buildFFA.deaths() + "\n" +
+              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.buildFFA.kd() + "\n" +
+              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.buildFFA.points()));
 
       gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/kbffa.png")),
-          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.KnockBackFFA.kills + "\n" +
-              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.KnockBackFFA.deaths + "\n" +
-              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.KnockBackFFA.kd + "\n" +
-              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.KnockBackFFA.points));
+          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.knockBackFFA.kills() + "\n" +
+              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.knockBackFFA.deaths() + "\n" +
+              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.knockBackFFA.kd() + "\n" +
+              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.knockBackFFA.points()));
 
       gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/ffa.png")),
-          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.FFA.kills + "\n" +
-              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.FFA.deaths + "\n" +
-              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.FFA.kd + "\n" +
-              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.FFA.points));
+          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.ffa.kills() + "\n" +
+              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.ffa.deaths() + "\n" +
+              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.ffa.kd() + "\n" +
+              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.ffa.points()));
 
       gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/waterffa.png")),
-          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.WaterFFA.kills + "\n" +
-              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.WaterFFA.deaths + "\n" +
-              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.WaterFFA.kd + "\n" +
-              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.WaterFFA.points));
+          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.waterFFA.kills() + "\n" +
+              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.waterFFA.deaths() + "\n" +
+              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.waterFFA.kd() + "\n" +
+              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.waterFFA.points()));
+
+      gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/xp.png")),
+          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.xp.kills() + "\n" +
+              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.xp.deaths() + "\n" +
+              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.xp.kd() + "\n" +
+              TerraAddon.doubleDots + " §7" + wins + " §8» §e" + PlayerStats.xp.wins() + "\n" +
+              TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.brokenOres") + " §8» §e" + PlayerStats.xp.additional()[0]));
+
+      gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/tdm.png")),
+          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.teamDeathMatch.kills() + "\n" +
+              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.teamDeathMatch.deaths() + "\n" +
+              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.teamDeathMatch.kd() + "\n" +
+              TerraAddon.doubleDots + " §7" + played + " §8» §e" + PlayerStats.teamDeathMatch.played() + "\n" +
+              TerraAddon.doubleDots + " §7" + wins + " §8» §e" + PlayerStats.teamDeathMatch.wins() + "\n" +
+              TerraAddon.doubleDots + " §7" + looses + " §8» §e" + PlayerStats.teamDeathMatch.looses()));
 
       gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/gungame.png")),
-          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.GunGame.kills + "\n" +
-              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.GunGame.deaths + "\n" +
-              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.GunGame.kd + "\n" +
-              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.GunGame.points + "\n" +
-              TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.levelRecord") + " §8» §e" + PlayerStats.GunGame.levelRecord));
+          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.gunGame.kills() + "\n" +
+              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.gunGame.deaths() + "\n" +
+              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.gunGame.kd() + "\n" +
+              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.gunGame.points() + "\n" +
+              TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.levelRecord") + " §8» §e" + PlayerStats.gunGame.additional()[0]));
 
-      gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/bedwars.png")),
-          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.BedWars.kills + "\n" +
-              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.BedWars.deaths + "\n" +
-              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.BedWars.kd + "\n" +
-              TerraAddon.doubleDots + " §7" + wins + " §8» §e" + PlayerStats.BedWars.wins + "\n" +
-              TerraAddon.doubleDots + " §7" + looses + " §8» §e" + PlayerStats.BedWars.looses + "\n" +
-              TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.brokenBeds") + " §8» §e" + PlayerStats.BedWars.beds));
+      gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/the_lab.png")),
+          TerraAddon.doubleDots + " §7" + played + " §8» §e" + PlayerStats.theLab.played() + "\n" +
+              TerraAddon.doubleDots + " §7" + wins + " §8» §e" + PlayerStats.theLab.wins() + "\n" +
+              TerraAddon.doubleDots + " §7" + looses + " §8» §e" + PlayerStats.theLab.looses()));
 
-      /*gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/soon.png")),
+      gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/soup_trainer.png")),
+          TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.bowls") + " §8» §e" + PlayerStats.soupTrainer.additional()[0] + "\n" +
+              TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.soups") + " §8» §e" + PlayerStats.soupTrainer.additional()[1]));
+
+      /*gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/skyWars.png")),
           TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.SkyWars.kills + "\n" +
               TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.SkyWars.deaths + "\n" +
               TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.SkyWars.kd + "\n" +
               TerraAddon.doubleDots + " §7" + wins + " §8» §e" + PlayerStats.SkyWars.wins + "\n" +
               TerraAddon.doubleDots + " §7" + looses + " §8» §c" + PlayerStats.SkyWars.looses);*/
-      /*StatsWidget soonWidget = new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/soon.png")),
-          TerraAddon.doubleLine + " §aComing Soon..."));*/
 
-      gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/tdm.png")),
-          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.TDM.kills + "\n" +
-              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.TDM.deaths + "\n" +
-              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.TDM.kd + "\n" +
-              TerraAddon.doubleDots + " §7" + wins + " §8» §e" + PlayerStats.TDM.wins + "\n" +
-              TerraAddon.doubleDots + " §7" + looses + " §8» §e" + PlayerStats.TDM.looses));
+      ScrollWidget scrollWidget = new ScrollWidget(gridWidget, new ListSession<>());
 
-      gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/xp.png")),
-          TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.XP.kills + "\n" +
-              TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.XP.deaths + "\n" +
-              TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.XP.kd + "\n" +
-              TerraAddon.doubleDots + " §7" + wins + " §8» §e" + PlayerStats.XP.wins));
-
-      gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/soup_trainer.png")),
-          TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.bowls") + " §8» §e" + PlayerStats.SoupTrainer.bowls + "\n" +
-              TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.soups") + " §8» §e" + PlayerStats.SoupTrainer.soups));
-
-      gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/the_lab.png")),
-          TerraAddon.doubleDots + " §7" + wins + " §8» §e" + PlayerStats.TheLab.wins + "\n" +
-              TerraAddon.doubleDots + " §7" + looses + " §8» §e" + PlayerStats.TheLab.looses));
-
-
-      this.document.addChild(gridWidget);
+      this.document.addChild(scrollWidget);
 
     } else {
       ComponentWidget apiError = ComponentWidget.i18n("terramc.notification.error.api.general");
