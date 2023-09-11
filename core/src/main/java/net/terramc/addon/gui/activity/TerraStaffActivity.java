@@ -42,7 +42,11 @@ public class TerraStaffActivity extends Activity {
     DropdownWidget<AddonData.CloudNotifyType> cloudNotify = DropdownWidget.create(this.addon.configuration().cloudNotifyType().get(),
         value -> {
           this.addon.configuration().cloudNotifyType().set(value);
-          this.addon.pushNotification(Component.text(TerraAddon.doubleLine + " §eEinstellungen"), Component.text("§7CloudNotify wurde zu §6" + I18n.translate("terramc.ui.staff.cloudNotify."+value.name().toLowerCase()) + " §7geändert."));
+          this.addon.pushNotification(Component.text(TerraAddon.doubleLine + " ").append(Component.translatable("terramc.ui.staff.settings.title")),
+          Component.translatable("terramc.ui.staff.settings.change",
+              Component.translatable("terramc.ui.staff.cloudNotify.title").color(TextColor.color(255, 255, 85)),
+              Component.translatable("terramc.ui.staff.cloudNotify."+value.name().toLowerCase()).color(TextColor.color(255, 170, 0)))
+          .color(TextColor.color(170, 170, 170)));
         });
     cloudNotify.setTranslationKeyPrefix("terramc.ui.staff.cloudNotify");
     cloudNotify.addAll(AddonData.CloudNotifyType.values());
@@ -60,7 +64,11 @@ public class TerraStaffActivity extends Activity {
 
       SwitchWidget showTagAlways = SwitchWidget.create(value -> {
         this.addon.configuration().showTagAlways().set(value);
-        this.addon.pushNotification(Component.text(TerraAddon.doubleLine + " §eEinstellungen"), Component.text("§7ShowTagsAlways wurde zu " + (value ? "§aaktiviert" : "§cdeaktiviert") + " §7geändert."));
+        this.addon.pushNotification(Component.text(TerraAddon.doubleLine + " ").append(Component.translatable("terramc.ui.staff.settings.title")),
+            Component.translatable("terramc.ui.staff.settings.change",
+                Component.translatable("terramc.ui.staff.showTagAlways.title").color(TextColor.color(255, 255, 85)),
+                Component.translatable("terramc.ui.staff.settings." + (value ? "enabled" : "disabled")))
+            .color(TextColor.color(170, 170, 170)));
       });
       showTagAlways.setValue(this.addon.configuration().showTagAlways().get());
       showTagAlways.setHoverComponent(Component.translatable("terramc.ui.staff.showTagAlways.description").color(

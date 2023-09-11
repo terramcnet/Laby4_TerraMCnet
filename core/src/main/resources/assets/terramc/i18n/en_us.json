@@ -149,6 +149,12 @@
         "showTagAlways": {
           "title": "Show Staff-Nametags always",
           "description": "Shows team members' tags even if they are nicked or in ToggleRank."
+        },
+        "settings": {
+          "title": "§eSettings",
+          "change": "%s has been changed to §6%s",
+          "enabled": "§aEnabled",
+          "disabled": "§cDisabled"
         }
       },
       "activity": {
