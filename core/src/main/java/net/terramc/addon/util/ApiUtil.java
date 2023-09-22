@@ -2,11 +2,13 @@ package net.terramc.addon.util;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import java.util.HashMap;
 import java.util.UUID;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.TextColor;
 import net.labymod.api.util.I18n;
 import net.labymod.api.util.io.web.request.Request;
+import net.labymod.api.util.io.web.request.Request.Method;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
 import net.terramc.addon.data.ServerInfoData;
@@ -22,6 +24,31 @@ public class ApiUtil {
   }
 
   private static String BASE_URL = "http://api.terramc.net/";
+
+  public void postStaffSetting(UUID uuid, String type, Object value) {
+    if(!this.addon.rankUtil().isStaff()) return;
+
+    HashMap<String, String> body = new HashMap<>();
+    body.put("req", "staffSetting");
+    body.put("uuid", uuid.toString());
+    body.put("type", type);
+    body.put("value", "" + value);
+
+    Request.ofString()
+        .url(BASE_URL + "staff")
+        .method(Method.POST)
+        .body(body)
+        .execute(response -> {
+          if(response.getStatusCode() != 200) {
+            this.addon.pushNotification(Component.translatable("terramc.notification.error.title"),
+                Component.translatable("terramc.notification.cloud.error.unknown", Component.text(response.getStatusCode())).color(
+                    TextColor.color(255, 85, 85)));
+            return;
+          }
+          this.addon.pushNotification(Component.text(TerraAddon.doubleLine + " ").append(Component.translatable("terramc.ui.staff.settings.title")),
+              Component.text("§eAPI §8- §aEinstellung wurde gespeichert."));
+        });
+  }
 
   // actions = [restart, maintenance]
   public void sendCloudControl(UUID uuid, String action, String group) {
@@ -105,7 +132,10 @@ public class ApiUtil {
           }
           JsonObject jsonObject = response.get();
 
-          AddonData.setRank(jsonObject.get("Global").getAsJsonObject().get("Rank").getAsString());
+          JsonObject global = jsonObject.get("Global").getAsJsonObject();
+
+          AddonData.setRank(global.get("Rank").getAsString());
+          AddonData.hideTag(global.get("HideTag") != null && global.get("HideTag").getAsBoolean());
 
           addon.terraMainActivity.updateStaffActivity();
 

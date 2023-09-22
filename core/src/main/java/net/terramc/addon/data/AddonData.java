@@ -39,6 +39,7 @@ public class AddonData {
   private static boolean autoVanish = false;
 
   private static boolean rankToggled = false;
+  private static boolean hideTag = false;
 
   // Game - Functions
 
@@ -154,12 +155,20 @@ public class AddonData {
     AddonData.bedWarsGame = bedWarsGame;
   }
 
-  public static boolean isRankToggled() {
+  public static boolean rankToggled() {
     return rankToggled;
   }
 
-  public static void setRankToggled(boolean rankToggled) {
+  public static void rankToggled(boolean rankToggled) {
     AddonData.rankToggled = rankToggled;
+  }
+
+  public static boolean hideTag() {
+    return hideTag;
+  }
+
+  public static void hideTag(boolean hideTag) {
+    AddonData.hideTag = hideTag;
   }
 
   public static HashMap<UUID, StaffGroup> getStaffRankMap() {

@@ -55,11 +55,29 @@ public class TerraStaffActivity extends Activity {
 
     this.document.addChild(cloudNotify);
 
+    ComponentWidget hideTagTitle = ComponentWidget.i18n("terramc.ui.staff.hideTag.title");
+    hideTagTitle.addId("hideTag-title");
+    this.document.addChild(hideTagTitle);
+
+    SwitchWidget hideTagSwitch = SwitchWidget.create(value -> {
+      this.addon.apiUtil().postStaffSetting(labyAPI.getUniqueId(), "HideTag", value ? 1 : 0);
+      this.addon.pushNotification(Component.text(TerraAddon.doubleLine + " ").append(Component.translatable("terramc.ui.staff.settings.title")),
+          Component.translatable("terramc.ui.staff.settings.change",
+                  Component.translatable("terramc.ui.staff.hideTag.title").color(TextColor.color(255, 255, 85)),
+                  Component.translatable("terramc.ui.staff.settings." + (value ? "enabled" : "disabled")))
+              .color(TextColor.color(170, 170, 170)));
+    });
+    hideTagSwitch.setValue(AddonData.hideTag());
+    hideTagSwitch.setHoverComponent(Component.translatable("terramc.ui.staff.hideTag.description").color(
+        TextColor.color(170, 170, 170)));
+    hideTagSwitch.addId("hideTag");
+
+    this.document.addChild(hideTagSwitch);
+
     if(this.addon.rankUtil().isAdmin()) {
 
       ComponentWidget showTagAlwaysTitle = ComponentWidget.i18n("terramc.ui.staff.showTagAlways.title");
       showTagAlwaysTitle.addId("showTagAlways-title");
-
       this.document.addChild(showTagAlwaysTitle);
 
       SwitchWidget showTagAlways = SwitchWidget.create(value -> {

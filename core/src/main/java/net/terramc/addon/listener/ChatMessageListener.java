@@ -73,7 +73,7 @@ public class ChatMessageListener {
       if(this.addon.configuration().enableAutoGG().get() & this.addon.rankUtil().hasAutoGG()) {
         if(AddonData.isInRound() & !AddonData.isSpectator() & !AddonData.isGgSent()) {
           AddonData.setGgSent(true);
-          if(AddonData.getNickName() != null || AddonData.isRankToggled()) {
+          if(AddonData.getNickName() != null || AddonData.rankToggled()) {
             this.addon.sendMessage("GG");
           } else {
             if(this.addon.rankUtil().hasSpecialAutoGG()) {
@@ -92,7 +92,7 @@ public class ChatMessageListener {
       if(this.addon.configuration().enableAutoGG().get() & this.addon.rankUtil().hasAutoGG()) {
         if(AddonData.isInRound() & !AddonData.isSpectator() & !AddonData.isGgSent()) {
           AddonData.setGgSent(true);
-          if(AddonData.getNickName() != null || AddonData.isRankToggled()) {
+          if(AddonData.getNickName() != null || AddonData.rankToggled()) {
             this.addon.sendMessage("GG");
           } else {
             if(this.addon.rankUtil().hasSpecialAutoGG()) {

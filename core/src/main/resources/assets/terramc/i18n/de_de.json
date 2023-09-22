@@ -150,6 +150,10 @@
           "title": "Team-Nametags immer anzeigen",
           "description": "Zeigt Tags von Teammitgliedern auch wenn diese genickt oder im ToggleRank sind."
         },
+        "hideTag": {
+          "title": "Eigenen Team-Nametag verstecken",
+          "description": "Verstecke deinen eigenen Team-Nametag vor anderen Spielern"
+        },
         "settings": {
           "title": "§eEinstellungen",
           "change": "%s wurde zu %s geändert.",

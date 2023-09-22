@@ -83,7 +83,7 @@ public class NetworkPayloadListener {
           }
 
           if(object.has("toggleRank")) {
-            AddonData.setRankToggled(object.get("toggleRank").getAsBoolean());
+            AddonData.rankToggled(object.get("toggleRank").getAsBoolean());
           }
           if(object.has("toggleRank_update")) {
             UUID uuid = UUID.fromString(object.get("toggleRank_update").getAsString().split(";")[0]);

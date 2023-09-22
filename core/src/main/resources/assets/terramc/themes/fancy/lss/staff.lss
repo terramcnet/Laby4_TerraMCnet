@@ -11,15 +11,28 @@
   left: 50;
 }
 
-.showTagAlways-title {
+.hideTag-title {
   top: 50;
   left: 50;
   text-color: yellow;
 }
 
-.showTagAlways {
+.hideTag {
   top: 60;
   left: 50;
+  height: 16;
+  width: 32;
+}
+
+.showTagAlways-title {
+  top: 10;
+  left: 250;
+  text-color: yellow;
+}
+
+.showTagAlways {
+  top: 20;
+  left: 250;
   height: 16;
   width: 32;
 }

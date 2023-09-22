@@ -150,6 +150,10 @@
           "title": "Show Staff-Nametags always",
           "description": "Shows team members' tags even if they are nicked or in ToggleRank."
         },
+        "hideTag": {
+          "title": "Hide own Staff-Nametag",
+          "description": "Hide your Staff Nametag from other players"
+        },
         "settings": {
           "title": "§eSettings",
           "change": "%s has been changed to §6%s",
