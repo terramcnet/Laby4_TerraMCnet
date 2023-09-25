@@ -47,7 +47,7 @@ CloudControl {
   }
 
   .maintenanceBtn {
-    top: 35;
+    top: 40;
     alignment-x: center;
   }
 
