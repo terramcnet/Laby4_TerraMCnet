@@ -1,4 +1,4 @@
-package net.terramc.addon.gui.activity;
+package net.terramc.addon.activities;
 
 import net.labymod.api.client.gui.mouse.MutableMouse;
 import net.labymod.api.client.gui.screen.Parent;

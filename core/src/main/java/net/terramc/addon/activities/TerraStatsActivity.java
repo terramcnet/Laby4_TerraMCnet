@@ -1,4 +1,4 @@
-package net.terramc.addon.gui.activity;
+package net.terramc.addon.activities;
 
 import net.labymod.api.Laby;
 import net.labymod.api.client.component.Component;
@@ -18,7 +18,7 @@ import net.labymod.api.client.render.matrix.Stack;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.util.I18n;
 import net.terramc.addon.TerraAddon;
-import net.terramc.addon.gui.activity.widget.StatsWidget;
+import net.terramc.addon.activities.widget.StatsWidget;
 import net.terramc.addon.util.PlayerStats;
 import net.terramc.addon.util.Util;
 

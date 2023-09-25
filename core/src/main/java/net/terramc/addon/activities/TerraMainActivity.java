@@ -1,4 +1,4 @@
-package net.terramc.addon.gui.activity;
+package net.terramc.addon.activities;
 
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;

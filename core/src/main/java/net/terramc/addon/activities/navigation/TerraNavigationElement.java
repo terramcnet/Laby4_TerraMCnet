@@ -1,4 +1,4 @@
-package net.terramc.addon.gui;
+package net.terramc.addon.activities.navigation;
 
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.gui.icon.Icon;

@@ -1,4 +1,4 @@
-package net.terramc.addon.gui.activity;
+package net.terramc.addon.activities;
 
 import net.labymod.api.Laby;
 import net.labymod.api.client.gui.mouse.MutableMouse;
@@ -11,7 +11,7 @@ import net.labymod.api.client.gui.screen.widget.widgets.layout.ScrollWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.TilesGridWidget;
 import net.labymod.api.client.render.matrix.Stack;
 import net.terramc.addon.TerraAddon;
-import net.terramc.addon.gui.activity.widget.CloudControlWidget;
+import net.terramc.addon.activities.widget.CloudControlWidget;
 import net.terramc.addon.util.Util;
 import java.util.UUID;
 

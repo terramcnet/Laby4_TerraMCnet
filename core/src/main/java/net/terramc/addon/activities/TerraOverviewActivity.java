@@ -1,4 +1,4 @@
-package net.terramc.addon.gui.activity;
+package net.terramc.addon.activities;
 
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.mouse.MutableMouse;
@@ -14,7 +14,7 @@ import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.util.I18n;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
-import net.terramc.addon.gui.activity.widget.OverviewWidget;
+import net.terramc.addon.activities.widget.OverviewWidget;
 import net.terramc.addon.util.Util;
 
 @AutoActivity

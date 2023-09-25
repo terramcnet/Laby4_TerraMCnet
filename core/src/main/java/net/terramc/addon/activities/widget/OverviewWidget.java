@@ -1,4 +1,4 @@
-package net.terramc.addon.gui.activity.widget;
+package net.terramc.addon.activities.widget;
 
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.screen.Parent;
