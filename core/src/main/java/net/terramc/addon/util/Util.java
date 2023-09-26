@@ -1,15 +1,15 @@
 package net.terramc.addon.util;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+import java.util.UUID;
 import net.labymod.api.LabyAPI;
 import net.labymod.api.client.gui.screen.widget.attributes.bounds.Bounds;
 import net.labymod.api.client.render.draw.ResourceRenderer;
 import net.labymod.api.client.render.font.text.TextRenderer;
 import net.labymod.api.client.render.matrix.Stack;
 import net.terramc.addon.TerraAddon;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
-import java.util.UUID;
 
 public class Util {
 

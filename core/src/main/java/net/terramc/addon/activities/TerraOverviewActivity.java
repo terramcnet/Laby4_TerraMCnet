@@ -13,8 +13,8 @@ import net.labymod.api.client.render.matrix.Stack;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.util.I18n;
 import net.terramc.addon.TerraAddon;
-import net.terramc.addon.data.AddonData;
 import net.terramc.addon.activities.widget.OverviewWidget;
+import net.terramc.addon.data.AddonData;
 import net.terramc.addon.util.Util;
 
 @AutoActivity
