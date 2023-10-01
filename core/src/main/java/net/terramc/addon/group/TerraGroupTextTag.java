@@ -11,17 +11,17 @@ import net.terramc.addon.data.AddonData;
 import net.terramc.addon.util.CustomTextDecoration;
 import org.jetbrains.annotations.Nullable;
 
-public class StaffGroupTextTag extends NameTag {
+public class TerraGroupTextTag extends NameTag {
 
   private TerraAddon addon;
 
-  public StaffGroupTextTag(TerraAddon addon) {
+  public TerraGroupTextTag(TerraAddon addon) {
     this.addon = addon;
   }
 
   @Override
   protected @Nullable RenderableComponent getRenderableComponent() {
-    StaffGroup group = this.visibleGroup(entity);
+    TerraGroup group = this.visibleGroup(entity);
     if(group != null) {
       Component component = Component.text("TERRAMC", TextColor.color(this.addon.configuration().nameTagConfiguration.nameTageColor().get().get()));
       if(this.addon.configuration().nameTagConfiguration.textDecoration().get() != CustomTextDecoration.NONE) {
@@ -48,7 +48,7 @@ public class StaffGroupTextTag extends NameTag {
     return this.visibleGroup(entity) != null;
   }
 
-  private StaffGroup visibleGroup(Entity entity) {
+  private TerraGroup visibleGroup(Entity entity) {
     if(!(entity instanceof Player)) return null;
     Player player = (Player) entity;
     if(player.getUniqueId() == null) return null;
@@ -62,12 +62,10 @@ public class StaffGroupTextTag extends NameTag {
 
   private boolean shouldHide(Player player) {
     if(this.addon.isConnected()) {
-      if(this.addon.rankUtil().isAdmin()) {
-        if(this.addon.configuration().showTagAlways().get()) {
-          return false;
-        }
-      }
-      return AddonData.getToggleRankMap().containsKey(player.profile().getUniqueId()) || AddonData.getNickedMap().containsKey(player.profile().getUniqueId());
+      if(this.addon.rankUtil().isAdmin() && this.addon.configuration().showTagAlways().get()) return false;
+      return AddonData.getToggleRankMap().containsKey(player.profile().getUniqueId()) ||
+          AddonData.getNickedMap().containsKey(player.profile().getUniqueId()) ||
+          AddonData.getShouldHideTag().contains(player.profile().getUniqueId());
     }
     return false;
   }

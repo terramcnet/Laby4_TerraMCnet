@@ -101,6 +101,10 @@
         "success": {
           "title": "§7§l§o▎§8§l§o▏ §aCloud-Steuerung"
         }
+      },
+      "other": {
+        "tag-disabled": "%s hat seinen Team-Tag deaktiviert.",
+        "tag-enabled": "%s hat seinen Team-Tag aktiviert."
       }
     },
 

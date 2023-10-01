@@ -13,9 +13,9 @@ import net.labymod.api.notification.Notification;
 import net.labymod.api.notification.Notification.Type;
 import net.terramc.addon.activities.TerraMainActivity;
 import net.terramc.addon.activities.navigation.TerraNavigationElement;
-import net.terramc.addon.group.StaffGroupIconTag;
-import net.terramc.addon.group.StaffGroupTextTag;
-import net.terramc.addon.group.StaffTabListRenderer;
+import net.terramc.addon.group.TerraGroupIconTag;
+import net.terramc.addon.group.TerraGroupTextTag;
+import net.terramc.addon.group.TerraTabListRenderer;
 import net.terramc.addon.hudwidget.CoinsHudWidget;
 import net.terramc.addon.hudwidget.GameRankHudWidget;
 import net.terramc.addon.hudwidget.NickHudWidget;
@@ -23,11 +23,13 @@ import net.terramc.addon.hudwidget.PointsHudWidget;
 import net.terramc.addon.hudwidget.PointsRankHudWidget;
 import net.terramc.addon.hudwidget.game.GoldTimerHudWidget;
 import net.terramc.addon.hudwidget.game.IronTimerHudWidget;
+import net.terramc.addon.listener.BroadcastListener;
 import net.terramc.addon.listener.ChatMessageListener;
 import net.terramc.addon.listener.NetworkListener;
 import net.terramc.addon.listener.NetworkPayloadListener;
 import net.terramc.addon.listener.SessionListener;
 import net.terramc.addon.util.ApiUtil;
+import net.terramc.addon.util.BroadcastUtil;
 import net.terramc.addon.util.RankUtil;
 
 @AddonMain
@@ -39,6 +41,7 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
   private ApiUtil apiUtil;
   private RankUtil rankUtil;
+  private BroadcastUtil broadcastUtil;
 
   private boolean connected = false;
   public static String doubleLine = "§7§l§o▎§8§l§o▏ ";
@@ -54,6 +57,7 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     this.terraMainActivity = new TerraMainActivity(this);
 
     this.rankUtil = new RankUtil();
+    this.broadcastUtil = new BroadcastUtil(this);
 
     UUID uuid = Laby.references().gameUserService().clientGameUser().getUniqueId();
     this.apiUtil = new ApiUtil(this);
@@ -64,14 +68,15 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     this.registerListener(new ChatMessageListener(this));
     this.registerListener(new NetworkListener(this));
     this.registerListener(new SessionListener(this));
+    this.registerListener(new BroadcastListener(this));
 
     this.registerListener(new NetworkPayloadListener(this));
 
     labyAPI().navigationService().register("terramc_main_ui", new TerraNavigationElement(this));
 
-    labyAPI().tagRegistry().registerAfter("labymod_role", "terramc_role", PositionType.ABOVE_NAME, new StaffGroupTextTag(this));
-    labyAPI().tagRegistry().register("terramc_role_icon", PositionType.RIGHT_TO_NAME, new StaffGroupIconTag(this));
-    Laby.references().badgeRegistry().register("terra_role_tab", net.labymod.api.client.entity.player.badge.PositionType.LEFT_TO_NAME, new StaffTabListRenderer(this));
+    labyAPI().tagRegistry().registerAfter("labymod_role", "terramc_role", PositionType.ABOVE_NAME, new TerraGroupTextTag(this));
+    labyAPI().tagRegistry().register("terramc_role_icon", PositionType.RIGHT_TO_NAME, new TerraGroupIconTag(this));
+    Laby.references().badgeRegistry().register("terra_role_tab", net.labymod.api.client.entity.player.badge.PositionType.LEFT_TO_NAME, new TerraTabListRenderer(this));
 
     labyAPI().hudWidgetRegistry().categoryRegistry().register(TERRA);
     labyAPI().hudWidgetRegistry().register(new NickHudWidget(this));
@@ -124,6 +129,10 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
   public RankUtil rankUtil() {
     return rankUtil;
+  }
+
+  public BroadcastUtil broadcastUtil() {
+    return broadcastUtil;
   }
 
   public static TerraAddon instance() {

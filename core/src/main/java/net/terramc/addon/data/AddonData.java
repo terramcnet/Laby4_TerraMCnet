@@ -2,9 +2,11 @@ package net.terramc.addon.data;
 
 
 import net.terramc.addon.game.BedWarsGame;
-import net.terramc.addon.group.StaffGroup;
+import net.terramc.addon.group.TerraGroup;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 public class AddonData {
@@ -13,10 +15,12 @@ public class AddonData {
     CHAT, NOTIFICATION, HIDE
   }
 
-  private static HashMap<UUID, StaffGroup> staffRankMap = new HashMap<>();
+  private static HashMap<UUID, TerraGroup> staffRankMap = new HashMap<>();
   private static HashMap<UUID, Integer> toggleRankMap = new HashMap<>();
   private static HashMap<UUID, Integer> nickedMap = new HashMap<>();
+  private static List<UUID> shouldHideTag = new ArrayList<>();
 
+  private static List<UUID> usingAddon = new ArrayList<>();
 
   // VIP - Functions
   private static String nickName = null;
@@ -39,7 +43,6 @@ public class AddonData {
   private static boolean autoVanish = false;
 
   private static boolean rankToggled = false;
-  private static boolean hideTag = false;
 
   // Game - Functions
 
@@ -163,15 +166,7 @@ public class AddonData {
     AddonData.rankToggled = rankToggled;
   }
 
-  public static boolean hideTag() {
-    return hideTag;
-  }
-
-  public static void hideTag(boolean hideTag) {
-    AddonData.hideTag = hideTag;
-  }
-
-  public static HashMap<UUID, StaffGroup> getStaffRankMap() {
+  public static HashMap<UUID, TerraGroup> getStaffRankMap() {
     return staffRankMap;
   }
 
@@ -181,5 +176,13 @@ public class AddonData {
 
   public static HashMap<UUID, Integer> getNickedMap() {
     return nickedMap;
+  }
+
+  public static List<UUID> getShouldHideTag() {
+    return shouldHideTag;
+  }
+
+  public static List<UUID> getUsingAddon() {
+    return usingAddon;
   }
 }

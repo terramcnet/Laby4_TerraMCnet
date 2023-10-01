@@ -60,14 +60,15 @@ public class TerraStaffActivity extends Activity {
     this.document.addChild(hideTagTitle);
 
     SwitchWidget hideTagSwitch = SwitchWidget.create(value -> {
-      this.addon.apiUtil().postStaffSetting(labyAPI.getUniqueId(), "HideTag", value ? 1 : 0);
+      this.addon.configuration().hideOwnTag().set(value);
+      this.addon.broadcastUtil().sendStaffTag();
       this.addon.pushNotification(Component.text(TerraAddon.doubleLine + " ").append(Component.translatable("terramc.ui.staff.settings.title")),
           Component.translatable("terramc.ui.staff.settings.change",
                   Component.translatable("terramc.ui.staff.hideTag.title").color(TextColor.color(255, 255, 85)),
                   Component.translatable("terramc.ui.staff.settings." + (value ? "enabled" : "disabled")))
               .color(TextColor.color(170, 170, 170)));
     });
-    hideTagSwitch.setValue(AddonData.hideTag());
+    hideTagSwitch.setValue(this.addon.configuration().hideOwnTag().get());
     hideTagSwitch.setHoverComponent(Component.translatable("terramc.ui.staff.hideTag.description").color(
         TextColor.color(170, 170, 170)));
     hideTagSwitch.addId("hideTag");

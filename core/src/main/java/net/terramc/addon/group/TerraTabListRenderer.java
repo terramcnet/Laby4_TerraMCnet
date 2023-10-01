@@ -6,17 +6,17 @@ import net.labymod.api.client.render.matrix.Stack;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
 
-public class StaffTabListRenderer extends BadgeRenderer {
+public class TerraTabListRenderer extends BadgeRenderer {
 
   private TerraAddon addon;
 
-  public StaffTabListRenderer(TerraAddon addon) {
+  public TerraTabListRenderer(TerraAddon addon) {
     this.addon = addon;
   }
 
   @Override
   public void render(Stack stack, float x, float y, NetworkPlayerInfo player) {
-      StaffGroup staffGroup = this.visibleGroup(player);
+      TerraGroup staffGroup = this.visibleGroup(player);
       if(staffGroup != null) {
         //staffGroup.getIcon().render(stack, x - 4.0F, y +1.0F, 10.0F, 6.0F);
         staffGroup.getIcon().render(stack, x, y, 8.0F);
@@ -28,11 +28,13 @@ public class StaffTabListRenderer extends BadgeRenderer {
     return this.visibleGroup(player) != null;
   }
 
-  private StaffGroup visibleGroup(NetworkPlayerInfo player) {
+  private TerraGroup visibleGroup(NetworkPlayerInfo player) {
     if(player.profile().getUniqueId() == null) return null;
     if(!this.addon.configuration().enabled().get()) return null;
     if(!(this.addon.configuration().nameTagConfiguration.enabled().get() & this.addon.configuration().nameTagConfiguration.showIconInTab().get())) return null;
-    if(!AddonData.getStaffRankMap().containsKey(player.profile().getUniqueId())) return null;
+    if(!AddonData.getStaffRankMap().containsKey(player.profile().getUniqueId()) && AddonData.getUsingAddon().contains(player.profile().getUniqueId())) {
+      return TerraGroup.ADDON_USER;
+    }
     if(shouldHide(player)) return null;
     return AddonData.getStaffRankMap().get(player.profile().getUniqueId());
 
@@ -40,12 +42,10 @@ public class StaffTabListRenderer extends BadgeRenderer {
 
   private boolean shouldHide(NetworkPlayerInfo player) {
     if(this.addon.isConnected()) {
-      if(this.addon.rankUtil().isAdmin()) {
-        if(this.addon.configuration().showTagAlways().get()) {
-          return false;
-        }
-      }
-      return AddonData.getToggleRankMap().containsKey(player.profile().getUniqueId()) || AddonData.getNickedMap().containsKey(player.profile().getUniqueId());
+      if(this.addon.rankUtil().isAdmin() && this.addon.configuration().showTagAlways().get()) return false;
+      return AddonData.getToggleRankMap().containsKey(player.profile().getUniqueId()) ||
+          AddonData.getNickedMap().containsKey(player.profile().getUniqueId()) ||
+          AddonData.getShouldHideTag().contains(player.profile().getUniqueId());
     }
     return false;
   }

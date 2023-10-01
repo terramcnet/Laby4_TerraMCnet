@@ -63,4 +63,9 @@ public class TerraConfiguration extends AddonConfig {
     return showTagAlways;
   }
 
+  private final ConfigProperty<Boolean> hideOwnTag = new ConfigProperty<>(false);
+
+  public ConfigProperty<Boolean> hideOwnTag() {
+    return hideOwnTag;
+  }
 }
