@@ -11,7 +11,6 @@ import net.labymod.api.client.render.font.text.TextRenderer;
 import net.labymod.api.client.render.matrix.Stack;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.ServerData;
-import net.terramc.addon.data.ServerInfoData;
 import net.terramc.addon.util.Util;
 
 @AutoActivity
@@ -45,10 +44,10 @@ public class TerraServerActivity extends Activity {
 
     Util.drawCredits(this.labyAPI, bounds, stack);
 
-    drawString(textRenderer, stack,"§7Registrierte Spieler §8» §e" + ServerInfoData.Information.getRegisteredPlayers(), 60, 20);
-    drawString(textRenderer, stack,"§7Maximale Spieler [Gesamt] §8» §e" + ServerInfoData.Information.getMaxPlayers(), 60, 35);
-    drawString(textRenderer, stack,"§7Maximale Spieler [Heute] §8» §e" + ServerInfoData.Information.getMaxPlayersToday(), 60, 50);
-    drawString(textRenderer, stack,"§7Votes §8» §e" + ServerInfoData.Information.getVotes(), 60, 65);
+    drawString(textRenderer, stack,"§7Registrierte Spieler §8» §e" + ServerData.Information.getRegisteredPlayers(), 60, 20);
+    drawString(textRenderer, stack,"§7Maximale Spieler [Gesamt] §8» §e" + ServerData.Information.getMaxPlayers(), 60, 35);
+    drawString(textRenderer, stack,"§7Maximale Spieler [Heute] §8» §e" + ServerData.Information.getMaxPlayersToday(), 60, 50);
+    drawString(textRenderer, stack,"§7Votes §8» §e" + ServerData.Information.getVotes(), 60, 65);
 
     drawString(textRenderer, stack, "§7Aktuelle Server-TPS §8» §e" + ServerData.getServerTps(), 60, 120);
     drawString(textRenderer, stack, "§7Aktuelle CPU-Auslastung §8» §e" + ServerData.getCpuUsage(), 60, 135);
@@ -57,7 +56,7 @@ public class TerraServerActivity extends Activity {
 
     float dataY = 20;
     float dataX = bounds.getWidth() -300;
-    String[] split = ServerInfoData.MaxPlayers.data.split("%nl%");
+    String[] split = ServerData.Information.getMaxPlayerData().split("%nl%");
     for(String data : split) {
       drawString(textRenderer, stack,"§e" + data, dataX, dataY);
       dataY+=10;
