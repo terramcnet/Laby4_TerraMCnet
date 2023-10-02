@@ -24,11 +24,16 @@
         }
       },
       "enabled": {
-        "name": "Enabled"
+        "name": "Enabled",
+        "description": "Should the Addon be enabled"
+      },
+      "sendStatistics": {
+        "name": "Send Statistics",
+        "description": "Send statistics such as your UUID, your username, the current addon version and the currently used Minecraft version to TerraMC.net"
       },
       "nameTagConfiguration": {
-        "name": "Show Staff NameTag",
-        "description": "Displays the Rank of a Staff member.",
+        "name": "Show NameTags",
+        "description": "Displays the Rank of Staff members and other addon users.",
         "header": {
           "general": {
             "name": "Tag Settings"
@@ -39,15 +44,15 @@
         },
         "showTag": {
           "name": "Show Text-Tag",
-          "description": "Displays the Rank of a Staff member above their name."
+          "description": "Displays the Rank of a staff member above their name."
         },
         "showIconTag": {
           "name": "Show Icon-Tag",
-          "description": "Displays the TerraMC Logo next to a staff member's name."
+          "description": "Displays the TerraMC Logo next to a staff member name or other addon users."
         },
         "showIconInTab": {
           "name": "Show Icon in Tablist",
-          "description": "Displays the TerraMC logo in front of a team member's name in the tab list."
+          "description": "Displays the TerraMC logo in front of a staff member or other addon users name in the tablist."
         },
         "nameTagColor": {
           "name": "Color of the Text-Tag",

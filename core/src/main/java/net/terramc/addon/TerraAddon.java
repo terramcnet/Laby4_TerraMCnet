@@ -59,11 +59,14 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     this.rankUtil = new RankUtil();
     this.broadcastUtil = new BroadcastUtil(this);
 
-    UUID uuid = Laby.references().gameUserService().clientGameUser().getUniqueId();
+    UUID uuid = labyAPI().getUniqueId();
     this.apiUtil = new ApiUtil(this);
     this.apiUtil.loadPlayerStats(uuid);
     this.apiUtil.loadRankData(uuid);
     this.apiUtil.loadServerData(uuid);
+    if(this.configuration().sendStatistics().get()) {
+      this.apiUtil.postAddonStatistics(true);
+    }
 
     this.registerListener(new ChatMessageListener(this));
     this.registerListener(new NetworkListener(this));
@@ -89,6 +92,8 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     labyAPI().hudWidgetRegistry().register(new GoldTimerHudWidget(this));
 
     this.logger().info("[TerraMCnet] Addon enabled.");
+
+    Runtime.getRuntime().addShutdownHook(new Thread(() -> this.apiUtil.postAddonStatistics(false)));
 
   }
 

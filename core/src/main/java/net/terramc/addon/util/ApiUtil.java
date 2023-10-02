@@ -2,14 +2,16 @@ package net.terramc.addon.util;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import java.util.HashMap;
 import java.util.UUID;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.TextColor;
 import net.labymod.api.util.I18n;
 import net.labymod.api.util.io.web.request.Request;
+import net.labymod.api.util.io.web.request.Request.Method;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
-import net.terramc.addon.data.ServerInfoData;
+import net.terramc.addon.data.ServerData;
 import net.terramc.addon.group.TerraGroup;
 import net.terramc.addon.util.PlayerStats.Stats;
 
@@ -84,6 +86,27 @@ public class ApiUtil {
         });
   }
 
+  public void postAddonStatistics(boolean insert) {
+    HashMap<String, String> body = new HashMap<>();
+    if(this.addon.labyAPI().getUniqueId() == null) return;
+    if(insert) {
+      body.put("request", "insertAddonStatistics");
+      body.put("uuid", this.addon.labyAPI().getUniqueId().toString());
+      body.put("userName", this.addon.labyAPI().getName());
+      body.put("addonVersion", this.addon.addonInfo().getVersion());
+      body.put("gameVersion", this.addon.labyAPI().minecraft().getVersion());
+    } else {
+      body.put("request", "deleteAddonStatistics");
+      body.put("uuid", this.addon.labyAPI().getUniqueId().toString());
+    }
+
+    Request.ofString()
+        .url(BASE_URL + "stats")
+        .method(Method.POST)
+        .body(body)
+        .execute(response -> {});
+  }
+
   public void loadServerData(UUID uuid) {
     Request.ofGson(JsonObject.class)
         .url(BASE_URL + "staff?req=serverData&uuid="+uuid, new Object[0])
@@ -98,16 +121,16 @@ public class ApiUtil {
           }
           JsonObject jsonObject = response.get();
 
-          ServerInfoData.Information.setRegisteredPlayers(jsonObject.get("registeredPlayers").getAsInt());
+          ServerData.Information.setRegisteredPlayers(jsonObject.get("registeredPlayers").getAsInt());
 
           if(jsonObject.has("serverStats")) {
             JsonObject serverStats = jsonObject.get("serverStats").getAsJsonObject();
-            ServerInfoData.Information.setMaxPlayers(serverStats.get("maxPlayers").getAsInt());
-            ServerInfoData.Information.setMaxPlayersToday(serverStats.get("maxPlayersToday").getAsInt());
-            ServerInfoData.Information.setVotes(serverStats.get("votes").getAsInt());
+            ServerData.Information.setMaxPlayers(serverStats.get("maxPlayers").getAsInt());
+            ServerData.Information.setMaxPlayersToday(serverStats.get("maxPlayersToday").getAsInt());
+            ServerData.Information.setVotes(serverStats.get("votes").getAsInt());
           }
           if(jsonObject.has("groupStats")) {
-            ServerInfoData.MaxPlayers.data = jsonObject.get("groupStats").getAsString().replace("&", "§");
+            ServerData.Information.setMaxPlayerData(jsonObject.get("groupStats").getAsString().replace("&", "§"));
           }
 
         });
