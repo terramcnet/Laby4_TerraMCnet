@@ -34,15 +34,6 @@ public class TerraServerActivity extends Activity {
       this.document.addChild(noAccessWidget);
     }
 
-    /*if(!TerraAddon.isConnectedTerra()) {
-      ButtonWidget connect = ButtonWidget.text(I18n.translate("terramc.ui.general.connect"),
-          Icon.texture(ResourceLocation.create("terramc", "textures/ui/update.png")));
-      connect.setActionListener(() -> this.labyAPI.serverController().joinServer("terramc.net"));
-      connect.addId("connect-btn");
-
-      this.document.addChild(connect);
-    }*/
-
   }
 
   @Override
@@ -53,19 +44,6 @@ public class TerraServerActivity extends Activity {
     TextRenderer textRenderer = this.labyAPI.renderPipeline().textRenderer();
 
     Util.drawCredits(this.labyAPI, bounds, stack);
-
-    /*if(!TerraAddon.isConnectedTerra()) {
-      textRenderer.text(I18n.translate("terramc.ui.general.noInfoAvailable"))
-          .pos(bounds.getCenterX(), bounds.getCenterY())
-          .centered(true)
-          .render(stack);
-
-      textRenderer.text(I18n.translate("terramc.ui.general.connectToServer"))
-          .pos(bounds.getCenterX(), bounds.getCenterY() + 10)
-          .centered(true)
-          .render(stack);
-      return;
-    }*/
 
     drawString(textRenderer, stack,"§7Registrierte Spieler §8» §e" + ServerInfoData.Information.getRegisteredPlayers(), 60, 20);
     drawString(textRenderer, stack,"§7Maximale Spieler [Gesamt] §8» §e" + ServerInfoData.Information.getMaxPlayers(), 60, 35);
