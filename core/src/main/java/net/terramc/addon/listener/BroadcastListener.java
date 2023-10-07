@@ -27,9 +27,6 @@ public class BroadcastListener {
     if(!payload.isJsonObject()) return;
     JsonObject object = payload.getAsJsonObject();
 
-    this.addon.logger().info(object.toString());
-    this.addon.displayMessage(object.toString());
-
     if(object.has("hideTag") && object.get("hideTag").isJsonObject()) {
       JsonObject data = object.get("hideTag").getAsJsonObject();
       UUID uuid = UUID.fromString(data.get("uuid").getAsString());
