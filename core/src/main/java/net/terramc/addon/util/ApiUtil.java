@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.util.HashMap;
 import java.util.UUID;
+import net.labymod.api.Laby;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.TextColor;
 import net.labymod.api.util.I18n;
@@ -157,7 +158,7 @@ public class ApiUtil {
 
           AddonData.setRank(global.get("Rank").getAsString());
 
-          addon.terraMainActivity.updateStaffActivity();
+          Laby.labyAPI().minecraft().executeOnRenderThread(() -> addon.terraMainActivity.updateStaffActivity());
 
           JsonArray rankArray = jsonObject.get("Ranks").getAsJsonArray();
           for(int i = 0; i < rankArray.size(); i++) {
