@@ -5,8 +5,11 @@ import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import java.util.UUID;
 import net.labymod.api.LabyAPI;
+import net.labymod.api.client.component.Component;
+import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.gui.screen.widget.attributes.bounds.Bounds;
 import net.labymod.api.client.render.draw.ResourceRenderer;
+import net.labymod.api.client.render.font.RenderableComponent;
 import net.labymod.api.client.render.font.text.TextRenderer;
 import net.labymod.api.client.render.matrix.Stack;
 import net.terramc.addon.TerraAddon;
@@ -23,11 +26,18 @@ public class Util {
         .pos(5, bounds.getHeight() -20)
         .render(stack);
 
-    textRenderer.text("§7Addon-Version§8: §a" + TerraAddon.instance().addonInfo().getVersion())
+    textRenderer.text(RenderableComponent.of(
+        Component.text("Addon-Version", NamedTextColor.GRAY)
+            .append(Component.text(": ", NamedTextColor.DARK_GRAY))
+            .append(Component.text(TerraAddon.instance().addonInfo().getVersion(), NamedTextColor.GREEN))
+        ))
         .scale(0.8f)
         .pos(25, bounds.getHeight() -20)
         .render(stack);
-    textRenderer.text("§7Developed by §aMisterCore")
+    textRenderer.text(RenderableComponent.of(
+        Component.text("Developed by ", NamedTextColor.GRAY)
+            .append(Component.text("MisterCore", NamedTextColor.GREEN))
+        ))
         .scale(0.8f)
         .pos(25, bounds.getHeight() -10)
         .render(stack);
