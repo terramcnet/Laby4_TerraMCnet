@@ -102,7 +102,7 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
         .title(title)
         .text(text)
         .icon(Icon.texture(ResourceLocation.create("terramc", "textures/icon.png")))
-        .type(Type.ADVANCEMENT);
+        .type(Type.SYSTEM);
     labyAPI().notificationController().push(builder.build());
   }
 
@@ -111,7 +111,7 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
         .title(title)
         .text(text)
         .icon(icon)
-        .type(Type.ADVANCEMENT);
+        .type(Type.SYSTEM);
     labyAPI().notificationController().push(builder.build());
   }
 
