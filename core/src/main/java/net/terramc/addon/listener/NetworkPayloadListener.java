@@ -6,7 +6,6 @@ import net.labymod.api.client.component.Component;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.network.server.NetworkPayloadEvent;
-import net.labymod.api.util.io.web.request.WebResolver;
 import net.labymod.serverapi.protocol.payload.exception.PayloadReaderException;
 import net.labymod.serverapi.protocol.payload.io.PayloadReader;
 import net.terramc.addon.TerraAddon;
@@ -31,7 +30,7 @@ public class NetworkPayloadListener {
         String messageContent = reader.readString();
 
         if(messageKey.equals("TerraMod") & this.addon.isConnected()) {
-          JsonElement serverMessage = WebResolver.GSON.fromJson(messageContent, JsonElement.class);
+          JsonElement serverMessage = this.addon.gson().fromJson(messageContent, JsonElement.class);
           if(!serverMessage.isJsonObject()) return;
           JsonObject object = serverMessage.getAsJsonObject();
 

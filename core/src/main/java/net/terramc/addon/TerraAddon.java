@@ -1,6 +1,7 @@
 package net.terramc.addon;
 
 import java.util.UUID;
+import com.google.gson.Gson;
 import net.labymod.api.Laby;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.client.component.Component;
@@ -11,6 +12,7 @@ import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.models.addon.annotation.AddonMain;
 import net.labymod.api.notification.Notification;
 import net.labymod.api.notification.Notification.Type;
+import net.labymod.api.util.GsonUtil;
 import net.terramc.addon.activities.TerraMainActivity;
 import net.terramc.addon.activities.navigation.TerraNavigationElement;
 import net.terramc.addon.group.TerraGroupIconTag;
@@ -46,13 +48,14 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
   private boolean connected = false;
   public static String doubleLine = "§7§l§o▎§8§l§o▏ ";
   public static String doubleDots = "§7•§8●";
-  private static TerraAddon instance;
+
+  private Gson gson;
 
   @Override
   protected void enable() {
     this.registerSettingCategory();
 
-    instance = this;
+    this.gson = GsonUtil.DEFAULT_GSON;
 
     this.terraMainActivity = new TerraMainActivity(this);
 
@@ -118,6 +121,10 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     return TerraConfiguration.class;
   }
 
+  public Gson gson() {
+    return gson;
+  }
+
   public boolean isConnected() {
     return connected;
   }
@@ -138,7 +145,4 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     return broadcastUtil;
   }
 
-  public static TerraAddon instance() {
-    return instance;
-  }
 }
