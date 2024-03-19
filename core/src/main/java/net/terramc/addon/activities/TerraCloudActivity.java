@@ -29,6 +29,7 @@ public class TerraCloudActivity extends Activity {
   public void initialize(Parent parent) {
     super.initialize(parent);
 
+    if(!this.addon.isConnected()) return;
     if(!this.addon.rankUtil().canControlCloud()) return;
 
     UUID uuid = Laby.references().gameUserService().clientGameUser().getUniqueId();
