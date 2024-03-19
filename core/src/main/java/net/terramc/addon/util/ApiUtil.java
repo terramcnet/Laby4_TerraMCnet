@@ -19,6 +19,7 @@ import net.terramc.addon.util.PlayerStats.Stats;
 public class ApiUtil {
 
   private TerraAddon addon;
+  public String authKey = "NA";
 
   public ApiUtil(TerraAddon addon) {
     this.addon = addon;
@@ -56,7 +57,7 @@ public class ApiUtil {
     if(!this.addon.rankUtil().canControlCloud()) return;
 
     Request.ofString()
-        .url("http://45.88.108.143:3610/cloud?uuid="+uuid+"&action="+action+"&group="+group, new Object[0])
+        .url("http://45.88.108.143:3610/cloud?uuid="+uuid+"&auth="+authKey+"&action="+action+"&group="+group)
         .async()
         .execute(response -> {
           if(response.getStatusCode() == 400) {
@@ -112,7 +113,7 @@ public class ApiUtil {
 
   public void loadServerData(UUID uuid) {
     Request.ofGson(JsonObject.class)
-        .url(BASE_URL + "staff?req=serverData&uuid="+uuid, new Object[0])
+        .url(BASE_URL + "staff?req=serverData&uuid="+uuid)
         .async()
         .execute(response -> {
           if(response.getStatusCode() != 200) {
@@ -145,7 +146,7 @@ public class ApiUtil {
     AddonData.getNickedMap().clear();
 
     Request.ofGson(JsonObject.class)
-        .url(BASE_URL + "staff?req=staffData&uuid="+playerUuid+"&source=Addon_LM4", new Object[0])
+        .url(BASE_URL + "staff?req=staffData&uuid="+playerUuid+"&source=Addon_LM4")
         .async()
         .execute(response -> {
           if(response.getStatusCode() != 200) {
@@ -202,7 +203,7 @@ public class ApiUtil {
 
   public boolean loadPlayerStats(UUID uuid) {
     Request.ofGson(JsonObject.class)
-        .url(BASE_URL + "stats?uuid="+uuid+"&source=Addon_LM4", new Object[0])
+        .url(BASE_URL + "stats?uuid="+uuid+"&source=Addon_LM4")
         .async()
         .execute(response -> {
           if(response.getStatusCode() != 200) {

@@ -80,6 +80,9 @@ public class NetworkPayloadListener {
           if(object.has("restartTime")) {
             ServerData.setRestartTime(object.get("restartTime").getAsString());
           }
+          if(object.has("authKey")) {
+            this.addon.apiUtil().authKey = object.get("authKey").getAsString();
+          }
 
           if(object.has("toggleRank")) {
             AddonData.rankToggled(object.get("toggleRank").getAsBoolean());
