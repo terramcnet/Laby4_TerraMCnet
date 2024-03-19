@@ -42,7 +42,7 @@ public class TerraServerActivity extends Activity {
     Bounds bounds = this.bounds();
     TextRenderer textRenderer = this.labyAPI.renderPipeline().textRenderer();
 
-    Util.drawCredits(this.labyAPI, bounds, stack);
+    Util.drawCredits(this.addon, this.labyAPI, bounds, stack);
 
     drawString(textRenderer, stack,"§7Registrierte Spieler §8» §e" + ServerData.Information.getRegisteredPlayers(), 60, 20);
     drawString(textRenderer, stack,"§7Maximale Spieler [Gesamt] §8» §e" + ServerData.Information.getMaxPlayers(), 60, 35);

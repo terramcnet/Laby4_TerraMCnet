@@ -16,7 +16,7 @@ import net.terramc.addon.TerraAddon;
 
 public class Util {
 
-  public static void drawCredits(LabyAPI labyAPI, Bounds bounds, Stack stack) {
+  public static void drawCredits(TerraAddon addon, LabyAPI labyAPI, Bounds bounds, Stack stack) {
     TextRenderer textRenderer = labyAPI.renderPipeline().textRenderer();
     ResourceRenderer resourceRenderer = labyAPI.renderPipeline().resourceRenderer();
 
@@ -29,7 +29,7 @@ public class Util {
     textRenderer.text(RenderableComponent.of(
         Component.text("Addon-Version", NamedTextColor.GRAY)
             .append(Component.text(": ", NamedTextColor.DARK_GRAY))
-            .append(Component.text(TerraAddon.instance().addonInfo().getVersion(), NamedTextColor.GREEN))
+            .append(Component.text(addon.addonInfo().getVersion(), NamedTextColor.GREEN))
         ))
         .scale(0.8f)
         .pos(25, bounds.getHeight() -20)

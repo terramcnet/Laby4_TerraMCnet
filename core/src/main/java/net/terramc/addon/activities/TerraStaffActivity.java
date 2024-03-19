@@ -107,7 +107,7 @@ public class TerraStaffActivity extends Activity {
     Bounds bounds = this.bounds();
     TextRenderer textRenderer = this.labyAPI.renderPipeline().textRenderer();
 
-    Util.drawCredits(this.labyAPI, bounds, stack);
+    Util.drawCredits(this.addon, this.labyAPI, bounds, stack);
 
     if(!this.addon.rankUtil().isStaff()) {
       textRenderer.text(I18n.translate("terramc.ui.general.noAccess"))

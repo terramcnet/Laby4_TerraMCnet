@@ -166,7 +166,7 @@ public class TerraStatsActivity extends Activity {
   @Override
   public void render(Stack stack, MutableMouse mouse, float partialTicks) {
     super.render(stack, mouse, partialTicks);
-    Util.drawCredits(this.labyAPI, this.bounds(), stack);
+    Util.drawCredits(this.addon, this.labyAPI, this.bounds(), stack);
   }
 
 }
