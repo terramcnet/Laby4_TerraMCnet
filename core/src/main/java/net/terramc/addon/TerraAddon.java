@@ -61,12 +61,10 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
     UUID uuid = labyAPI().getUniqueId();
     this.apiUtil = new ApiUtil(this);
+    this.apiUtil.postAddonStatistics(true);
     this.apiUtil.loadPlayerStats(uuid);
     this.apiUtil.loadRankData(uuid);
     this.apiUtil.loadServerData(uuid);
-    if(this.configuration().sendStatistics().get()) {
-      this.apiUtil.postAddonStatistics(true);
-    }
 
     this.registerListener(new ChatMessageListener(this));
     this.registerListener(new NetworkListener(this));

@@ -18,9 +18,9 @@ public class TerraConfiguration extends AddonConfig {
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
-  @SpriteSlot(x = 4)
-  @SwitchSetting
-  private final ConfigProperty<Boolean> sendStatistics = new ConfigProperty<>(true);
+  //@SpriteSlot(x = 4)
+  //@SwitchSetting
+  //private final ConfigProperty<Boolean> sendStatistics = new ConfigProperty<>(true);
 
   @SettingSection(value = "general", center = true)
 
@@ -44,9 +44,9 @@ public class TerraConfiguration extends AddonConfig {
     return this.enabled;
   }
 
-  public ConfigProperty<Boolean> sendStatistics() {
+  /*public ConfigProperty<Boolean> sendStatistics() {
     return sendStatistics;
-  }
+  }*/
 
   public ConfigProperty<Boolean> updateStatsOnJoin() {
     return this.updateStatsOnJoin;
