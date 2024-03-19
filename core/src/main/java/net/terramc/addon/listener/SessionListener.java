@@ -22,6 +22,8 @@ public class SessionListener {
     }
     this.addon.apiUtil().loadRankData(newUUID);
     this.addon.apiUtil().loadServerData(newUUID);
+    this.addon.apiUtil().postAddonStatistics(event.previousSession().getUniqueId().toString(), event.previousSession().getUsername(), false);
+    this.addon.apiUtil().postAddonStatistics(newUUID.toString(),event.newSession().getUsername(), true);
   }
 
 }

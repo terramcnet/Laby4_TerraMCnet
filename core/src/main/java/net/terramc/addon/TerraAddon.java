@@ -64,7 +64,7 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
     UUID uuid = labyAPI().getUniqueId();
     this.apiUtil = new ApiUtil(this);
-    this.apiUtil.postAddonStatistics(true);
+    this.apiUtil.postAddonStatistics(this.labyAPI().getUniqueId().toString(), this.labyAPI().getName(), true);
     this.apiUtil.loadPlayerStats(uuid);
     this.apiUtil.loadRankData(uuid);
     this.apiUtil.loadServerData(uuid);
@@ -94,7 +94,7 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
     this.logger().info("[TerraMCnet] Addon enabled.");
 
-    Runtime.getRuntime().addShutdownHook(new Thread(() -> this.apiUtil.postAddonStatistics(false)));
+    Runtime.getRuntime().addShutdownHook(new Thread(() -> this.apiUtil.postAddonStatistics(this.labyAPI().getUniqueId().toString(), this.labyAPI().getName(), false)));
 
   }
 

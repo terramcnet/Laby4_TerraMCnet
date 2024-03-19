@@ -87,13 +87,13 @@ public class ApiUtil {
         });
   }
 
-  public void postAddonStatistics(boolean insert) {
+  public void postAddonStatistics(String uuid, String playerName, boolean insert) {
     HashMap<String, String> body = new HashMap<>();
     if(this.addon.labyAPI().getUniqueId() == null) return;
     if(insert) {
       body.put("request", "insertAddonStatistics");
-      body.put("uuid", this.addon.labyAPI().getUniqueId().toString());
-      body.put("userName", this.addon.labyAPI().getName());
+      body.put("uuid", uuid);
+      body.put("userName", playerName);
       body.put("addonVersion", this.addon.addonInfo().getVersion());
       body.put("gameVersion", this.addon.labyAPI().minecraft().getVersion());
     } else {
@@ -105,7 +105,9 @@ public class ApiUtil {
         .url(BASE_URL + "stats")
         .method(Method.POST)
         .body(body)
-        .execute(response -> {});
+        .execute(response -> {
+          this.addon.logger().info(response.getHeaders().toString());
+        });
   }
 
   public void loadServerData(UUID uuid) {
