@@ -37,11 +37,6 @@ public class AddonData {
   private static String onlineTime = null;
   private static int joins = 0;
 
-  // Staff - Functions
-
-  private static boolean vanish = false;
-  private static boolean autoVanish = false;
-
   private static boolean rankToggled = false;
 
   // Game - Functions

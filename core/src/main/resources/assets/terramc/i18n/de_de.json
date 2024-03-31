@@ -4,10 +4,6 @@
       "terramc": {
         "name": "TerraMC",
         "description": "Zeigt dir Informationen für TerraMC"
-      },
-      "terramc_staff": {
-        "name": "TerraMC - Team",
-        "description": "Zeigt dir Informationen für TerraMC - Teammitglieder"
       }
     }
   },
@@ -87,29 +83,12 @@
           "stats": "Ein Fehler beim laden deiner Statistiken ist aufgetreten.",
           "data": "Ein Fehler beim laden der Daten ist aufgetreten.",
           "general": "Die Daten können aufgrund eines API-Fehlers nicht geladen werden.",
-          "serverStats": "Ein Fehler beim laden der Server-Stats ist aufgetreten.",
           "reason": "Grund"
         }
       },
       "success": {
         "title": "§7§l§o▎§8§l§o▏ §2TerraMC",
         "stats-updated": "Deine Statistiken wurden erfolgreich aktualisiert."
-      },
-      "cloud": {
-        "error": {
-          "title": "§7§l§o▎§8§l§o▏ §4Cloud-Steuerung",
-          "parameter": "Parameter Fehler",
-          "notAuthorized": "User nicht autorisiert",
-          "groupNotFound": "Gruppe existiert nicht",
-          "unknown": "Unbekannter Fehler (%s)"
-        },
-        "success": {
-          "title": "§7§l§o▎§8§l§o▏ §aCloud-Steuerung"
-        }
-      },
-      "other": {
-        "tag-disabled": "%s hat seinen Team-Tag deaktiviert.",
-        "tag-enabled": "%s hat seinen Team-Tag aktiviert."
       }
     },
 
@@ -147,33 +126,7 @@
         "noAccess": "Du bist nicht berechtigt um diese Seite zu sehen.",
         "connect": "Verbinden"
       },
-      "staff": {
-        "cloudNotify": {
-          "title": "Cloud-Benachrichtigung",
-          "description": "Lege fest wie die Server start/stop Benachrichtigungen der Cloud angezeigt werden sollen.",
-          "chat": "Chat",
-          "notification": "Laby-Benachrichtigung",
-          "hide": "Verstecken"
-        },
-        "showTagAlways": {
-          "title": "Team-Nametags immer anzeigen",
-          "description": "Zeigt Tags von Teammitgliedern auch wenn diese genickt oder im ToggleRank sind."
-        },
-        "hideTag": {
-          "title": "Eigenen Team-Nametag verstecken",
-          "description": "Verstecke deinen eigenen Team-Nametag vor anderen Spielern"
-        },
-        "settings": {
-          "title": "§eEinstellungen",
-          "change": "%s wurde zu %s geändert.",
-          "enabled": "§aAktiviert",
-          "disabled": "§cDeaktiviert"
-        }
-      },
       "activity": {
-        "serverInfo": "Server-Info",
-        "staff": "Team",
-        "cloud": "Cloud",
         "overview": {
           "title": "Übersicht",
           "rank": "Rang",

@@ -4,10 +4,6 @@
       "terramc": {
         "name": "TerraMC",
         "description": "Shows you information for TerraMC"
-      },
-      "terramc_staff": {
-        "name": "TerraMC - Staff",
-        "description": "Shows you information for TerraMC - Staff"
       }
     }
   },
@@ -87,29 +83,12 @@
           "stats": "An error occurred while loading your stats.",
           "data": "An error occurred while loading the data.",
           "general": "The data could not be loaded due to an API error.",
-          "serverStats": "An error occurred while loading the server stats.",
           "reason": "Reason"
         }
       },
       "success": {
         "title": "§7§l§o▎§8§l§o▏ §2TerraMC",
         "stats-updated": "Your stats has been successfully updated."
-      },
-      "cloud": {
-        "error": {
-          "title": "§7§l§o▎§8§l§o▏ §4Cloud-Control",
-          "parameter": "Parameter error",
-          "notAuthorized": "User is not authorized",
-          "groupNotFound": "Group was not found",
-          "unknown": "Unknown error (%s)"
-        },
-        "success": {
-          "title": "§7§l§o▎§8§l§o▏ §aCloud-Control"
-        }
-      },
-      "other": {
-        "tag-disabled": "%s has disabled his Staff-Tag.",
-        "tag-enabled": "%s has enabled his Staff-Tag."
       }
     },
 	
@@ -147,33 +126,7 @@
         "noAccess": "You have no access to this site.",
         "connect": "Connect"
       },
-      "staff": {
-        "cloudNotify": {
-          "title": "Cloud-Notifications",
-          "description": "Define how the server start/stop notifications of the cloud should be displayed.",
-          "chat": "Chat",
-          "notification": "Laby-Notification",
-          "hide": "Hide"
-        },
-        "showTagAlways": {
-          "title": "Show Staff-Nametags always",
-          "description": "Shows team members' tags even if they are nicked or in ToggleRank."
-        },
-        "hideTag": {
-          "title": "Hide own Staff-Nametag",
-          "description": "Hide your Staff Nametag from other players"
-        },
-        "settings": {
-          "title": "§eSettings",
-          "change": "%s has been changed to §6%s",
-          "enabled": "§aEnabled",
-          "disabled": "§cDisabled"
-        }
-      },
       "activity": {
-        "serverInfo": "Server-Info",
-        "staff": "Staff",
-        "cloud": "Cloud",
         "overview": {
           "title": "Overview",
           "rank": "Rank",

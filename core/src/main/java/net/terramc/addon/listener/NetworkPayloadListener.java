@@ -10,7 +10,6 @@ import net.labymod.serverapi.protocol.payload.exception.PayloadReaderException;
 import net.labymod.serverapi.protocol.payload.io.PayloadReader;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
-import net.terramc.addon.data.ServerData;
 import java.util.UUID;
 
 public class NetworkPayloadListener {
@@ -54,7 +53,6 @@ public class NetworkPayloadListener {
           }
           if(object.has("playerRank")) {
             AddonData.setRank(object.get("playerRank").getAsString());
-            this.addon.terraMainActivity.updateStaffActivity();
           }
           if(object.has("joinedRound")) {
             AddonData.setInRound(object.get("joinedRound").getAsBoolean());
@@ -64,24 +62,6 @@ public class NetworkPayloadListener {
           }
           if(object.has("playerJoins")) {
             AddonData.setJoins(object.get("playerJoins").getAsInt());
-          }
-
-          // Staff
-
-          if(object.has("serverTPS")) {
-            ServerData.setServerTps(object.get("serverTPS").getAsString());
-          }
-          if(object.has("serverCpuUsage")) {
-            ServerData.setCpuUsage(object.get("serverCpuUsage").getAsString());
-          }
-          if(object.has("serverHeapUsage")) {
-            ServerData.setRamUsage(object.get("serverHeapUsage").getAsString());
-          }
-          if(object.has("restartTime")) {
-            ServerData.setRestartTime(object.get("restartTime").getAsString());
-          }
-          if(object.has("authKey")) {
-            this.addon.apiUtil().authKey = object.get("authKey").getAsString();
           }
 
           if(object.has("toggleRank")) {

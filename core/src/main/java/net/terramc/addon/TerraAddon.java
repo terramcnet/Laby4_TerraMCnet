@@ -13,7 +13,7 @@ import net.labymod.api.models.addon.annotation.AddonMain;
 import net.labymod.api.notification.Notification;
 import net.labymod.api.notification.Notification.Type;
 import net.labymod.api.util.GsonUtil;
-import net.terramc.addon.activities.TerraMainActivity;
+import net.terramc.addon.activities.navigation.TerraMainActivity;
 import net.terramc.addon.activities.navigation.TerraNavigationElement;
 import net.terramc.addon.group.TerraGroupIconTag;
 import net.terramc.addon.group.TerraGroupTextTag;
@@ -67,7 +67,6 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     this.apiUtil.postAddonStatistics(this.labyAPI().getUniqueId().toString(), this.labyAPI().getName(), true);
     this.apiUtil.loadPlayerStats(uuid);
     this.apiUtil.loadRankData(uuid);
-    this.apiUtil.loadServerData(uuid);
 
     this.registerListener(new ChatMessageListener(this));
     this.registerListener(new NetworkListener(this));

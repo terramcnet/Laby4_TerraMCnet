@@ -21,8 +21,6 @@ public class SessionListener {
       PlayerStats.updateCoolDown = System.currentTimeMillis();
     }
     this.addon.apiUtil().loadRankData(newUUID);
-    this.addon.apiUtil().loadServerData(newUUID);
-    this.addon.apiUtil().authKey = "NA";
     this.addon.apiUtil().postAddonStatistics(event.previousSession().getUniqueId().toString(), event.previousSession().getUsername(), false);
     this.addon.apiUtil().postAddonStatistics(newUUID.toString(),event.newSession().getUsername(), true);
   }

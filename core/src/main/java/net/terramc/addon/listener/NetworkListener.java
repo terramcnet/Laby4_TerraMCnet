@@ -38,7 +38,6 @@ public class NetworkListener {
       AddonData.resetValues();
       UUID uuid = Laby.references().gameUserService().clientGameUser().getUniqueId();
       this.addon.apiUtil().loadRankData(uuid);
-      this.addon.apiUtil().loadServerData(uuid);
 
       if(this.addon.configuration().updateStatsOnJoin().get()) {
         long remaining = (PlayerStats.updateCoolDown + PlayerStats.updateTime - System.currentTimeMillis());

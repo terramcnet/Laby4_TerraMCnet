@@ -49,8 +49,7 @@ public class TerraGroupTextTag extends NameTag {
   }
 
   private TerraGroup visibleGroup(Entity entity) {
-    if(!(entity instanceof Player)) return null;
-    Player player = (Player) entity;
+    if(!(entity instanceof Player player)) return null;
     if(player.getUniqueId() == null) return null;
     if(!this.addon.configuration().enabled().get()) return null;
     if(!(this.addon.configuration().nameTagConfiguration.enabled().get() & this.addon.configuration().nameTagConfiguration.showTag().get())) return null;

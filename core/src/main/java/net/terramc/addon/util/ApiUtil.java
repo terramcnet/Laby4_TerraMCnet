@@ -4,7 +4,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.util.HashMap;
 import java.util.UUID;
-import net.labymod.api.Laby;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.TextColor;
 import net.labymod.api.util.I18n;
@@ -12,81 +11,18 @@ import net.labymod.api.util.io.web.request.Request;
 import net.labymod.api.util.io.web.request.Request.Method;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
-import net.terramc.addon.data.ServerData;
 import net.terramc.addon.group.TerraGroup;
 import net.terramc.addon.util.PlayerStats.Stats;
 
 public class ApiUtil {
 
   private TerraAddon addon;
-  public String authKey = "NA";
 
   public ApiUtil(TerraAddon addon) {
     this.addon = addon;
   }
 
   private static String BASE_URL = "http://api.terramc.net/";
-
-  /*public void postStaffSetting(UUID uuid, String type, Object value) {
-    if(!this.addon.rankUtil().isStaff()) return;
-
-    HashMap<String, String> body = new HashMap<>();
-    body.put("req", "staffSetting");
-    body.put("uuid", uuid.toString());
-    body.put("type", type);
-    body.put("value", "" + value);
-
-    Request.ofString()
-        .url(BASE_URL + "staff")
-        .method(Method.POST)
-        .body(body)
-        .execute(response -> {
-          if(response.getStatusCode() != 200) {
-            this.addon.pushNotification(Component.translatable("terramc.notification.error.title"),
-                Component.translatable("terramc.notification.cloud.error.unknown", Component.text(response.getStatusCode())).color(
-                    TextColor.color(255, 85, 85)));
-            return;
-          }
-          this.addon.pushNotification(Component.text(TerraAddon.doubleLine + " ").append(Component.translatable("terramc.ui.staff.settings.title")),
-              Component.text("§eAPI §8- §aEinstellung wurde gespeichert."));
-        });
-  }*/
-
-  // actions = [restart, maintenance]
-  public void sendCloudControl(UUID uuid, String action, String group) {
-    if(!this.addon.rankUtil().canControlCloud()) return;
-
-    Request.ofString()
-        .url("http://45.88.108.143:3610/cloud?uuid="+uuid+"&auth="+authKey+"&action="+action+"&group="+group)
-        .async()
-        .execute(response -> {
-          if(response.getStatusCode() == 400) {
-            this.addon.pushNotification(Component.translatable("terramc.notification.cloud.error.title"),
-                Component.translatable("terramc.notification.cloud.error.parameter").color(
-                    TextColor.color(255, 85, 85)));
-            return;
-          }
-          if(response.getStatusCode() == 401) {
-            this.addon.pushNotification(Component.translatable("terramc.notification.cloud.error.title"),
-                Component.translatable("terramc.notification.cloud.error.notAuthorized").color(
-                    TextColor.color(255, 85, 85)));
-            return;
-          }
-          if(response.getStatusCode() == 404) {
-            this.addon.pushNotification(Component.translatable("terramc.notification.cloud.error.title"),
-                Component.translatable("terramc.notification.cloud.error.groupNotFound").color(
-                    TextColor.color(255, 85, 85)));
-            return;
-          }
-          if(response.getStatusCode() != 200) {
-            this.addon.pushNotification(Component.translatable("terramc.notification.cloud.error.title"),
-                Component.translatable("terramc.notification.cloud.error.unknown", Component.text(response.getStatusCode())).color(
-                    TextColor.color(255, 85, 85)));
-            return;
-          }
-          this.addon.pushNotification(Component.translatable("terramc.notification.cloud.success.title"), Component.text("§e" + response.get()));
-        });
-  }
 
   public void postAddonStatistics(String uuid, String playerName, boolean insert) {
     HashMap<String, String> body = new HashMap<>();
@@ -111,35 +47,6 @@ public class ApiUtil {
         });
   }
 
-  public void loadServerData(UUID uuid) {
-    Request.ofGson(JsonObject.class)
-        .url(BASE_URL + "staff?req=serverData&uuid="+uuid)
-        .async()
-        .execute(response -> {
-          if(response.getStatusCode() != 200) {
-            if(response.getStatusCode() == 401) return;
-            this.addon.pushNotification(Component.translatable("terramc.notification.error.title"),
-                Component.translatable("terramc.notification.error.api.serverStats").color(
-                    TextColor.color(255, 85, 85)));
-            return;
-          }
-          JsonObject jsonObject = response.get();
-
-          ServerData.Information.setRegisteredPlayers(jsonObject.get("registeredPlayers").getAsInt());
-
-          if(jsonObject.has("serverStats")) {
-            JsonObject serverStats = jsonObject.get("serverStats").getAsJsonObject();
-            ServerData.Information.setMaxPlayers(serverStats.get("maxPlayers").getAsInt());
-            ServerData.Information.setMaxPlayersToday(serverStats.get("maxPlayersToday").getAsInt());
-            ServerData.Information.setVotes(serverStats.get("votes").getAsInt());
-          }
-          if(jsonObject.has("groupStats")) {
-            ServerData.Information.setMaxPlayerData(jsonObject.get("groupStats").getAsString().replace("&", "§"));
-          }
-
-        });
-  }
-
   public void loadRankData(UUID playerUuid) {
     AddonData.getToggleRankMap().clear();
     AddonData.getStaffRankMap().clear();
@@ -160,8 +67,6 @@ public class ApiUtil {
           JsonObject global = jsonObject.get("Global").getAsJsonObject();
 
           AddonData.setRank(global.get("Rank").getAsString());
-
-          Laby.labyAPI().minecraft().executeOnRenderThread(() -> addon.terraMainActivity.updateStaffActivity());
 
           JsonArray rankArray = jsonObject.get("Ranks").getAsJsonArray();
           for(int i = 0; i < rankArray.size(); i++) {
