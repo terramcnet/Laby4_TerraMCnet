@@ -19,6 +19,7 @@ public class TerraNameTagConfiguration extends Config {
   @SettingSection(value = "general", center = true)
 
   @ParentSwitch
+  @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
   @SpriteSlot()
