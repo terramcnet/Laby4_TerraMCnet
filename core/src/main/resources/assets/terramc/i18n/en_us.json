@@ -38,6 +38,9 @@
             "name": "Tag Customization"
           }
         },
+        "enabled": {
+          "name": "Enable Tags"
+        },
         "showTag": {
           "name": "Show Text-Tag",
           "description": "Displays the Rank of a staff member above their name."

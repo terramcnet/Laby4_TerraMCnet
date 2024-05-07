@@ -5,7 +5,6 @@ import net.labymod.api.client.gui.screen.widget.widgets.input.color.ColorPickerW
 import net.labymod.api.client.gui.screen.widget.widgets.input.dropdown.DropdownWidget.DropdownEntryTranslationPrefix;
 import net.labymod.api.client.gui.screen.widget.widgets.input.dropdown.DropdownWidget.DropdownSetting;
 import net.labymod.api.configuration.loader.Config;
-import net.labymod.api.configuration.loader.annotation.ParentSwitch;
 import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.labymod.api.configuration.loader.annotation.SpriteTexture;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
@@ -18,7 +17,7 @@ public class TerraNameTagConfiguration extends Config {
 
   @SettingSection(value = "general", center = true)
 
-  @ParentSwitch
+  @SpriteSlot(x = 3)
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
