@@ -42,9 +42,7 @@ public class ApiUtil {
         .url(BASE_URL + "stats")
         .method(Method.POST)
         .body(body)
-        .execute(response -> {
-          this.addon.logger().info(response.getHeaders().toString());
-        });
+        .execute(response -> {});
   }
 
   public void loadRankData(UUID playerUuid) {
