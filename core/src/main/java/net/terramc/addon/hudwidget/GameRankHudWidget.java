@@ -36,8 +36,8 @@ public class GameRankHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   }
 
   private void updateTextLine() {
-    this.textLine.updateAndFlush(AddonData.getGameRank());
-    this.textLine.setState(this.addon.configuration().enabled().get() & this.addon.isConnected() ? State.VISIBLE : State.HIDDEN);
+    this.textLine.updateAndFlush(AddonData.getGameRank() == null ? "#0" : AddonData.getGameRank());
+    this.textLine.setState(this.addon.configuration().enabled().get() && this.addon.isConnected() && AddonData.getGameRank() != null ? State.VISIBLE : State.HIDDEN);
   }
 
 }

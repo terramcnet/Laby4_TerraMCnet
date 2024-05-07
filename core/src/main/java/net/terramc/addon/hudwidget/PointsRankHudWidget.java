@@ -36,8 +36,8 @@ public class PointsRankHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   }
 
   private void updateTextLine() {
-    this.textLine.updateAndFlush(AddonData.getPointsRank());
-    this.textLine.setState(this.addon.configuration().enabled().get() & this.addon.isConnected() ? State.VISIBLE : State.HIDDEN);
+    this.textLine.updateAndFlush(AddonData.getPointsRank() == null ? "#0" : AddonData.getPointsRank());
+    this.textLine.setState(this.addon.configuration().enabled().get() && this.addon.isConnected() && AddonData.getPointsRank() != null ? State.VISIBLE : State.HIDDEN);
   }
 
 

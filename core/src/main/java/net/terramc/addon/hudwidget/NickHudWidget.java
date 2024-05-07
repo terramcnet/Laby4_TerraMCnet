@@ -34,10 +34,8 @@ public class NickHudWidget extends TextHudWidget<TextHudWidgetConfig> {
   }
 
   private void updateTextLine() {
-    if(AddonData.getNickName() != null) {
-      this.textLine.updateAndFlush(AddonData.getNickName());
-    }
-    this.textLine.setState(AddonData.getNickName() != null & this.addon.configuration().enabled().get() & this.addon.isConnected() ? State.VISIBLE : State.HIDDEN);
+    this.textLine.updateAndFlush(AddonData.getNickName() == null ? "N/A" : AddonData.getNickName());
+    this.textLine.setState(this.addon.configuration().enabled().get() && this.addon.isConnected() && AddonData.getNickName() != null ? State.VISIBLE : State.HIDDEN);
   }
 
 }

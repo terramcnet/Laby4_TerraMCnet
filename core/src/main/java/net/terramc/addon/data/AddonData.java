@@ -27,10 +27,10 @@ public class AddonData {
 
   // Normal - Functions
 
-  private static String gameRank = "#0";
+  private static String gameRank = null;
   private static int coins = 0;
   private static int points = 0;
-  private static String pointsRank = "#0";
+  private static String pointsRank = null;
 
   private static String rank = "Spieler";
 
@@ -53,8 +53,8 @@ public class AddonData {
     ggSent = false;
     bedWarsGame = null;
     spectator = false;
-    gameRank = "#0";
-    pointsRank = "#0";
+    gameRank = null;
+    pointsRank = null;
   }
 
   public static String getRank() {

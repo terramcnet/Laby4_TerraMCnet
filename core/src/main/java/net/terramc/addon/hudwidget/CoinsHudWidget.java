@@ -36,7 +36,7 @@ public class CoinsHudWidget extends TextHudWidget<TextHudWidgetConfig> {
 
   private void updateTextLine() {
     this.textLine.updateAndFlush(Util.format(AddonData.getCoins()));
-    this.textLine.setState(this.addon.configuration().enabled().get() & this.addon.isConnected() ? State.VISIBLE : State.HIDDEN);
+    this.textLine.setState(this.addon.configuration().enabled().get() && this.addon.isConnected() && AddonData.getCoins() > 0 ? State.VISIBLE : State.HIDDEN);
   }
 
 }

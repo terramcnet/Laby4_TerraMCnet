@@ -36,7 +36,7 @@ public class PointsHudWidget extends TextHudWidget<TextHudWidgetConfig> {
 
   private void updateTextLine() {
     this.textLine.updateAndFlush(Util.format(AddonData.getPoints()));
-    this.textLine.setState(this.addon.configuration().enabled().get() & this.addon.isConnected() ? State.VISIBLE : State.HIDDEN);
+    this.textLine.setState(this.addon.configuration().enabled().get() && this.addon.isConnected() && AddonData.getPoints() > 0 ? State.VISIBLE : State.HIDDEN);
   }
 
 }
