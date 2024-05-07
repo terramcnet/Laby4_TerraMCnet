@@ -25,15 +25,10 @@ public class NickHudWidget extends TextHudWidget<TextHudWidgetConfig> {
     super.load(config);
     this.bindCategory(TerraAddon.TERRA);
     this.textLine = createLine("NickName", "N/A");
-    updateTextLine();
   }
 
   @Override
   public void onTick(boolean isEditorContext) {
-    updateTextLine();
-  }
-
-  private void updateTextLine() {
     this.textLine.updateAndFlush(AddonData.getNickName() == null ? "N/A" : AddonData.getNickName());
     this.textLine.setState(this.addon.configuration().enabled().get() && this.addon.isConnected() && AddonData.getNickName() != null ? State.VISIBLE : State.HIDDEN);
   }

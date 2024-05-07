@@ -27,15 +27,10 @@ public class GameRankHudWidget extends TextHudWidget<TextHudWidgetConfig> {
     super.load(config);
     this.bindCategory(TerraAddon.TERRA);
     this.textLine = createLine("Ranking", "#0");
-    updateTextLine();
   }
 
   @Override
   public void onTick(boolean isEditorContext) {
-    updateTextLine();
-  }
-
-  private void updateTextLine() {
     this.textLine.updateAndFlush(AddonData.getGameRank() == null ? "#0" : AddonData.getGameRank());
     this.textLine.setState(this.addon.configuration().enabled().get() && this.addon.isConnected() && AddonData.getGameRank() != null ? State.VISIBLE : State.HIDDEN);
   }

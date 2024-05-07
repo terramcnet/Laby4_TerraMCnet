@@ -27,18 +27,12 @@ public class PointsRankHudWidget extends TextHudWidget<TextHudWidgetConfig> {
     super.load(config);
     this.bindCategory(TerraAddon.TERRA);
     this.textLine = createLine("Punkte-Rang", "#0");
-    updateTextLine();
   }
 
   @Override
   public void onTick(boolean isEditorContext) {
-    updateTextLine();
-  }
-
-  private void updateTextLine() {
     this.textLine.updateAndFlush(AddonData.getPointsRank() == null ? "#0" : AddonData.getPointsRank());
     this.textLine.setState(this.addon.configuration().enabled().get() && this.addon.isConnected() && AddonData.getPointsRank() != null ? State.VISIBLE : State.HIDDEN);
   }
-
 
 }
