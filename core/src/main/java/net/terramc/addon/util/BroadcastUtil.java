@@ -13,21 +13,6 @@ public class BroadcastUtil {
     this.addon = addon;
   }
 
-  public void sendStaffTag() {
-    LabyConnectSession session = this.addon.labyAPI().labyConnect().getSession();
-    if(session == null) return;
-
-    if(this.addon.rankUtil().isStaff()) {
-      JsonObject data = new JsonObject();
-      data.addProperty("uuid", Laby.labyAPI().getUniqueId().toString());
-      data.addProperty("userName", Laby.labyAPI().getName());
-
-      JsonObject object = new JsonObject();
-      object.add(this.addon.configuration().hideOwnTag().get() ? "hideTag" : "showTag", data);
-      session.sendBroadcastPayload("terra-group-tag", object);
-    }
-  }
-
   public void sendUserTag() {
     LabyConnectSession session = this.addon.labyAPI().labyConnect().getSession();
     if(session == null) return;

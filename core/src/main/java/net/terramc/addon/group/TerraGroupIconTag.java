@@ -46,7 +46,6 @@ public class TerraGroupIconTag extends IconTag {
 
   private boolean shouldHide(Player player) {
     if(this.addon.isConnected()) {
-      if(this.addon.rankUtil().isAdmin() && this.addon.configuration().showTagAlways().get()) return false;
       return AddonData.getToggleRankMap().containsKey(player.profile().getUniqueId()) ||
           AddonData.getNickedMap().containsKey(player.profile().getUniqueId()) ||
           AddonData.getShouldHideTag().contains(player.profile().getUniqueId());

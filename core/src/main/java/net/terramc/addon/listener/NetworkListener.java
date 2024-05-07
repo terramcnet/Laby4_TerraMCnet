@@ -27,10 +27,7 @@ public class NetworkListener {
   @Subscribe
   public void onNetworkLogin(ServerLoginEvent event) {
 
-    Task.builder(() -> {
-      this.addon.broadcastUtil().sendStaffTag();
-      this.addon.broadcastUtil().sendUserTag();
-    }).delay(3, TimeUnit.SECONDS).build().execute();
+    Task.builder(() -> this.addon.broadcastUtil().sendUserTag()).delay(3, TimeUnit.SECONDS).build().execute();
 
     if(!this.addon.configuration().enabled().get()) return;
     if(event.serverData().actualAddress().matches("terramc.net", 25565, true)) {
@@ -55,10 +52,7 @@ public class NetworkListener {
 
   @Subscribe
   public void onPlayerInfoAdd(PlayerInfoAddEvent event) {
-    Task.builder(() -> {
-      this.addon.broadcastUtil().sendStaffTag();
-      this.addon.broadcastUtil().sendUserTag();
-    }).delay(3, TimeUnit.SECONDS).build().execute();
+    Task.builder(() -> this.addon.broadcastUtil().sendUserTag()).delay(3, TimeUnit.SECONDS).build().execute();
   }
 
   @Subscribe
