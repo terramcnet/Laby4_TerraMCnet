@@ -39,6 +39,8 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
   public static final HudWidgetCategory TERRA = new HudWidgetCategory("terramc");
 
+  private static TerraAddon instance;
+
   public TerraMainActivity terraMainActivity;
 
   private ApiUtil apiUtil;
@@ -55,6 +57,7 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
   protected void enable() {
     this.registerSettingCategory();
 
+    instance = this;
     this.gson = GsonUtil.DEFAULT_GSON;
 
     this.terraMainActivity = new TerraMainActivity(this);
@@ -118,6 +121,10 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
   @Override
   protected Class<TerraConfiguration> configurationClass() {
     return TerraConfiguration.class;
+  }
+
+  public static TerraAddon instance() {
+    return instance;
   }
 
   public Gson gson() {
