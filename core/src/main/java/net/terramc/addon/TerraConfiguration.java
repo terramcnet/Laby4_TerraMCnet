@@ -1,6 +1,8 @@
 package net.terramc.addon;
 
 import net.labymod.api.addon.AddonConfig;
+import net.labymod.api.client.gui.screen.key.Key;
+import net.labymod.api.client.gui.screen.widget.widgets.input.KeybindWidget.KeyBindSetting;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.SwitchSetting;
 import net.labymod.api.configuration.loader.annotation.ConfigName;
 import net.labymod.api.configuration.loader.annotation.SpriteSlot;
@@ -26,6 +28,10 @@ public class TerraConfiguration extends AddonConfig {
   @SwitchSetting
   private final ConfigProperty<Boolean> updateStatsOnJoin = new ConfigProperty<>(false);
 
+  @SpriteSlot(x = 4)
+  @KeyBindSetting
+  private final ConfigProperty<Key> uiHotKey = new ConfigProperty<>(Key.NONE);
+
   @SettingSection(value = "premium", center = true)
 
   @SpriteSlot(x = 2)
@@ -40,6 +46,10 @@ public class TerraConfiguration extends AddonConfig {
 
   public ConfigProperty<Boolean> updateStatsOnJoin() {
     return this.updateStatsOnJoin;
+  }
+
+  public ConfigProperty<Key> uiHotKey() {
+    return uiHotKey;
   }
 
   public ConfigProperty<Boolean> enableAutoGG() {

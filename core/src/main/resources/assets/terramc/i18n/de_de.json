@@ -23,9 +23,9 @@
         "name": "Aktiviert",
         "description": "Soll das Addon aktiviert sein"
       },
-      "sendStatistics": {
-        "name": "Statistiken senden",
-        "description": "Sende Statistiken wie deine UUID, dein Benutzername, die aktuelle Addon-Version und die aktuell genutzte Minecraft Version an TerraMC.net"
+      "uiHotKey": {
+        "name": "UI Hotkey",
+        "description": "Öffne die Terra UI mit einem Hotkey"
       },
       "nameTagConfiguration": {
         "name": "Tag Einstellungen",

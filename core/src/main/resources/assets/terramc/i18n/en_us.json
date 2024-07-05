@@ -23,9 +23,9 @@
         "name": "Enabled",
         "description": "Should the Addon be enabled"
       },
-      "sendStatistics": {
-        "name": "Send Statistics",
-        "description": "Send statistics such as your UUID, your username, the current addon version and the currently used Minecraft version to TerraMC.net"
+      "uiHotKey": {
+        "name": "UI Hotkey",
+        "description": "Open the Terra UI with a Hotkey"
       },
       "nameTagConfiguration": {
         "name": "Tag Settings",
