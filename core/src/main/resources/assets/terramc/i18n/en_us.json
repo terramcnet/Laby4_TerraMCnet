@@ -28,7 +28,7 @@
         "description": "Send statistics such as your UUID, your username, the current addon version and the currently used Minecraft version to TerraMC.net"
       },
       "nameTagConfiguration": {
-        "name": "Show NameTags",
+        "name": "Tag Settings",
         "description": "Displays the Rank of Staff members and other addon users.",
         "header": {
           "general": {
