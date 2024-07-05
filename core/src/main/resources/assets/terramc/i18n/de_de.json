@@ -144,7 +144,7 @@
         },
         "stats": {
           "title": "Statistiken",
-          "updateButton": "§aAktualisieren",
+          "updateButton": "Aktualisieren",
           "kills": "Kills",
           "deaths": "Tode",
           "kd": "K/D",

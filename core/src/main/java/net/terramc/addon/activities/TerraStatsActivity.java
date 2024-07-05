@@ -2,6 +2,7 @@ package net.terramc.addon.activities;
 
 import net.labymod.api.Laby;
 import net.labymod.api.client.component.Component;
+import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.component.format.TextColor;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.mouse.MutableMouse;
@@ -36,7 +37,8 @@ public class TerraStatsActivity extends Activity {
   public void initialize(Parent parent) {
     super.initialize(parent);
 
-    ButtonWidget updateButton = ButtonWidget.text(I18n.translate("terramc.ui.activity.stats.updateButton"),
+    ButtonWidget updateButton = ButtonWidget.component(Component.translatable("terramc.ui.activity.stats.updateButton",
+            NamedTextColor.GREEN),
         Icon.texture(ResourceLocation.create("terramc", "textures/ui/update.png")));
     updateButton.addId("stats-update-btn");
     updateButton.setActionListener(() -> {
