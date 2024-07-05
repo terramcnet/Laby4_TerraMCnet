@@ -1,0 +1,167 @@
+{
+  "labymod": {
+    "hudWidgetCategory": {
+      "terramc": {
+        "name": "TerraMC",
+        "description": "Zeigt dir Informatione über TerraMC"
+      }
+    }
+  },
+  "terramc": {
+    "settings": {
+      "name": "TerraMCnet",
+      "header": {
+        "general": {
+          "name": "§7§l§o▎§8§l§o▏ §7Allgemeini Funktione"
+        },
+        "premium": {
+          "name": "§7§l§o▎§8§l§o▏ §6Premium Funktione"
+        }
+      },
+      "enabled": {
+        "name": "§7» §fAktiviert",
+        "description": "Söll das Addon aktiviert sii"
+      },
+      "uiHotKey": {
+        "name": "UI Hotkey",
+        "description": "Öffne Terra GUI mit eim Hotkey"
+      },
+      "nameTagConfiguration": {
+        "name": "Tag Iistellige",
+        "description": "Zeigt de Rang vonerem Teammitglied a.",
+        "header": {
+          "general": {
+            "name": "Tag Istellige"
+          },
+          "customization": {
+            "name": "Tag Apasse"
+          }
+        },
+        "enabled": {
+          "name": "Tags aktiviert"
+        },
+        "showTag": {
+          "name": "Text-Tag azeige",
+          "description": "Zeigt de Rang vomene Teammitglied überem Name a."
+        },
+        "showIconTag": {
+          "name": "Icon-Tag azeige",
+          "description": "Zeigt das TerraMC-Logo neben dem Namen von Teammitgliedern oder anderen Addon Nutzern an."
+        },
+        "showIconInTab": {
+          "name": "Icon in Tablist azeige",
+          "description": "Zeigt das TerraMC-Logo vor dem Namen von Teammitgliedern oder anderen Addon Nutzer in der Tablist an."
+        },
+        "nameTagColor": {
+          "name": "Farb vom Text-Tag",
+          "description": "Änderet dFarb vom 'TERRAMC' Text im Text-Tag"
+        },
+        "textDecoration": {
+          "name": "Text-Dekoration",
+          "description": "Passe den Style des 'TERRAMC' Textes im Text-Tag an",
+          "none": "Kei",
+          "obfuscated": "Verschleiert",
+          "bold": "Fett",
+          "strikethrough": "Duregstriche",
+          "underlined": "Unterstriche",
+          "italic": "Schreg"
+        }
+      },
+      "updateStatsOnJoin": {
+        "name": "Stats bim Joine aktualisiere",
+        "description": "Wenn aktiviert, werden dini Stats aktualisiert, wenn du uf TerraMC.net joinsch."
+      },
+      "enableAutoGG": {
+        "name": "AutoGG",
+        "description": "Sendet automatisch es 'GG' am Endi vonere Rundi in Chat."
+      }
+    },
+    "notification": {
+      "error": {
+        "title": "§7§l§o▎§8§l§o▏ §4TerraMC - Fehler",
+        "stats-coolDown": "Du chasch dini Statistike nur alli 5 Minute aktualisiere.",
+        "api": {
+          "stats": "En Fehler bim lade vo dine Statistike isch en Fehler uftrete.",
+          "data": "Bim lade vo de Date isch en Fehler uftrete.",
+          "general": "Die Date chönnd ufgrund vomene API-Fehler nid glade werde.",
+          "reason": "Grund"
+        }
+      },
+      "success": {
+        "title": "§7§l§o▎§8§l§o▏ §2TerraMC",
+        "stats-updated": "Dini Statistike sind erfolgrich glade worde."
+      }
+    },
+    "hudWidget": {
+      "nickname": {
+        "name": "NickName"
+      },
+      "coins": {
+        "name": "GCoins"
+      },
+      "points": {
+        "name": "GPoints"
+      },
+      "gameRank": {
+        "name": "Ranking"
+      },
+      "pointsRank": {
+        "name": "Punkte-Rang"
+      },
+      "ironTimer": {
+        "name": "Iise-Timer"
+      },
+      "goldTimer": {
+        "name": "Gold-Timer"
+      }
+    },
+    "ui": {
+      "navigation": {
+        "main_ui": "TerraMC"
+      },
+      "general": {
+        "noInfoAvailable": "Es chönd kei Informatione zur verfüegig gstellt werde.",
+        "connectToServer": "Bitte verbind dich uf TerraMC.net",
+        "noAccess": "Du bisch nid berechtigt zum die Siite ahluege.",
+        "connect": "Verbinde"
+      },
+      "activity": {
+        "overview": {
+          "title": "Übersicht",
+          "rank": "Rang",
+          "nickName": "Nickname",
+          "gameRank": "Spielmodus Rang",
+          "playTime": "Spillziit",
+          "networkJoined": "Netzwerk betrete",
+          "error": "Fehler",
+          "notNicked": "Nöd gnickt",
+          "notInGame": "Nid innere Rundi",
+          "noTime": "No kei Ziit erfasst"
+        },
+        "stats": {
+          "title": "Statistiken",
+          "updateButton": "Aktualisiere",
+          "kills": "Kills",
+          "deaths": "Tod",
+          "kd": "K/D",
+          "points": "Pünkt",
+          "played": "Gspielt",
+          "wins": "Gwunne",
+          "looses": "Verlore",
+          "levelRecord": "Level-Rekord",
+          "brokenBeds": "Abbauti Bett",
+          "brokenOres": "Abbauti Erz",
+          "bowls": "Schüssle",
+          "soups": "Suppe",
+          "apiResponse": {
+            "400": "Bad Request",
+            "401": "Source ist nicht bekannt",
+            "403": "Keine Addon Version übergeben",
+            "404": "Agfordete Spieler existiert nid",
+            "406": "Fehler bi de Verarbeitig! Bitte stell sicher, dass du die neust Addon Version hesch"
+          }
+        }
+      }
+    }
+  }
+}
