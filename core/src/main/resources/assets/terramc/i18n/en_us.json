@@ -7,7 +7,6 @@
       }
     }
   },
-  
   "terramc": {
     "settings": {
       "name": "TerraMCnet",
@@ -29,7 +28,7 @@
       },
       "nameTagConfiguration": {
         "name": "Tag Settings",
-        "description": "Displays the Rank of Staff members and other addon users.",
+        "description": "Displays the Rank of Staff members and other Addon users.",
         "header": {
           "general": {
             "name": "Tag Settings"
@@ -43,15 +42,15 @@
         },
         "showTag": {
           "name": "Show Text-Tag",
-          "description": "Displays the Rank of a staff member above their name."
+          "description": "Displays the Rank of a Staff member above their name."
         },
         "showIconTag": {
           "name": "Show Icon-Tag",
-          "description": "Displays the TerraMC Logo next to a staff member name or other addon users."
+          "description": "Displays the TerraMC Logo next to a staff member's name."
         },
         "showIconInTab": {
           "name": "Show Icon in Tablist",
-          "description": "Displays the TerraMC logo in front of a staff member or other addon users name in the tablist."
+          "description": "Displays the TerraMC logo in front of a team member's name in the tab list."
         },
         "nameTagColor": {
           "name": "Color of the Text-Tag",
@@ -73,28 +72,26 @@
         "description": "When enabled, your stats will get updated if you join on TerraMC.net."
       },
       "enableAutoGG": {
-        "name": "AutoGG",
+        "name": "§7» §fAutoGG",
         "description": "Sends automatically a 'GG' on the end of the round in the chat."
       }
     },
-	
     "notification": {
       "error": {
         "title": "§7§l§o▎§8§l§o▏ §4TerraMC - Error",
         "stats-coolDown": "You can only update your stats every 5 minutes.",
         "api": {
           "stats": "An error occurred while loading your stats.",
-          "data": "An error occurred while loading the data.",
+          "data": "An error occurred while loading your data.",
           "general": "The data could not be loaded due to an API error.",
           "reason": "Reason"
         }
       },
       "success": {
         "title": "§7§l§o▎§8§l§o▏ §2TerraMC",
-        "stats-updated": "Your stats has been successfully updated."
+        "stats-updated": "§aYour stats has been successfully updated."
       }
     },
-	
     "hudWidget": {
       "nickname": {
         "name": "NickName"
@@ -118,7 +115,6 @@
         "name": "Gold-Timer"
       }
     },
-	
     "ui": {
       "navigation": {
         "main_ui": "TerraMC"
@@ -134,17 +130,17 @@
           "title": "Overview",
           "rank": "Rank",
           "nickName": "Nickname",
-          "gameRank": "Gamemode Rang",
+          "gameRank": "Gamemode Rank",
           "playTime": "Playtime",
           "networkJoined": "Network joined",
           "error": "Error",
-          "notNicked": "not nicked",
-          "notInGame": "not in a round",
-          "noTime": "no time recorded yet"
+          "notNicked": "Not nicked",
+          "notInGame": "Not in a round",
+          "noTime": "No Time recorded yet"
         },
         "stats": {
           "title": "Statistics",
-          "updateButton": "§aUpdate",
+          "updateButton": "Update",
           "kills": "Kills",
           "deaths": "Deaths",
           "kd": "K/D",
@@ -158,11 +154,11 @@
           "bowls": "Bowls",
           "soups": "Soups",
           "apiResponse": {
-            "400": "Bad Request",
-            "401": "Source is not trusted",
-            "403": "No Addon Version is provided",
-            "404": "User does not exists",
-            "406": "Unable to fetch Stats! Make sure that you are using the latest version of the addon"
+            "400": "Bed Request",
+            "401": "Source is not known",
+            "403": "No Addon Version provided",
+            "404": "User doesn't exist",
+            "406": "Unable to fetch Stats! Make sure that you are using the latest version of the Addon"
           }
         }
       }
