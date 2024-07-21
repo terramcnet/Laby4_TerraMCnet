@@ -26,17 +26,17 @@ public class ChatMessageListener {
     String nickPrefix = "▎▏ Nick » ";
     //String nickPrefixColor = "§7§l§o▎§8§l§o▏ §eNick §8» ";
 
-    if(plain.startsWith(nickPrefix)) {
-    //if(formatted.startsWith(nickPrefixColor + "§eDu spielst nun als§r§8: ")) {
+    //if(plain.startsWith(nickPrefix)) {
+    if(plain.startsWith(nickPrefix + "Du spielst nun als: ")) {
       //nickName = clean.replace(nickPrefix + "Du spielst nun als: ", "");
       //AddonData.setNickName(formatted.replace(nickPrefixColor + "§eDu spielst nun als§8: ", ""));
       AddonData.setNickName(plain.split(": ")[1]);
     }
 
-    /*if(plain.startsWith(nickPrefix + "You are now playing as: ")) {
+    if(plain.startsWith(nickPrefix + "You are now playing as: ")) {
       //nickName = clean.replace(nickPrefix + "You are now playing as: ", "");
-      AddonData.setNickName(plain.replace(nickPrefix + "You are now playing as: ", ""));
-    }*/
+      AddonData.setNickName(plain.split(": ")[1]);
+    }
 
     if(plain.startsWith(nickPrefix + "Dein Nickname wurde zurückgesetzt.") ||
         plain.startsWith(nickPrefix + "Your nickname has been reset.")) {

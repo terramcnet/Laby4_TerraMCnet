@@ -54,7 +54,7 @@ public class ApiUtil {
         .url(BASE_URL + "staff?req=staffData&uuid="+playerUuid+"&source=Addon_LM4")
         .async()
         .execute(response -> {
-          if(response.getStatusCode() != 200) {
+          if(response.getStatusCode() != 200 || response.hasException()) {
             this.addon.pushNotification(Component.translatable("terramc.notification.error.title"),
                 Component.translatable("terramc.notification.error.api.data").color(
                     TextColor.color(255, 85, 851)));
@@ -66,40 +66,52 @@ public class ApiUtil {
 
           AddonData.setRank(global.get("Rank").getAsString());
 
-          JsonArray rankArray = jsonObject.get("Ranks").getAsJsonArray();
-          for(int i = 0; i < rankArray.size(); i++) {
-            JsonObject object = rankArray.get(i).getAsJsonObject();
-            object.entrySet().forEach(entry -> {
-              String uuid = entry.getKey();
-              int rankId = entry.getValue().getAsInt();
-              if(TerraGroup.byId(rankId) != null) {
-                AddonData.getStaffRankMap().put(UUID.fromString(uuid), TerraGroup.byId(rankId));
+          if(jsonObject.has("Ranks") && jsonObject.get("Ranks").isJsonArray()) {
+            JsonArray array = jsonObject.get("Ranks").getAsJsonArray();
+            if(!array.isEmpty()) {
+              for(int i = 0; i < array.size(); i++) {
+                JsonObject object = array.get(i).getAsJsonObject();
+                object.entrySet().forEach(entry -> {
+                  String uuid = entry.getKey();
+                  int rankId = entry.getValue().getAsInt();
+                  if(TerraGroup.byId(rankId) != null) {
+                    AddonData.getStaffRankMap().put(UUID.fromString(uuid), TerraGroup.byId(rankId));
+                  }
+                });
               }
-            });
+            }
           }
 
-          JsonArray toggleArray = jsonObject.get("ToggleRank").getAsJsonArray();
-          for(int i = 0; i < toggleArray.size(); i++) {
-            JsonObject object = toggleArray.get(i).getAsJsonObject();
-            object.entrySet().forEach(entry -> {
-              String uuid = entry.getKey();
-              int status = entry.getValue().getAsInt();
-              if(status == 1) {
-                AddonData.getToggleRankMap().put(UUID.fromString(uuid), status);
+          if(jsonObject.has("ToggleRank") && jsonObject.get("ToggleRank").isJsonArray()) {
+            JsonArray array = jsonObject.get("ToggleRank").getAsJsonArray();
+            if(!array.isEmpty()) {
+              for(int i = 0; i < array.size(); i++) {
+                JsonObject object = array.get(i).getAsJsonObject();
+                object.entrySet().forEach(entry -> {
+                  String uuid = entry.getKey();
+                  int status = entry.getValue().getAsInt();
+                  if(status == 1) {
+                    AddonData.getToggleRankMap().put(UUID.fromString(uuid), status);
+                  }
+                });
               }
-            });
+            }
           }
 
-          JsonArray nickArray = jsonObject.get("Nicked").getAsJsonArray();
-          for(int i = 0; i < nickArray.size(); i++) {
-            JsonObject object = nickArray.get(i).getAsJsonObject();
-            object.entrySet().forEach(entry -> {
-              String uuid = entry.getKey();
-              int status = entry.getValue().getAsInt();
-              if(status == 1) {
-                AddonData.getNickedMap().put(UUID.fromString(uuid), status);
+          if(jsonObject.has("Nicked") && jsonObject.get("Nicked").isJsonArray()) {
+            JsonArray array = jsonObject.get("Nicked").getAsJsonArray();
+            if(!array.isEmpty()) {
+              for(int i = 0; i < array.size(); i++) {
+                JsonObject object = array.get(i).getAsJsonObject();
+                object.entrySet().forEach(entry -> {
+                  String uuid = entry.getKey();
+                  int status = entry.getValue().getAsInt();
+                  if(status == 1) {
+                    AddonData.getNickedMap().put(UUID.fromString(uuid), status);
+                  }
+                });
               }
-            });
+            }
           }
         });
   }
@@ -109,7 +121,7 @@ public class ApiUtil {
         .url(BASE_URL + "stats?uuid="+uuid+"&source=Addon_LM4")
         .async()
         .execute(response -> {
-          if(response.getStatusCode() != 200) {
+          if(response.getStatusCode() != 200 || response.hasException()) {
             PlayerStats.loadedSuccessful = false;
             this.addon.pushNotification(Component.translatable("terramc.notification.error.title"), Component.translatable("terramc.notification.error.api.stats").color(
                 TextColor.color(255, 85, 85)));
