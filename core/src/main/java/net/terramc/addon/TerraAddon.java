@@ -12,7 +12,9 @@ import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.models.addon.annotation.AddonMain;
 import net.labymod.api.notification.Notification;
 import net.labymod.api.notification.Notification.Type;
+import net.labymod.api.revision.SimpleRevision;
 import net.labymod.api.util.GsonUtil;
+import net.labymod.api.util.version.SemanticVersion;
 import net.terramc.addon.activities.navigation.TerraMainActivity;
 import net.terramc.addon.activities.navigation.TerraNavigationElement;
 import net.terramc.addon.group.TerraGroupIconTag;
@@ -53,6 +55,11 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
   public static String doubleDots = "§7•§8●";
 
   private Gson gson;
+
+  @Override
+  protected void preConfigurationLoad() {
+    Laby.references().revisionRegistry().register(new SimpleRevision("terramc", new SemanticVersion("1.4.4"), "2024-07-21"));
+  }
 
   @Override
   protected void enable() {
