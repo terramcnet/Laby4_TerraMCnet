@@ -154,7 +154,7 @@
           "bowls": "Bowls",
           "soups": "Soups",
           "apiResponse": {
-            "400": "Bed Request",
+            "400": "Bad Request",
             "401": "Source is not known",
             "403": "No Addon Version provided",
             "404": "User doesn't exist",
