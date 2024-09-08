@@ -4,7 +4,6 @@ import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.input.KeyEvent;
 import net.labymod.api.event.client.input.KeyEvent.State;
 import net.terramc.addon.TerraAddon;
-import net.terramc.addon.activities.navigation.TerraMainActivity;
 
 public class KeyListener {
 
@@ -18,7 +17,7 @@ public class KeyListener {
   public void onKeyPress(KeyEvent event) {
     if(event.state() != State.PRESS) return;
     if(event.key() != this.addon.configuration().uiHotKey().get()) return;
-    this.addon.labyAPI().minecraft().executeNextTick(() -> this.addon.labyAPI().minecraft().minecraftWindow().displayScreen(new TerraMainActivity(this.addon)));
+    this.addon.labyAPI().minecraft().executeNextTick(() -> this.addon.labyAPI().minecraft().minecraftWindow().displayScreen(this.addon.terraMainActivity));
   }
 
 }
