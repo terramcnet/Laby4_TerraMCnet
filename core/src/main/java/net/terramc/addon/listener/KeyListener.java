@@ -17,6 +17,7 @@ public class KeyListener {
   public void onKeyPress(KeyEvent event) {
     if(event.state() != State.PRESS) return;
     if(event.key() != this.addon.configuration().uiHotKey().get()) return;
+    if(this.addon.labyAPI().minecraft().minecraftWindow().currentScreen() != null) return;
     this.addon.labyAPI().minecraft().executeNextTick(() -> this.addon.labyAPI().minecraft().minecraftWindow().displayScreen(this.addon.terraMainActivity));
   }
 
