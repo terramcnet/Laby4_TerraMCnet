@@ -11,38 +11,33 @@
 
 .container {
   top: 5;
-  bottom: 20;
+  bottom: 25;
   left: 5;
   right: 5;
-  filter: blur(25);
-  border-radius: 15;
-  border-thickness: 5;
-  border-color: var(--background-color-border);
-  background-color: var(--background-color);
-  box-shadow: none;
+  box-shadow: classic left top right bottom;
+  renderer: "DirtBackground";
 
   .header {
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 25;
-      border-radius: 15 15 0 0;
-      background-color: rgba(85, 255, 85, 0.2);
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 25;
+    background-color: rgba(85, 255, 85, 0.3);
 
-      .header-text {
-        alignment-x: center;
-        alignment-y: center;
-      }
-
-      .update-button {
-        right: 15;
-        alignment-y: center;
-        height: 16;
-        width: fit-content;
-        padding: 0 5 0 5;
-      }
-
+    .header-text {
+      alignment-x: center;
+      alignment-y: center;
     }
+
+    .update-button {
+      right: 5;
+      alignment-y: center;
+      height: 16;
+      width: fit-content;
+      padding: 0 5 0 5;
+    }
+
+  }
 
 }
 
