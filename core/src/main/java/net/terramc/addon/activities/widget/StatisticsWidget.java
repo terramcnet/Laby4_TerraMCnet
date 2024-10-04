@@ -6,7 +6,7 @@ import net.labymod.api.client.gui.screen.widget.SimpleWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.ComponentWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.renderer.IconWidget;
 
-public class StatsWidget extends SimpleWidget {
+public class StatisticsWidget extends SimpleWidget {
 
   private Icon icon;
 
@@ -14,7 +14,7 @@ public class StatsWidget extends SimpleWidget {
 
   //private String description;
 
-  public StatsWidget(Icon icon, String title/*, String description*/) {
+  public StatisticsWidget(Icon icon, String title/*, String description*/) {
     this.icon = icon;
     this.title = title;
     //this.description = description;
