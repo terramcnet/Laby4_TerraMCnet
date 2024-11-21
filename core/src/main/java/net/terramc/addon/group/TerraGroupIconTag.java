@@ -18,7 +18,7 @@ public class TerraGroupIconTag extends IconTag {
 
   @Override
   public boolean isVisible() {
-    return this.visibleGroup(entity) != null;
+    return !this.entity.isCrouching() &&  this.visibleGroup(entity) != null;
   }
 
   @Override

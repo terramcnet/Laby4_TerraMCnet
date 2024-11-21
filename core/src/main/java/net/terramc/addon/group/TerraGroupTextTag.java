@@ -45,7 +45,7 @@ public class TerraGroupTextTag extends NameTag {
 
   @Override
   public boolean isVisible() {
-    return this.visibleGroup(entity) != null;
+    return !this.entity.isCrouching() && this.visibleGroup(entity) != null;
   }
 
   private TerraGroup visibleGroup(Entity entity) {
