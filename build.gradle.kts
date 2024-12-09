@@ -4,7 +4,7 @@ plugins {
 }
 
 val versions = providers.gradleProperty("net.labymod.minecraft-versions").get().split(";")
-val addonVersion = "1.4.7"
+val addonVersion = "1.4.8"
 
 group = "net.terramc"
 version = providers.environmentVariable("VERSION").getOrElse(addonVersion)

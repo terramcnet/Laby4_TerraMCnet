@@ -58,7 +58,7 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
   @Override
   protected void preConfigurationLoad() {
-    Laby.references().revisionRegistry().register(new SimpleRevision("terramc", new SemanticVersion("1.4.7"), "2024-09-10"));
+    Laby.references().revisionRegistry().register(new SimpleRevision("terramc", new SemanticVersion("1.4.8"), "2024-12-09"));
   }
 
   @Override
