@@ -1,8 +1,8 @@
 package net.terramc.addon.activities;
 
 import net.labymod.api.client.gui.icon.Icon;
-import net.labymod.api.client.gui.mouse.MutableMouse;
 import net.labymod.api.client.gui.screen.Parent;
+import net.labymod.api.client.gui.screen.ScreenContext;
 import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
 import net.labymod.api.client.gui.screen.activity.Link;
@@ -10,7 +10,6 @@ import net.labymod.api.client.gui.screen.widget.widgets.ComponentWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.DivWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.input.ButtonWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.TilesGridWidget;
-import net.labymod.api.client.render.matrix.Stack;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.util.I18n;
 import net.terramc.addon.TerraAddon;
@@ -81,9 +80,9 @@ public class TerraOverviewActivity extends Activity {
   }
 
   @Override
-  public void render(Stack stack, MutableMouse mouse, float partialTicks) {
-    super.render(stack, mouse, partialTicks);
-    Util.drawCredits(this.addon, this.labyAPI, this.bounds(), stack);
+  public void render(ScreenContext context) {
+    super.render(context);
+    Util.drawCredits(this.addon, this.labyAPI, this.bounds(), context.stack());
   }
 
 }
