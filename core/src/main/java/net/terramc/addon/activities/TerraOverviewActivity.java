@@ -52,7 +52,7 @@ public class TerraOverviewActivity extends Activity {
               + "§8● §7GlobalPoints " + I18n.translate("terramc.ui.activity.overview.rank") + " §8» §a" + (AddonData.getPointsRank() != null ? AddonData.getPointsRank() : "§c" + I18n.translate("terramc.ui.activity.overview.error"))));
 
       gridWidget.addTile(new OverviewWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/ender_eye.png")),
-          TerraAddon.doubleLine + "§7" + I18n.translate("terramc.ui.activity.overview.networkJoined") + "\n§8» §e" + Util.format(AddonData.getJoins())));
+          TerraAddon.doubleLine + "§7" + I18n.translate("terramc.ui.activity.overview.networkJoined") + "\n§8» §e" + Util.format(AddonData.getJoinCount())));
 
       gridWidget.addTile(new OverviewWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/clock.png")),
           TerraAddon.doubleLine + "§7" + I18n.translate("terramc.ui.activity.overview.playTime") + "\n§8» " + (AddonData.getOnlineTime() != null ? AddonData.getOnlineTime() : "§c" + I18n.translate("terramc.ui.activity.overview.noTime"))));

@@ -35,7 +35,7 @@ public class AddonData {
   private static String rank = "Spieler";
 
   private static String onlineTime = null;
-  private static int joins = 0;
+  private static int joinCount = 0;
 
   private static boolean rankToggled = false;
 
@@ -113,12 +113,12 @@ public class AddonData {
     AddonData.onlineTime = onlineTime;
   }
 
-  public static int getJoins() {
-    return joins;
+  public static int getJoinCount() {
+    return joinCount;
   }
 
-  public static void setJoins(int joins) {
-    AddonData.joins = joins;
+  public static void setJoinCount(int joinCount) {
+    AddonData.joinCount = joinCount;
   }
 
   public static boolean isInRound() {
