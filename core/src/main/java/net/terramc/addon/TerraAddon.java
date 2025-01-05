@@ -36,6 +36,7 @@ import net.terramc.addon.listener.SessionListener;
 import net.terramc.addon.util.ApiUtil;
 import net.terramc.addon.util.BroadcastUtil;
 import net.terramc.addon.util.RankUtil;
+import net.terramc.addon.util.ServerAddonProtocol;
 
 @AddonMain
 public class TerraAddon extends LabyAddon<TerraConfiguration> {
@@ -49,6 +50,7 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
   private ApiUtil apiUtil;
   private RankUtil rankUtil;
   private BroadcastUtil broadcastUtil;
+  private ServerAddonProtocol serverAddonProtocol;
 
   private boolean connected = false;
   public static String doubleLine = "§7§l§o▎§8§l§o▏ ";
@@ -72,6 +74,9 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
     this.rankUtil = new RankUtil();
     this.broadcastUtil = new BroadcastUtil(this);
+
+    this.serverAddonProtocol = new ServerAddonProtocol(this);
+    this.serverAddonProtocol.registerPackets();
 
     UUID uuid = labyAPI().getUniqueId();
     this.apiUtil = new ApiUtil(this);
@@ -157,6 +162,10 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
   public BroadcastUtil broadcastUtil() {
     return broadcastUtil;
+  }
+
+  public ServerAddonProtocol serverAddonProtocol() {
+    return serverAddonProtocol;
   }
 
 }
