@@ -34,7 +34,7 @@ public class AddonData {
 
   private static String rank = "Spieler";
 
-  private static String onlineTime = null;
+  private static String playTime = null;
   private static int joinCount = 0;
 
   private static boolean rankToggled = false;
@@ -105,12 +105,12 @@ public class AddonData {
     AddonData.pointsRank = pointsRank;
   }
 
-  public static String getOnlineTime() {
-    return onlineTime;
+  public static String getPlayTime() {
+    return playTime;
   }
 
-  public static void setOnlineTime(String onlineTime) {
-    AddonData.onlineTime = onlineTime;
+  public static void setPlayTime(String playTime) {
+    AddonData.playTime = playTime;
   }
 
   public static int getJoinCount() {

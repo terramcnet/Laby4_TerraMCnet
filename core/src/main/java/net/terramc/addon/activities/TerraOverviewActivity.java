@@ -55,7 +55,7 @@ public class TerraOverviewActivity extends Activity {
           TerraAddon.doubleLine + "§7" + I18n.translate("terramc.ui.activity.overview.networkJoined") + "\n§8» §e" + Util.format(AddonData.getJoinCount())));
 
       gridWidget.addTile(new OverviewWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/clock.png")),
-          TerraAddon.doubleLine + "§7" + I18n.translate("terramc.ui.activity.overview.playTime") + "\n§8» " + (AddonData.getOnlineTime() != null ? AddonData.getOnlineTime() : "§c" + I18n.translate("terramc.ui.activity.overview.noTime"))));
+          TerraAddon.doubleLine + "§7" + I18n.translate("terramc.ui.activity.overview.playTime") + "\n§8» " + (AddonData.getPlayTime() != null ? AddonData.getPlayTime() : "§c" + I18n.translate("terramc.ui.activity.overview.noTime"))));
 
       gridWidget.addTile(new OverviewWidget(Icon.texture(ResourceLocation.create("terramc", "textures/hud/name_tag.png")),
           TerraAddon.doubleLine + "§7" + I18n.translate("terramc.ui.activity.overview.nickName") + "\n§8» " + (AddonData.getNickName() != null ? "§d" + AddonData.getNickName() : "§c" + I18n.translate("terramc.ui.activity.overview.notNicked"))));
