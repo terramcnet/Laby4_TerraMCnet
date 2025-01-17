@@ -31,7 +31,6 @@ import net.terramc.addon.listener.BroadcastListener;
 import net.terramc.addon.listener.ChatMessageListener;
 import net.terramc.addon.listener.KeyListener;
 import net.terramc.addon.listener.NetworkListener;
-import net.terramc.addon.listener.NetworkPayloadListener;
 import net.terramc.addon.listener.SessionListener;
 import net.terramc.addon.util.ApiUtil;
 import net.terramc.addon.util.BroadcastUtil;
@@ -88,7 +87,6 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     this.registerListener(new NetworkListener(this));
     this.registerListener(new SessionListener(this));
     this.registerListener(new BroadcastListener(this));
-    this.registerListener(new NetworkPayloadListener(this));
     this.registerListener(new KeyListener(this));
 
     labyAPI().navigationService().register("terramc_main_ui", new TerraNavigationElement(this));
