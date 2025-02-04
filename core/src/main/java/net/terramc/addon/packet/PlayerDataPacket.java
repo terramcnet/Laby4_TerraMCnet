@@ -10,7 +10,6 @@ package net.terramc.addon.packet;
 
 import net.labymod.serverapi.api.packet.Packet;
 import net.labymod.serverapi.api.payload.io.PayloadReader;
-import net.labymod.serverapi.api.payload.io.PayloadWriter;
 import org.jetbrains.annotations.NotNull;
 
 public class PlayerDataPacket implements Packet {
