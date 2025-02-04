@@ -1,4 +1,4 @@
-rootProject.name = "TerraMCnet"
+rootProject.name = "terramc"
 
 pluginManagement {
     val labyGradlePluginVersion = "0.5.7"
