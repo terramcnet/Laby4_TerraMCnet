@@ -8,7 +8,7 @@ import java.util.Arrays;
 public enum TerraGroup {
 
   INHABER("Inhaber", 0, TextColor.color(170, 0, 0), Icon.texture(ResourceLocation.create("terramc", "textures/staff_icons/admin.png"))),
-  ADMIN("Administration", 1, TextColor.color(170, 0, 0), Icon.texture(ResourceLocation.create("terramc", "textures/staff_icons/admin.png"))),
+  ADMIN("Admin", 1, TextColor.color(170, 0, 0), Icon.texture(ResourceLocation.create("terramc", "textures/staff_icons/admin.png"))),
   DEVELOPMENT("Development", 2, TextColor.color(255, 85, 85), Icon.texture(ResourceLocation.create("terramc", "textures/staff_icons/development.png"))),
   MODERATION("Moderation", 3, TextColor.color(255, 170, 0), Icon.texture(ResourceLocation.create("terramc", "textures/staff_icons/moderation.png"))),
   SUPPORT("Support", 4, TextColor.color(255, 255, 85), Icon.texture(ResourceLocation.create("terramc", "textures/staff_icons/support.png"))),
