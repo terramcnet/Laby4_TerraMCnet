@@ -76,6 +76,7 @@ public class TerraStatsActivity extends Activity {
       String played =  I18n.translate("terramc.ui.activity.stats.played");
       String wins =  I18n.translate("terramc.ui.activity.stats.wins");
       String looses =  I18n.translate("terramc.ui.activity.stats.looses");
+      String ranking =  I18n.translate("terramc.ui.activity.stats.ranking");
 
       TilesGridWidget<StatisticsWidget> gridWidget = new TilesGridWidget<>().addId("statistics-grid");
 
@@ -86,37 +87,43 @@ public class TerraStatsActivity extends Activity {
               TerraAddon.doubleDots + " §7" + played + " §8» §e" + PlayerStats.bedWars.played() + "\n" +
               TerraAddon.doubleDots + " §7" + wins + " §8» §e" + PlayerStats.bedWars.wins() + "\n" +
               TerraAddon.doubleDots + " §7" + looses + " §8» §e" + PlayerStats.bedWars.looses() + "\n" +
+              TerraAddon.doubleDots + " §7" + ranking + " §8» §e" + PlayerStats.bedWars.ranking() + "\n" +
               TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.brokenBeds") + " §8» §e" + PlayerStats.bedWars.additional()[0]));
 
       gridWidget.addTile(new StatisticsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/buildffa.png")),
           TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.buildFFA.kills() + "\n" +
               TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.buildFFA.deaths() + "\n" +
               TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.buildFFA.kd() + "\n" +
-              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.buildFFA.points()));
+              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.buildFFA.points() + "\n" +
+              TerraAddon.doubleDots + " §7" + ranking + " §8» §e" + PlayerStats.buildFFA.ranking()));
 
       gridWidget.addTile(new StatisticsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/kbffa.png")),
           TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.knockBackFFA.kills() + "\n" +
               TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.knockBackFFA.deaths() + "\n" +
               TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.knockBackFFA.kd() + "\n" +
-              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.knockBackFFA.points()));
+              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.knockBackFFA.points() + "\n" +
+              TerraAddon.doubleDots + " §7" + ranking + " §8» §e" + PlayerStats.knockBackFFA.ranking()));
 
       gridWidget.addTile(new StatisticsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/ffa.png")),
           TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.ffa.kills() + "\n" +
               TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.ffa.deaths() + "\n" +
               TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.ffa.kd() + "\n" +
-              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.ffa.points()));
+              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.ffa.points() + "\n" +
+              TerraAddon.doubleDots + " §7" + ranking + " §8» §e" + PlayerStats.ffa.ranking()));
 
       gridWidget.addTile(new StatisticsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/waterffa.png")),
           TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.waterFFA.kills() + "\n" +
               TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.waterFFA.deaths() + "\n" +
               TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.waterFFA.kd() + "\n" +
-              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.waterFFA.points()));
+              TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.waterFFA.points() + "\n" +
+              TerraAddon.doubleDots + " §7" + ranking + " §8» §e" + PlayerStats.waterFFA.ranking()));
 
       gridWidget.addTile(new StatisticsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/xp.png")),
           TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.xp.kills() + "\n" +
               TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.xp.deaths() + "\n" +
               TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.xp.kd() + "\n" +
               TerraAddon.doubleDots + " §7" + wins + " §8» §e" + PlayerStats.xp.wins() + "\n" +
+              TerraAddon.doubleDots + " §7" + ranking + " §8» §e" + PlayerStats.xp.ranking() + "\n" +
               TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.brokenOres") + " §8» §e" + PlayerStats.xp.additional()[0]));
 
       gridWidget.addTile(new StatisticsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/tdm.png")),
@@ -125,23 +132,27 @@ public class TerraStatsActivity extends Activity {
               TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.teamDeathMatch.kd() + "\n" +
               TerraAddon.doubleDots + " §7" + played + " §8» §e" + PlayerStats.teamDeathMatch.played() + "\n" +
               TerraAddon.doubleDots + " §7" + wins + " §8» §e" + PlayerStats.teamDeathMatch.wins() + "\n" +
-              TerraAddon.doubleDots + " §7" + looses + " §8» §e" + PlayerStats.teamDeathMatch.looses()));
+              TerraAddon.doubleDots + " §7" + looses + " §8» §e" + PlayerStats.teamDeathMatch.looses() + "\n" +
+              TerraAddon.doubleDots + " §7" + ranking + " §8» §e" + PlayerStats.teamDeathMatch.ranking()));
 
       gridWidget.addTile(new StatisticsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/gungame.png")),
           TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.gunGame.kills() + "\n" +
               TerraAddon.doubleDots + " §7" + deaths + " §8» §e" + PlayerStats.gunGame.deaths() + "\n" +
               TerraAddon.doubleDots + " §7" + kd + " §8» §e" + PlayerStats.gunGame.kd() + "\n" +
               TerraAddon.doubleDots + " §7" + points + " §8» §e" + PlayerStats.gunGame.points() + "\n" +
+              TerraAddon.doubleDots + " §7" + ranking + " §8» §e" + PlayerStats.gunGame.ranking() + "\n" +
               TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.levelRecord") + " §8» §e" + PlayerStats.gunGame.additional()[0]));
 
       gridWidget.addTile(new StatisticsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/the_lab.png")),
           TerraAddon.doubleDots + " §7" + played + " §8» §e" + PlayerStats.theLab.played() + "\n" +
               TerraAddon.doubleDots + " §7" + wins + " §8» §e" + PlayerStats.theLab.wins() + "\n" +
-              TerraAddon.doubleDots + " §7" + looses + " §8» §e" + PlayerStats.theLab.looses()));
+              TerraAddon.doubleDots + " §7" + looses + " §8» §e" + PlayerStats.theLab.looses() + "\n" +
+              TerraAddon.doubleDots + " §7" + ranking + " §8» §e" + PlayerStats.theLab.ranking()));
 
       gridWidget.addTile(new StatisticsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/soup_trainer.png")),
           TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.bowls") + " §8» §e" + PlayerStats.soupTrainer.additional()[0] + "\n" +
-              TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.soups") + " §8» §e" + PlayerStats.soupTrainer.additional()[1]));
+              TerraAddon.doubleDots + " §7" + I18n.translate("terramc.ui.activity.stats.soups") + " §8» §e" + PlayerStats.soupTrainer.additional()[1] + "\n" +
+              TerraAddon.doubleDots + " §7" + ranking + " §8» §e" + PlayerStats.soupTrainer.additional()[2]));
 
       /*gridWidget.addTile(new StatsWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/stats/skyWars.png")),
           TerraAddon.doubleDots + " §7" + kills + " §8» §e" + PlayerStats.SkyWars.kills + "\n" +

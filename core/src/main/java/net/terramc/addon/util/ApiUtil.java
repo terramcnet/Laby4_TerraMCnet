@@ -146,7 +146,8 @@ public class ApiUtil {
                 0,
                 object.get("Wins").getAsInt(),
                 object.get("Looses").getAsInt(),
-                object.get("Played").getAsInt()
+                object.get("Played").getAsInt(),
+                object.get("Ranking").getAsInt()
             ).additional(new int[] { object.get("Beds").getAsInt() });
           }
 
@@ -156,7 +157,11 @@ public class ApiUtil {
             PlayerStats.buildFFA = new Stats(
                 object.get("Kills").getAsInt(),
                 object.get("Deaths").getAsInt(),
-                object.get("Points").getAsInt()
+                object.get("Points").getAsInt(),
+                0,
+                0,
+                0,
+                object.get("Ranking").getAsInt()
             );
           }
 
@@ -179,7 +184,8 @@ public class ApiUtil {
                 0,
                 object.get("Wins").getAsInt(),
                 object.get("Looses").getAsInt(),
-                0
+                0,
+                object.get("Ranking").getAsInt()
             );
           }
 
@@ -192,7 +198,8 @@ public class ApiUtil {
                 0,
                 object.get("Wins").getAsInt(),
                 object.get("Looses").getAsInt(),
-                0
+                0,
+                object.get("Ranking").getAsInt()
             );
           }
 
@@ -205,7 +212,8 @@ public class ApiUtil {
                 object.get("Points").getAsInt(),
                 0,
                 0,
-                0
+                0,
+                object.get("Ranking").getAsInt()
             ).additional(new int[] { object.get("LevelRecord").getAsInt() });
           }
 
@@ -218,7 +226,8 @@ public class ApiUtil {
                 object.get("Points").getAsInt(),
                 0,
                 0,
-                0
+                0,
+                object.get("Ranking").getAsInt()
             );
           }
 
@@ -231,7 +240,8 @@ public class ApiUtil {
                 object.get("Points").getAsInt(),
                 0,
                 0,
-                0
+                0,
+                object.get("Ranking").getAsInt()
             );
           }
 
@@ -244,7 +254,8 @@ public class ApiUtil {
                 0,
                 object.get("Wins").getAsInt(),
                 object.get("Looses").getAsInt(),
-                object.get("Played").getAsInt()
+                object.get("Played").getAsInt(),
+                object.get("Ranking").getAsInt()
             );
           }
 
@@ -257,7 +268,8 @@ public class ApiUtil {
                 0,
                 object.get("Wins").getAsInt(),
                 0,
-                0
+                0,
+                object.get("Ranking").getAsInt()
             ).additional(new int[]{object.get("BrokenOres").getAsInt()});
           }
 
@@ -266,7 +278,8 @@ public class ApiUtil {
             JsonObject object = trainerArray.get(i).getAsJsonObject();
             PlayerStats.soupTrainer = new Stats().additional(new int[] {
                 object.get("Bowls").getAsInt(),
-                object.get("Soups").getAsInt()
+                object.get("Soups").getAsInt(),
+                object.get("Ranking").getAsInt()
             });
           }
         });

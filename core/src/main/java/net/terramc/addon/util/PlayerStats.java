@@ -30,11 +30,12 @@ public class PlayerStats {
     private int wins = 0;
     private int looses = 0;
     private int played = 0;
+    private int ranking;
     private int[] additional = {0};
 
     public Stats() {}
 
-    public Stats(int kills, int deaths, int points, int wins, int looses, int played) {
+    public Stats(int kills, int deaths, int points, int wins, int looses, int played, int ranking) {
       this.kills = kills;
       this.deaths = deaths;
       this.kd = getKD(kills, deaths);
@@ -42,6 +43,7 @@ public class PlayerStats {
       this.wins = wins;
       this.looses = looses;
       this.played = played;
+      this.ranking = ranking;
     }
 
     public Stats(int kills, int deaths, int points) {
@@ -77,6 +79,14 @@ public class PlayerStats {
 
     public int played() {
       return played;
+    }
+
+    public int ranking() {
+      return ranking;
+    }
+
+    public void ranking(int ranking) {
+      this.ranking = ranking;
     }
 
     public int[] additional() {
