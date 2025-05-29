@@ -96,6 +96,12 @@
       "other": {
         "tag-disabled": "%s hat seinen Team-Tag deaktiviert.",
         "tag-enabled": "%s hat seinen Team-Tag aktiviert."
+      },
+      "chat": {
+        "title": "TerraChat",
+        "connected": "Erfolgreich zum Chat-Server verbunden.",
+        "no-connection": "Keine Verbindung zum Chat-Server möglich.",
+        "timed": "Verbindung zum Chat-Server verloren."
       }
     },
 

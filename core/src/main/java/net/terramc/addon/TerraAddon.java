@@ -17,6 +17,8 @@ import net.labymod.api.util.GsonUtil;
 import net.labymod.api.util.version.SemanticVersion;
 import net.terramc.addon.activities.navigation.TerraMainActivity;
 import net.terramc.addon.activities.navigation.TerraNavigationElement;
+import net.terramc.addon.chat.ChatClient;
+import net.terramc.addon.chat.ChatServerListener;
 import net.terramc.addon.group.TerraGroupIconTag;
 import net.terramc.addon.group.TerraGroupTextTag;
 import net.terramc.addon.group.TerraTabListRenderer;
@@ -33,7 +35,6 @@ import net.terramc.addon.listener.KeyListener;
 import net.terramc.addon.listener.NetworkListener;
 import net.terramc.addon.listener.SessionListener;
 import net.terramc.addon.util.ApiUtil;
-import net.terramc.addon.util.BroadcastUtil;
 import net.terramc.addon.util.RankUtil;
 import net.terramc.addon.util.ServerAddonProtocol;
 
@@ -46,9 +47,10 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
   public TerraMainActivity terraMainActivity;
 
+  private ChatClient chatClient;
+
   private ApiUtil apiUtil;
   private RankUtil rankUtil;
-  private BroadcastUtil broadcastUtil;
   private ServerAddonProtocol serverAddonProtocol;
 
   private boolean connected = false;
@@ -72,10 +74,13 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     this.terraMainActivity = new TerraMainActivity(this);
 
     this.rankUtil = new RankUtil();
-    this.broadcastUtil = new BroadcastUtil(this);
 
     this.serverAddonProtocol = new ServerAddonProtocol(this);
     this.serverAddonProtocol.registerPackets();
+
+    this.chatClient = new ChatClient(this);
+    this.chatClient.connectStartUp();
+    this.registerListener(new ChatServerListener());
 
     UUID uuid = labyAPI().getUniqueId();
     this.apiUtil = new ApiUtil(this);
@@ -107,7 +112,10 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
     this.logger().info("[TerraMCnet] Addon enabled.");
 
-    Runtime.getRuntime().addShutdownHook(new Thread(() -> this.apiUtil.postAddonStatistics(this.labyAPI().getUniqueId().toString(), this.labyAPI().getName(), false)));
+    Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+      this.apiUtil.postAddonStatistics(this.labyAPI().getUniqueId().toString(), this.labyAPI().getName(), false);
+      this.chatClient.closeConnection();
+    }));
 
   }
 
@@ -158,12 +166,12 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     return rankUtil;
   }
 
-  public BroadcastUtil broadcastUtil() {
-    return broadcastUtil;
-  }
-
   public ServerAddonProtocol serverAddonProtocol() {
     return serverAddonProtocol;
+  }
+
+  public ChatClient chatClient() {
+    return chatClient;
   }
 
 }
