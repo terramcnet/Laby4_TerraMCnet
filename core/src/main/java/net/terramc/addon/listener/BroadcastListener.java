@@ -55,13 +55,6 @@ public class BroadcastListener {
       }
     }
 
-    if(object.has("usingAddon")) {
-        UUID uuid = UUID.fromString(object.get("usingAddon").getAsString());
-        if(!AddonData.getUsingAddon().contains(uuid)) {
-          AddonData.getUsingAddon().add(uuid);
-        }
-      }
-
   }
 
 }
