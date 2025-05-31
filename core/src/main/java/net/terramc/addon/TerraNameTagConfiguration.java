@@ -8,6 +8,7 @@ import net.labymod.api.configuration.loader.Config;
 import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.labymod.api.configuration.loader.annotation.SpriteTexture;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
+import net.labymod.api.configuration.settings.annotation.SettingRequires;
 import net.labymod.api.configuration.settings.annotation.SettingSection;
 import net.labymod.api.util.Color;
 import net.terramc.addon.util.CustomTextDecoration;
@@ -22,22 +23,27 @@ public class TerraNameTagConfiguration extends Config {
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
   @SpriteSlot()
+  @SettingRequires(value = "enabled")
   @SwitchSetting
   private final ConfigProperty<Boolean> showTag = new ConfigProperty<>(true);
 
   @SpriteSlot(y = 1)
+  @SettingRequires(value = "enabled")
   @SwitchSetting
   private final ConfigProperty<Boolean> showIconTag = new ConfigProperty<>(true);
 
   @SpriteSlot(y = 1, x = 1)
+  @SettingRequires(value = "enabled")
   @SwitchSetting
   private final ConfigProperty<Boolean> showIconInTab = new ConfigProperty<>(true);
 
   @SettingSection(value = "customization", center = true)
 
+  @SettingRequires(value = "showTag")
   @ColorPickerSetting(chroma = true)
   private final ConfigProperty<Color> nameTagColor = new ConfigProperty<>(Color.ofRGB(255, 255, 255));
 
+  @SettingRequires(value = "showTag")
   @DropdownSetting
   @DropdownEntryTranslationPrefix("terramc.settings.nameTagConfiguration.textDecoration")
   private final ConfigProperty<CustomTextDecoration> textDecoration = new ConfigProperty<>(CustomTextDecoration.NONE);
