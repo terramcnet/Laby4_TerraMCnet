@@ -11,10 +11,6 @@ import java.util.UUID;
 
 public class AddonData {
 
-  public enum CloudNotifyType {
-    CHAT, NOTIFICATION, HIDE
-  }
-
   private static HashMap<UUID, TerraGroup> staffRankMap = new HashMap<>();
   private static HashMap<UUID, Integer> toggleRankMap = new HashMap<>();
   private static HashMap<UUID, Integer> nickedMap = new HashMap<>();
