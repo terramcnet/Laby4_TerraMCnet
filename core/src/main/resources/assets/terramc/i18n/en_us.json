@@ -94,14 +94,23 @@
       "other": {
         "tag-disabled": "%s has disabled his Staff-Tag.",
         "tag-enabled": "%s has enabled his Staff-Tag."
+      }
+    },
+
+    "chat": {
+      "title": "TerraChat",
+      "status": {
+        "connected": "Connected",
+        "disconnected": "Disconnected",
+        "button": "Reconnect"
       },
-      "chat": {
-        "title": "TerraChat",
+      "notification": {
         "connected": "Successfully connected to the chat server.",
         "no-connection": "Unable to connect to the chat server.",
         "timed": "Lost connection to chat server."
       }
     },
+
     "hudWidget": {
       "nickname": {
         "name": "NickName"

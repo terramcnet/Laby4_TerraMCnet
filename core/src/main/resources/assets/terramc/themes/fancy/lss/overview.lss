@@ -27,6 +27,19 @@
 
 }
 
+.chat-status {
+  bottom: 10;
+  left: 10;
+  font-size: 0.7;
+}
+
+.chat-reconnect-button {
+  bottom: 17;
+  left: 10;
+  height: 10;
+  padding: 0 2 0 2;
+}
+
 .not-connected-info {
   alignment-x: center;
   top: 40vh;

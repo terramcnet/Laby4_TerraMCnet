@@ -105,6 +105,20 @@
       }
     },
 
+    "chat": {
+      "title": "TerraChat",
+      "status": {
+        "connected": "Verbunden",
+        "disconnected": "Getrennt",
+        "button": "Neu verbinden"
+      },
+      "notification": {
+        "connected": "Erfolgreich zum Chat-Server verbunden.",
+        "no-connection": "Keine Verbindung zum Chat-Server möglich.",
+        "timed": "Verbindung zum Chat-Server verloren."
+      }
+    },
+
     "hudWidget": {
       "nickname": {
         "name": "NickName"

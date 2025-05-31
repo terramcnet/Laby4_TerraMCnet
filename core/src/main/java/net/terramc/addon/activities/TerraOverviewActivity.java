@@ -1,5 +1,7 @@
 package net.terramc.addon.activities;
 
+import net.labymod.api.client.component.Component;
+import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.ScreenContext;
@@ -12,10 +14,12 @@ import net.labymod.api.client.gui.screen.widget.widgets.input.ButtonWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.TilesGridWidget;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.util.I18n;
+import net.labymod.api.util.concurrent.task.Task;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.activities.widget.OverviewWidget;
 import net.terramc.addon.data.AddonData;
 import net.terramc.addon.util.Util;
+import java.util.concurrent.TimeUnit;
 
 @AutoActivity
 @Link("overview.lss")
@@ -33,9 +37,37 @@ public class TerraOverviewActivity extends Activity {
 
     DivWidget container = new DivWidget().addId("container");
 
+    // Add Status of Chat Server & Reconnect Button (Staff only?)
+
     DivWidget header = new DivWidget().addId("header");
     header.addChild(ComponentWidget.i18n("terramc.ui.activity.overview.title").addId("header-text"));
     container.addChild(header);
+
+    if(this.addon.rankUtil().isStaff()) {
+      ButtonWidget chatReconnectButton = ButtonWidget.text(I18n.translate("terramc.chat.status.button"));
+      chatReconnectButton.setPressable(() -> {
+        this.addon.chatClient().closeConnection();
+        chatReconnectButton.setEnabled(false);
+        Task.builder(() -> {
+          this.addon.chatClient().connect(true);
+          chatReconnectButton.setEnabled(true);
+          if(this.addon.chatClient().online()) {
+            this.addon.chatClient().util().sendPlayerStatus(this.addon.labyAPI().getUniqueId().toString(), this.addon.labyAPI().getName(), false);
+            this.addon.chatClient().util().sendRetrievePlayerData(this.addon.labyAPI().getUniqueId().toString());
+          }
+        }).delay(5, TimeUnit.SECONDS).build().execute();
+      });
+      container.addChild(chatReconnectButton.addId("chat-reconnect-button"));
+    }
+
+    Component chatStatus;
+    if(this.addon.chatClient().online()) {
+      chatStatus = Component.translatable("terramc.chat.status.connected", NamedTextColor.DARK_GREEN);
+    } else {
+      chatStatus = Component.translatable("terramc.chat.status.disconnected", NamedTextColor.DARK_RED);
+    }
+    Component chatStatusDisplay = Component.translatable("terramc.chat.title", NamedTextColor.GREEN).append(Component.text(" » ", NamedTextColor.DARK_GRAY));
+    container.addChild(ComponentWidget.component(chatStatusDisplay.append(chatStatus)).addId("chat-status"));
 
     if(this.addon.isConnected()) {
 
@@ -49,7 +81,7 @@ public class TerraOverviewActivity extends Activity {
 
       gridWidget.addTile(new OverviewWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/emerald.png")),
           TerraAddon.doubleLine + "§7GlobalPoints §8» §a" + Util.format(AddonData.getPoints()) + "\n"
-              + "§8● §7GlobalPoints " + I18n.translate("terramc.ui.activity.overview.rank") + " §8» §a" + (AddonData.getPointsRank() != null ? AddonData.getPointsRank() : "§c" + I18n.translate("terramc.ui.activity.overview.error"))));
+              + TerraAddon.doubleLine + "§7GlobalPoints " + I18n.translate("terramc.ui.activity.overview.rank") + " §8» §a" + (AddonData.getPointsRank() != null ? AddonData.getPointsRank() : "§c" + I18n.translate("terramc.ui.activity.overview.error"))));
 
       gridWidget.addTile(new OverviewWidget(Icon.texture(ResourceLocation.create("terramc", "textures/ui/ender_eye.png")),
           TerraAddon.doubleLine + "§7" + I18n.translate("terramc.ui.activity.overview.networkJoined") + "\n§8» §e" + Util.format(AddonData.getJoinCount())));
