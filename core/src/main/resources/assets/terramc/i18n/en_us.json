@@ -40,6 +40,9 @@
         "enabled": {
           "name": "Enable Tags"
         },
+        "hideOwnTag": {
+          "name": "Hide own Tag"
+        },
         "showTag": {
           "name": "Show Text-Tag",
           "description": "Displays the Rank of a Staff member above their name."

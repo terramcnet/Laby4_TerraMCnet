@@ -41,6 +41,9 @@
         "enabled": {
           "name": "Tags aktiviert"
         },
+        "hideOwnTag": {
+          "name": "Eigenen Tag verstecken"
+        },
         "showTag": {
           "name": "Text-Tag anzeigen",
           "description": "Zeigt den Rang von Teammitgliedern über dem Namen an."

@@ -37,7 +37,7 @@ public class TerraGroupIconTag extends IconTag {
     if(player.getUniqueId() == null) return null;
     if(!this.addon.configuration().enabled().get()) return null;
     if(!(this.addon.configuration().nameTagConfiguration.enabled().get() & this.addon.configuration().nameTagConfiguration.showIconTag().get())) return null;
-    if(!AddonData.getStaffRankMap().containsKey(player.getUniqueId()) && AddonData.getUsingAddon().contains(player.getUniqueId())) {
+    if(!AddonData.getStaffRankMap().containsKey(player.getUniqueId()) && AddonData.getChatUsers().containsKey(player.getUniqueId())) {
       return TerraGroup.ADDON_USER;
     }
     if(shouldHide(player)) return null;
@@ -47,10 +47,10 @@ public class TerraGroupIconTag extends IconTag {
   private boolean shouldHide(Player player) {
     if(this.addon.isConnected()) {
       return AddonData.getToggleRankMap().containsKey(player.profile().getUniqueId()) ||
-          AddonData.getNickedMap().containsKey(player.profile().getUniqueId()) ||
-          AddonData.getShouldHideTag().contains(player.profile().getUniqueId());
+          AddonData.getNickedMap().containsKey(player.profile().getUniqueId());
     }
-    return false;
+    if(!AddonData.getChatUsers().containsKey(player.profile().getUniqueId())) return false;
+    return AddonData.getChatUsers().get(player.profile().getUniqueId()).isTagHidden();
   }
 
 }

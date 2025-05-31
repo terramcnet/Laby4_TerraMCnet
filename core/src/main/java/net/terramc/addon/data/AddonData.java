@@ -3,10 +3,9 @@ package net.terramc.addon.data;
 
 import net.terramc.addon.game.BedWarsGame;
 import net.terramc.addon.group.TerraGroup;
+import net.terramc.addon.util.TerraChatUser;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 public class AddonData {
@@ -14,9 +13,8 @@ public class AddonData {
   private static HashMap<UUID, TerraGroup> staffRankMap = new HashMap<>();
   private static HashMap<UUID, Integer> toggleRankMap = new HashMap<>();
   private static HashMap<UUID, Integer> nickedMap = new HashMap<>();
-  private static List<UUID> shouldHideTag = new ArrayList<>();
 
-  private static List<UUID> usingAddon = new ArrayList<>();
+  private static HashMap<UUID, TerraChatUser> chatUsers = new HashMap<>();
 
   // VIP - Functions
   private static String nickName = null;
@@ -169,11 +167,7 @@ public class AddonData {
     return nickedMap;
   }
 
-  public static List<UUID> getShouldHideTag() {
-    return shouldHideTag;
-  }
-
-  public static List<UUID> getUsingAddon() {
-    return usingAddon;
+  public static HashMap<UUID, TerraChatUser> getChatUsers() {
+    return chatUsers;
   }
 }

@@ -32,7 +32,7 @@ public class TerraTabListRenderer extends BadgeRenderer {
     if(player.profile().getUniqueId() == null) return null;
     if(!this.addon.configuration().enabled().get()) return null;
     if(!(this.addon.configuration().nameTagConfiguration.enabled().get() & this.addon.configuration().nameTagConfiguration.showIconInTab().get())) return null;
-    if(!AddonData.getStaffRankMap().containsKey(player.profile().getUniqueId()) && AddonData.getUsingAddon().contains(player.profile().getUniqueId())) {
+    if(!AddonData.getStaffRankMap().containsKey(player.profile().getUniqueId()) && AddonData.getChatUsers().containsKey(player.profile().getUniqueId())) {
       return TerraGroup.ADDON_USER;
     }
     if(shouldHide(player)) return null;
@@ -43,10 +43,10 @@ public class TerraTabListRenderer extends BadgeRenderer {
   private boolean shouldHide(NetworkPlayerInfo player) {
     if(this.addon.isConnected()) {
       return AddonData.getToggleRankMap().containsKey(player.profile().getUniqueId()) ||
-          AddonData.getNickedMap().containsKey(player.profile().getUniqueId()) ||
-          AddonData.getShouldHideTag().contains(player.profile().getUniqueId());
+          AddonData.getNickedMap().containsKey(player.profile().getUniqueId());
     }
-    return false;
+    if(!AddonData.getChatUsers().containsKey(player.profile().getUniqueId())) return false;
+    return AddonData.getChatUsers().get(player.profile().getUniqueId()).isTagHidden();
   }
 
 }

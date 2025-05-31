@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import net.labymod.api.event.Subscribe;
 import net.terramc.addon.chat.event.ChatServerMessageReceiveEvent;
 import net.terramc.addon.data.AddonData;
+import net.terramc.addon.util.TerraChatUser;
 import java.util.UUID;
 
 public class ChatServerListener {
@@ -16,9 +17,12 @@ public class ChatServerListener {
     if(message.has("playerStatus") && message.get("playerStatus").isJsonObject()) {
       JsonObject data = message.get("playerStatus").getAsJsonObject();
       UUID uuid = UUID.fromString(data.get("uuid").getAsString());
-      if(!AddonData.getUsingAddon().contains(uuid)) {
-        AddonData.getUsingAddon().add(uuid);
-      }
+      String userName = data.get("userName").getAsString();
+      String status = data.get("status").getAsString();
+      String addonVersion = data.get("addonVersion").getAsString();
+      String minecraftVersion = data.has("minecraftVersion") ? data.get("minecraftVersion").getAsString() : "unknown";
+      boolean tagHidden = data.get("tagHidden").getAsBoolean();
+      AddonData.getChatUsers().put(uuid, new TerraChatUser(uuid, userName, status, addonVersion, minecraftVersion, tagHidden));
     }
 
     if(message.has("retrievedPlayerData")) {
@@ -29,9 +33,12 @@ public class ChatServerListener {
           for (int i = 0; i < array.size(); i++) {
             JsonObject playerData = array.get(i).getAsJsonObject();
             UUID uuid = UUID.fromString(playerData.get("uuid").getAsString());
-            if(!AddonData.getUsingAddon().contains(uuid)) {
-              AddonData.getUsingAddon().add(uuid);
-            }
+            String userName = playerData.get("userName").getAsString();
+            String status = playerData.get("status").getAsString();
+            String addonVersion = playerData.get("addonVersion").getAsString();
+            String minecraftVersion = playerData.has("minecraftVersion") ? playerData.get("minecraftVersion").getAsString() : "unknown";
+            boolean tagHidden = playerData.get("tagHidden").getAsBoolean();
+            AddonData.getChatUsers().put(uuid, new TerraChatUser(uuid, userName, status, addonVersion, minecraftVersion, tagHidden));
           }
         }
       }

@@ -26,6 +26,7 @@ public class ChatClientUtil {
     object.addProperty("status", offline ? "OFFLINE" : "ONLINE");
     object.addProperty("addonVersion", this.addon.addonInfo().getVersion());
     object.addProperty("minecraftVersion", this.addon.labyAPI().minecraft().getVersion());
+    object.addProperty("tagHidden", this.addon.configuration().nameTagConfiguration.hideOwnTag().get());
     object.addProperty("development", addon.labyAPI().labyModLoader().isAddonDevelopmentEnvironment());
     this.chatClient.sendMessage("playerStatus", object);
   }

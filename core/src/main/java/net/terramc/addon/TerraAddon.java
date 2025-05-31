@@ -29,7 +29,6 @@ import net.terramc.addon.hudwidget.PointsHudWidget;
 import net.terramc.addon.hudwidget.PointsRankHudWidget;
 import net.terramc.addon.hudwidget.game.GoldTimerHudWidget;
 import net.terramc.addon.hudwidget.game.IronTimerHudWidget;
-import net.terramc.addon.listener.BroadcastListener;
 import net.terramc.addon.listener.ChatMessageListener;
 import net.terramc.addon.listener.KeyListener;
 import net.terramc.addon.listener.NetworkListener;
@@ -91,7 +90,6 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     this.registerListener(new ChatMessageListener(this));
     this.registerListener(new NetworkListener(this));
     this.registerListener(new SessionListener(this));
-    this.registerListener(new BroadcastListener(this));
     this.registerListener(new KeyListener(this));
 
     labyAPI().navigationService().register("terramc_main_ui", new TerraNavigationElement(this));
@@ -111,6 +109,13 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     labyAPI().hudWidgetRegistry().register(new GoldTimerHudWidget(this));
 
     this.logger().info("[TerraMCnet] Addon enabled.");
+
+    configuration().nameTagConfiguration.hideOwnTag().visibilitySupplier(() -> rankUtil.isStaff());
+
+    configuration().nameTagConfiguration.hideOwnTag().addChangeListener((type, oldValue, newValue) -> {
+      if(!rankUtil.isStaff()) return;
+      chatClient.util().sendPlayerStatus(labyAPI().getUniqueId().toString(), labyAPI().getName(), false);
+    });
 
     Runtime.getRuntime().addShutdownHook(new Thread(() -> {
       this.apiUtil.postAddonStatistics(this.labyAPI().getUniqueId().toString(), this.labyAPI().getName(), false);

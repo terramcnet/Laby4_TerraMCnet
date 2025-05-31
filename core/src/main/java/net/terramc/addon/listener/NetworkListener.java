@@ -59,8 +59,6 @@ public class NetworkListener {
   @Subscribe
   public void onNetworkDisconnect(ServerDisconnectEvent event) {
     AddonData.resetValues();
-    AddonData.getShouldHideTag().clear();
-    AddonData.getUsingAddon().clear();
     this.addon.setConnected(false);
   }
 
