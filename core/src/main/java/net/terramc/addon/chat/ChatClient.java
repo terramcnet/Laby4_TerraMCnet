@@ -44,8 +44,8 @@ public class ChatClient {
       online = true;
       if(reconnect) {
         addon.pushNotification(
-            Component.translatable("terramc.notification.chat.title", TextColor.color(255, 255, 85)),
-            Component.translatable("terramc.notification.chat.connected", TextColor.color(85, 255, 85)));
+            Component.translatable("terramc.chat.title", TextColor.color(255, 255, 85)),
+            Component.translatable("terramc.chat.notification.connected", TextColor.color(85, 255, 85)));
       }
 
       new Thread(() -> {
@@ -68,8 +68,8 @@ public class ChatClient {
     } catch (IOException e) {
       online = false;
       if(reconnect) {
-        addon.pushNotification(Component.translatable("terramc.notification.chat.title", TextColor.color(255, 255, 85)),
-            Component.translatable("terramc.notification.chat.no-connection", TextColor.color(255, 85, 85)));
+        addon.pushNotification(Component.translatable("terramc.chat.title", TextColor.color(255, 255, 85)),
+            Component.translatable("terramc.chat.notification.no-connection", TextColor.color(255, 85, 85)));
       }
       this.addon.logger().error("Unable to connect to TerraChat Server", e);
       // Handle connection error
@@ -100,8 +100,8 @@ public class ChatClient {
     Task.builder(() -> {
       boolean status = isPortOpen();
       if(!status && online) {
-        addon.pushNotification(Component.translatable("terramc.notification.chat.title", TextColor.color(255, 255, 85)),
-            Component.translatable("terramc.notification.chat.timed", TextColor.color(255, 85, 85)));
+        addon.pushNotification(Component.translatable("terramc.chat.title", TextColor.color(255, 255, 85)),
+            Component.translatable("terramc.chat.notification.timed", TextColor.color(255, 85, 85)));
         if(this.isConnected()) {
           try {
             socket.close();
