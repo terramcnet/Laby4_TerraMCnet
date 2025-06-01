@@ -5,14 +5,16 @@ import net.terramc.addon.game.BedWarsGame;
 import net.terramc.addon.group.TerraGroup;
 import net.terramc.addon.util.TerraChatUser;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 public class AddonData {
 
   private static HashMap<UUID, TerraGroup> staffRankMap = new HashMap<>();
-  private static HashMap<UUID, Integer> toggleRankMap = new HashMap<>();
-  private static HashMap<UUID, Integer> nickedMap = new HashMap<>();
+  private static List<UUID> toggleRanked = new ArrayList<>();
+  private static List<UUID> nicked = new ArrayList<>();
 
   private static HashMap<UUID, TerraChatUser> chatUsers = new HashMap<>();
 
@@ -159,12 +161,12 @@ public class AddonData {
     return staffRankMap;
   }
 
-  public static HashMap<UUID, Integer> getToggleRankMap() {
-    return toggleRankMap;
+  public static List<UUID> getToggleRanked() {
+    return toggleRanked;
   }
 
-  public static HashMap<UUID, Integer> getNickedMap() {
-    return nickedMap;
+  public static List<UUID> getNicked() {
+    return nicked;
   }
 
   public static HashMap<UUID, TerraChatUser> getChatUsers() {

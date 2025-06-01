@@ -92,11 +92,11 @@ public class ServerAddonProtocol {
         (uuid, toggleRankUpdatePacket) -> {
           UUID targetUUID = UUID.fromString(toggleRankUpdatePacket.uuid());
           if(toggleRankUpdatePacket.status()) {
-            AddonData.getToggleRankMap().put(targetUUID, 1);
-            AddonData.getNickedMap().put(targetUUID, 1);
+            AddonData.getToggleRanked().add(targetUUID);
+            AddonData.getNicked().add(targetUUID);
           } else {
-            AddonData.getToggleRankMap().remove(targetUUID);
-            AddonData.getNickedMap().remove(targetUUID);
+            AddonData.getToggleRanked().remove(targetUUID);
+            AddonData.getNicked().remove(targetUUID);
           }
         }
     );

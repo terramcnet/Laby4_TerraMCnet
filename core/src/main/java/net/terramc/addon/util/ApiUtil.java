@@ -46,9 +46,9 @@ public class ApiUtil {
   }
 
   public void loadRankData(UUID playerUuid) {
-    AddonData.getToggleRankMap().clear();
+    AddonData.getToggleRanked().clear();
     AddonData.getStaffRankMap().clear();
-    AddonData.getNickedMap().clear();
+    AddonData.getNicked().clear();
 
     Request.ofGson(JsonObject.class)
         .url(BASE_URL + "staff?req=staffData&uuid="+playerUuid+"&source=Addon_LM4")
@@ -91,7 +91,7 @@ public class ApiUtil {
                   String uuid = entry.getKey();
                   int status = entry.getValue().getAsInt();
                   if(status == 1) {
-                    AddonData.getToggleRankMap().put(UUID.fromString(uuid), status);
+                    AddonData.getToggleRanked().add(UUID.fromString(uuid));
                   }
                 });
               }
@@ -107,7 +107,7 @@ public class ApiUtil {
                   String uuid = entry.getKey();
                   int status = entry.getValue().getAsInt();
                   if(status == 1) {
-                    AddonData.getNickedMap().put(UUID.fromString(uuid), status);
+                    AddonData.getNicked().add(UUID.fromString(uuid));
                   }
                 });
               }
