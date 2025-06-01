@@ -60,14 +60,15 @@ public class TerraGroupTextTag extends NameTag {
   }
 
   private boolean shouldHide(Player player) {
+    boolean tagHidden = false;
     if(AddonData.getChatUsers().containsKey(player.profile().getUniqueId())) {
-      return AddonData.getChatUsers().get(player.profile().getUniqueId()).isTagHidden();
+      tagHidden =  AddonData.getChatUsers().get(player.profile().getUniqueId()).isTagHidden();
     }
     if(this.addon.isConnected()) {
       return AddonData.getToggleRanked().contains(player.profile().getUniqueId()) ||
-          AddonData.getNicked().contains(player.profile().getUniqueId());
+          AddonData.getNicked().contains(player.profile().getUniqueId()) || tagHidden;
     }
-    return false;
+    return tagHidden;
   }
 
 }
