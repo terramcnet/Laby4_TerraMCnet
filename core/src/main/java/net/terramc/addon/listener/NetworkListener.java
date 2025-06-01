@@ -25,7 +25,8 @@ public class NetworkListener {
     //Task.builder(() -> this.addon.broadcastUtil().sendUserTag()).delay(3, TimeUnit.SECONDS).build().execute();
 
     if(!this.addon.configuration().enabled().get()) return;
-    if(event.serverData().actualAddress().matches("terramc.net", 25565, true)) {
+    if(event.serverData().actualAddress().matches("terramc.net", 25565, true) ||
+      event.serverData().address().getHost().equals("new-network.terramc.net")) {
       this.addon.setConnected(true);
       AddonData.resetValues();
       UUID uuid = Laby.references().gameUserService().clientGameUser().getUniqueId();
