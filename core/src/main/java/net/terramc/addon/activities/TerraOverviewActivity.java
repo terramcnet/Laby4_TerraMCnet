@@ -37,8 +37,6 @@ public class TerraOverviewActivity extends Activity {
 
     DivWidget container = new DivWidget().addId("container");
 
-    // Add Status of Chat Server & Reconnect Button (Staff only?)
-
     DivWidget header = new DivWidget().addId("header");
     header.addChild(ComponentWidget.i18n("terramc.ui.activity.overview.title").addId("header-text"));
     container.addChild(header);
