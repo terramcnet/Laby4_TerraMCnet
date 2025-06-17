@@ -4,10 +4,10 @@ import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.screen.Parent;
-import net.labymod.api.client.gui.screen.ScreenContext;
 import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
 import net.labymod.api.client.gui.screen.activity.Link;
+import net.labymod.api.client.gui.screen.activity.Links;
 import net.labymod.api.client.gui.screen.widget.widgets.ComponentWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.DivWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.input.ButtonWidget;
@@ -22,7 +22,7 @@ import net.terramc.addon.util.Util;
 import java.util.concurrent.TimeUnit;
 
 @AutoActivity
-@Link("overview.lss")
+@Links({@Link("overview.lss"), @Link("general.lss")})
 public class TerraOverviewActivity extends Activity {
 
   private TerraAddon addon;
@@ -107,12 +107,7 @@ public class TerraOverviewActivity extends Activity {
 
     }
     this.document.addChild(container);
-  }
-
-  @Override
-  public void render(ScreenContext context) {
-    super.render(context);
-    Util.drawCredits(this.addon, this.labyAPI, this.bounds(), context.stack());
+    Util.addCredits(this.addon, this.document);
   }
 
 }

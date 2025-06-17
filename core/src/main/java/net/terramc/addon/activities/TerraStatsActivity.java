@@ -6,10 +6,10 @@ import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.component.format.TextColor;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.screen.Parent;
-import net.labymod.api.client.gui.screen.ScreenContext;
 import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
 import net.labymod.api.client.gui.screen.activity.Link;
+import net.labymod.api.client.gui.screen.activity.Links;
 import net.labymod.api.client.gui.screen.widget.action.ListSession;
 import net.labymod.api.client.gui.screen.widget.widgets.ComponentWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.DivWidget;
@@ -24,7 +24,7 @@ import net.terramc.addon.util.PlayerStats;
 import net.terramc.addon.util.Util;
 
 @AutoActivity
-@Link("statistics.lss")
+@Links({@Link("statistics.lss"), @Link("general.lss")})
 public class TerraStatsActivity extends Activity {
 
   private TerraAddon addon;
@@ -175,13 +175,7 @@ public class TerraStatsActivity extends Activity {
     }
 
     this.document.addChild(container);
-
-  }
-
-  @Override
-  public void render(ScreenContext context) {
-    super.render(context);
-    Util.drawCredits(this.addon, this.labyAPI, this.bounds(), context.stack());
+    Util.addCredits(this.addon, this.document);
   }
 
 }

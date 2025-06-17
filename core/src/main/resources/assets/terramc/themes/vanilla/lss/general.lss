@@ -1,0 +1,24 @@
+.credit-container {
+  bottom: 22;
+  left: 5;
+
+  .credits-head {
+    height: 16;
+    width: 16;
+    left: 0;
+    top: 1;
+  }
+
+  .credits-addon-version {
+    top: 1;
+    left: 20;
+    font-size: 0.8;
+  }
+
+  .credits-developer {
+    top: 10;
+    left: 20;
+    font-size: 0.8;
+  }
+
+}
