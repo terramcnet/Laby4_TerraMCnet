@@ -2,13 +2,11 @@ package net.terramc.addon.util;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import java.util.HashMap;
 import java.util.UUID;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.TextColor;
 import net.labymod.api.util.I18n;
 import net.labymod.api.util.io.web.request.Request;
-import net.labymod.api.util.io.web.request.Request.Method;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
 import net.terramc.addon.group.TerraGroup;
@@ -23,27 +21,6 @@ public class ApiUtil {
   }
 
   private static String BASE_URL = "http://api.terramc.net/";
-
-  public void postAddonStatistics(String uuid, String playerName, boolean insert) {
-    HashMap<String, String> body = new HashMap<>();
-    if(this.addon.labyAPI().getUniqueId() == null) return;
-    if(insert) {
-      body.put("request", "insertAddonStatistics");
-      body.put("uuid", uuid);
-      body.put("userName", playerName);
-      body.put("addonVersion", this.addon.addonInfo().getVersion());
-      body.put("gameVersion", this.addon.labyAPI().minecraft().getVersion());
-    } else {
-      body.put("request", "deleteAddonStatistics");
-      body.put("uuid", this.addon.labyAPI().getUniqueId().toString());
-    }
-
-    Request.ofString()
-        .url(BASE_URL + "stats")
-        .method(Method.POST)
-        .body(body)
-        .execute(response -> {});
-  }
 
   public void loadRankData(UUID playerUuid) {
     AddonData.getToggleRanked().clear();

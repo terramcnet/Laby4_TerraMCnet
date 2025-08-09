@@ -18,6 +18,7 @@ import net.labymod.api.util.concurrent.task.Task;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.activities.widget.OverviewWidget;
 import net.terramc.addon.data.AddonData;
+import net.terramc.addon.terrachat.TerraChatClient.Initiator;
 import net.terramc.addon.util.Util;
 import java.util.concurrent.TimeUnit;
 
@@ -44,22 +45,18 @@ public class TerraOverviewActivity extends Activity {
     if(this.addon.rankUtil().isStaff()) {
       ButtonWidget chatReconnectButton = ButtonWidget.text(I18n.translate("terramc.chat.status.button"));
       chatReconnectButton.setPressable(() -> {
-        this.addon.chatClient().closeConnection();
+        this.addon.chatClient().disconnect(Initiator.USER, "Reconnect");
         chatReconnectButton.setEnabled(false);
         Task.builder(() -> {
-          this.addon.chatClient().connect(true);
-          chatReconnectButton.setEnabled(true);
-          if(this.addon.chatClient().online()) {
-            this.addon.chatClient().util().sendPlayerStatus(this.addon.labyAPI().getUniqueId().toString(), this.addon.labyAPI().getName(), false);
-            this.addon.chatClient().util().sendRetrievePlayerData(this.addon.labyAPI().getUniqueId().toString());
-          }
+          this.addon.chatClient().connect();
+          this.addon.labyAPI().minecraft().executeOnRenderThread(() -> chatReconnectButton.setEnabled(true));
         }).delay(5, TimeUnit.SECONDS).build().execute();
       });
       container.addChild(chatReconnectButton.addId("chat-reconnect-button"));
     }
 
     Component chatStatus;
-    if(this.addon.chatClient().online()) {
+    if(this.addon.chatClient().isAuthenticated()) {
       chatStatus = Component.translatable("terramc.chat.status.connected", NamedTextColor.DARK_GREEN);
     } else {
       chatStatus = Component.translatable("terramc.chat.status.disconnected", NamedTextColor.DARK_RED);
