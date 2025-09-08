@@ -1,8 +1,8 @@
 package net.terramc.addon.group;
 
 import net.labymod.api.client.entity.player.badge.renderer.BadgeRenderer;
+import net.labymod.api.client.gui.screen.ScreenContext;
 import net.labymod.api.client.network.NetworkPlayerInfo;
-import net.labymod.api.client.render.matrix.Stack;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
 
@@ -15,11 +15,11 @@ public class TerraTabListRenderer extends BadgeRenderer {
   }
 
   @Override
-  public void render(Stack stack, float x, float y, NetworkPlayerInfo player) {
+  public void render(ScreenContext context, float x, float y, NetworkPlayerInfo player) {
       TerraGroup staffGroup = this.visibleGroup(player);
       if(staffGroup != null) {
         //staffGroup.getIcon().render(stack, x - 4.0F, y +1.0F, 10.0F, 6.0F);
-        staffGroup.getIcon().render(stack, x, y, 8.0F);
+        staffGroup.getIcon().render(context.stack(), x, y, 8.0F);
       }
   }
 
