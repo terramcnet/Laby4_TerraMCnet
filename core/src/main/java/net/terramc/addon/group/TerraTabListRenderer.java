@@ -18,8 +18,8 @@ public class TerraTabListRenderer extends BadgeRenderer {
   public void render(ScreenContext context, float x, float y, NetworkPlayerInfo player) {
       TerraGroup staffGroup = this.visibleGroup(player);
       if(staffGroup != null) {
-        //staffGroup.getIcon().render(stack, x - 4.0F, y +1.0F, 10.0F, 6.0F);
-        staffGroup.getIcon().render(context.stack(), x, y, 8.0F);
+        //staffGroup.getIcon().render(context.stack(), x, y, 8.0F);
+        context.canvas().submitIcon(staffGroup.getIcon(), x +1, y, 8.0F, 8.0F);
       }
   }
 
