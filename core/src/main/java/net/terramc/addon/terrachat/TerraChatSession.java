@@ -32,9 +32,6 @@ public class TerraChatSession extends TerraPacketHandler {
   private boolean connectionEstablished;
   private boolean authenticated;
 
-  private boolean muted;
-  private String muteReason;
-
   public TerraChatSession(TerraChatClient moneyChatClient, Session session) {
     this.chatClient = moneyChatClient;
     this.session = session;
@@ -80,6 +77,7 @@ public class TerraChatSession extends TerraPacketHandler {
     this.chatClient.updateState(ChatState.PLAY);
     this.authenticated = true;
     this.chatClient.keepAlive();
+    this.chatClient.resetFailedAuthenticationTries();
 
     this.chatClient.sendPacket(new PacketAddonStatistics("add", this.session.getUniqueId(), this.session.getUsername(),
         this.chatClient.addon().addonInfo().getVersion(), this.chatClient.addon().labyAPI().minecraft().getVersion(), this.chatClient.addon().labyAPI().labyModLoader().isAddonDevelopmentEnvironment()));
@@ -121,6 +119,7 @@ public class TerraChatSession extends TerraPacketHandler {
     this.authenticated = false;
     this.premium = false;
     this.chatClient.updateState(ChatState.LOGIN);
+    this.chatClient.increaseFailedAuthenticationTries();
     //this.labyConnect.fireEventSync(new LabyConnectRejectAuthenticationEvent(this.labyConnect));
   }
 
@@ -134,14 +133,6 @@ public class TerraChatSession extends TerraPacketHandler {
 
   public boolean isConnectionEstablished() {
     return connectionEstablished;
-  }
-
-  public boolean muted() {
-    return muted;
-  }
-
-  public String muteReason() {
-    return muteReason;
   }
 
 }

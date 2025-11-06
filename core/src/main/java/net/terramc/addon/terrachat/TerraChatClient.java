@@ -57,6 +57,7 @@ public class TerraChatClient {
   private boolean doNotConnect;
   private long lastConnectTriesReset;
   private String lastDisconnectReason;
+  private int failedAuthenticationTries;
 
   public TerraChatClient(TerraAddon addon, SessionAccessor sessionAccessor, EventBus eventBus) {
     this.addon = addon;
@@ -64,6 +65,7 @@ public class TerraChatClient {
     this.timeNextConnect = TimeUtil.getMillis();
     this.lastConnectTriesReset = 0L;
     this.sessionAccessor = sessionAccessor;
+    this.failedAuthenticationTries = 0;
 
     eventBus.registerListener(this);
   }
@@ -79,6 +81,10 @@ public class TerraChatClient {
         long durationConnect = this.timeNextConnect - TimeUtil.getMillis();
         if (this.state != ChatState.OFFLINE && durationKeepAlive > 25000L) {
           this.disconnect(Initiator.CLIENT, I18n.translate("terramc.chat.protocol.disconnect.timeout"));
+        }
+
+        if (this.state == ChatState.LOGIN && durationConnect < 0 && this.failedAuthenticationTries < 3) {
+          this.sendPacket(new TerraPacketLogin(this.addon.labyAPI().getName(), this.addon.labyAPI().getUniqueId()));
         }
 
         if (this.state == ChatState.OFFLINE && !this.doNotConnect && durationConnect < 0L) {
@@ -250,6 +256,14 @@ public class TerraChatClient {
 
   public String getLastDisconnectReason() {
     return lastDisconnectReason;
+  }
+
+  public void increaseFailedAuthenticationTries() {
+    this.failedAuthenticationTries++;
+  }
+
+  public void resetFailedAuthenticationTries() {
+    this.failedAuthenticationTries = 0;
   }
 
   public enum ChatState {

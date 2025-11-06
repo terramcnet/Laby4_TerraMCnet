@@ -1,15 +1,18 @@
 package net.terramc.addon.group;
 
-import net.labymod.api.client.entity.Entity;
-import net.labymod.api.client.entity.player.Player;
 import net.labymod.api.client.entity.player.tag.tags.IconTag;
 import net.labymod.api.client.gui.icon.Icon;
+import net.labymod.api.client.render.state.entity.EntitySnapshot;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
+import net.terramc.addon.snapshot.TerraAddonKeys;
+import net.terramc.addon.snapshot.TerraChatUserSnapshot;
+import org.jetbrains.annotations.Nullable;
 
 public class TerraGroupIconTag extends IconTag {
 
   private TerraAddon addon;
+  private @Nullable TerraGroup group;
 
   public TerraGroupIconTag(TerraAddon addon) {
     super(9.0F);
@@ -17,41 +20,48 @@ public class TerraGroupIconTag extends IconTag {
   }
 
   @Override
+  public void begin(EntitySnapshot snapshot) {
+    this.group = this.getVisibleGroup(snapshot);
+    super.begin(snapshot);
+  }
+
+  @Override
   public boolean isVisible() {
-    return !this.entity.isCrouching() &&  this.visibleGroup(entity) != null;
+    return this.group != null && super.isVisible();
   }
 
   @Override
-  public int getColor() {
-    return super.getColor();
+  public Icon getIcon(EntitySnapshot snapshot) {
+    return group != null ? group.getIcon() : super.getIcon(snapshot);
   }
 
-  @Override
-  public Icon getIcon() {
-    TerraGroup group = this.visibleGroup(entity);
-    return group != null ? group.getIcon() : super.getIcon();
-  }
-
-  private TerraGroup visibleGroup(Entity entity) {
-    if(!(entity instanceof Player player)) return null;
-    if(player.getUniqueId() == null) return null;
-    if(!this.addon.configuration().enabled().get()) return null;
-    if(!(this.addon.configuration().nameTagConfiguration.enabled().get() & this.addon.configuration().nameTagConfiguration.showIconTag().get())) return null;
-    if(!AddonData.getStaffRankMap().containsKey(player.getUniqueId()) && AddonData.getChatUsers().containsKey(player.getUniqueId())) {
+  private @Nullable TerraGroup getVisibleGroup(EntitySnapshot snapshot) {
+    if(!visible(snapshot)) return null;
+    if(!snapshot.has(TerraAddonKeys.TERRA_CHAT_USER)) return null;
+    TerraChatUserSnapshot chatUserSnapshot = snapshot.get(TerraAddonKeys.TERRA_CHAT_USER);
+    if(chatUserSnapshot.getTerraChatUser() == null) return null;
+    if(!AddonData.getStaffRankMap().containsKey(chatUserSnapshot.getTerraChatUser().getUuid()) &&
+        AddonData.getChatUsers().containsKey(chatUserSnapshot.getTerraChatUser().getUuid())) {
       return TerraGroup.ADDON_USER;
     }
-    if(shouldHide(player)) return null;
-    return AddonData.getStaffRankMap().get(player.getUniqueId());
+    if(shouldHide(chatUserSnapshot)) return null;
+    return AddonData.getStaffRankMap().get(chatUserSnapshot.getTerraChatUser().getUuid());
   }
 
-  private boolean shouldHide(Player player) {
+  private boolean visible(EntitySnapshot snapshot) {
+    return this.addon.configuration().enabled().get() && this.addon.configuration().nameTagConfiguration.enabled().get() &&
+        this.addon.configuration().nameTagConfiguration.showIconTag().get() && !snapshot.isDiscrete() && !snapshot.isInvisible();
+  }
+
+  private boolean shouldHide(TerraChatUserSnapshot snapshot) {
+    if(snapshot.getTerraChatUser() == null) return true;
     boolean tagHidden = false;
-    if(AddonData.getChatUsers().containsKey(player.profile().getUniqueId())) {
-      tagHidden =  AddonData.getChatUsers().get(player.profile().getUniqueId()).isTagHidden();
+    if(AddonData.getChatUsers().containsKey(snapshot.getTerraChatUser().getUuid())) {
+      tagHidden =  AddonData.getChatUsers().get(snapshot.getTerraChatUser().getUuid()).isTagHidden();
     }
     if(this.addon.isConnected()) {
-      return AddonData.getToggleRanked().contains(player.profile().getUniqueId()) ||
-          AddonData.getNicked().contains(player.profile().getUniqueId()) || tagHidden;
+      return AddonData.getToggleRanked().contains(snapshot.getTerraChatUser().getUuid()) ||
+          AddonData.getNicked().contains(snapshot.getTerraChatUser().getUuid()) || tagHidden;
     }
     return tagHidden;
   }
