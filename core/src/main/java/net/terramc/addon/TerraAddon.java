@@ -17,8 +17,6 @@ import net.labymod.api.util.GsonUtil;
 import net.labymod.api.util.version.SemanticVersion;
 import net.terramc.addon.activities.navigation.TerraMainActivity;
 import net.terramc.addon.activities.navigation.TerraNavigationElement;
-import net.terramc.addon.chat.ChatClient;
-import net.terramc.addon.chat.ChatServerListener;
 import net.terramc.addon.group.TerraGroupIconTag;
 import net.terramc.addon.group.TerraGroupTextTag;
 import net.terramc.addon.group.TerraTabListRenderer;
@@ -33,6 +31,9 @@ import net.terramc.addon.listener.ChatMessageListener;
 import net.terramc.addon.listener.KeyListener;
 import net.terramc.addon.listener.NetworkListener;
 import net.terramc.addon.listener.SessionListener;
+import net.terramc.addon.terrachat.TerraChatClient;
+import net.terramc.addon.terrachat.protocol.packets.PacketAddonStatistics;
+import net.terramc.addon.terrachat.protocol.packets.PacketPlayerStatus;
 import net.terramc.addon.util.ApiUtil;
 import net.terramc.addon.util.RankUtil;
 import net.terramc.addon.util.ServerAddonProtocol;
@@ -46,7 +47,7 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
   public TerraMainActivity terraMainActivity;
 
-  private ChatClient chatClient;
+  private TerraChatClient chatClient;
 
   private ApiUtil apiUtil;
   private RankUtil rankUtil;
@@ -77,13 +78,11 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     this.serverAddonProtocol = new ServerAddonProtocol(this);
     this.serverAddonProtocol.registerPackets();
 
-    this.chatClient = new ChatClient(this);
-    this.chatClient.connectStartUp();
-    this.registerListener(new ChatServerListener());
+    this.chatClient = new TerraChatClient(this, this.labyAPI().minecraft().sessionAccessor(), this.labyAPI().eventBus());
+    this.chatClient.prepareAsync();
 
     UUID uuid = labyAPI().getUniqueId();
     this.apiUtil = new ApiUtil(this);
-    this.apiUtil.postAddonStatistics(this.labyAPI().getUniqueId().toString(), this.labyAPI().getName(), true);
     this.apiUtil.loadPlayerStats(uuid);
     this.apiUtil.loadRankData(uuid);
 
@@ -114,12 +113,14 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
     configuration().nameTagConfiguration.hideOwnTag().addChangeListener((type, oldValue, newValue) -> {
       if(!rankUtil.isStaff()) return;
-      chatClient.util().sendPlayerStatus(labyAPI().getUniqueId().toString(), labyAPI().getName(), false);
+      this.chatClient.sendPacket(new PacketPlayerStatus(this.labyAPI().getUniqueId(), this.labyAPI().getName(), "ONLINE",
+          this.addonInfo().getVersion(), this.labyAPI().minecraft().getVersion(), newValue));
     });
 
     Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-      this.apiUtil.postAddonStatistics(this.labyAPI().getUniqueId().toString(), this.labyAPI().getName(), false);
-      this.chatClient.closeConnection();
+      this.chatClient.sendPacket(new PacketAddonStatistics("remove",
+          this.labyAPI().getUniqueId(), this.labyAPI().getName(), this.addonInfo().getVersion(), this.labyAPI().minecraft().getVersion(), this.labyAPI().labyModLoader().isAddonDevelopmentEnvironment()));
+      this.chatClient.sendPacket(new PacketPlayerStatus(this.labyAPI().getUniqueId(), this.labyAPI().getName(), "OFFLINE", "-", "-", false));
     }));
 
   }
@@ -175,7 +176,7 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     return serverAddonProtocol;
   }
 
-  public ChatClient chatClient() {
+  public TerraChatClient chatClient() {
     return chatClient;
   }
 
