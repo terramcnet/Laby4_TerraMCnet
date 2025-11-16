@@ -62,7 +62,7 @@ public class TerraChatSession extends TerraPacketHandler {
       });
     } catch (Exception e) {
       e.printStackTrace();
-      this.chatClient.disconnect(Initiator.CLIENT, e.getMessage());
+      this.chatClient.disconnect(Initiator.CLIENT, e.getMessage(), "Client Error - EncryptionRequest");
     }
 
   }
@@ -101,7 +101,7 @@ public class TerraChatSession extends TerraPacketHandler {
 
   @Override
   public void handle(TerraPacketDisconnect packet) {
-    this.chatClient.disconnect(Initiator.SERVER, packet.reason());
+    this.chatClient.disconnect(Initiator.SERVER, packet.reason(), packet.reason());
   }
 
   @Override

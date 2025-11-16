@@ -45,7 +45,7 @@ public class TerraOverviewActivity extends Activity {
     if(this.addon.rankUtil().isStaff()) {
       ButtonWidget chatReconnectButton = ButtonWidget.text(I18n.translate("terramc.chat.status.button"));
       chatReconnectButton.setPressable(() -> {
-        this.addon.chatClient().disconnect(Initiator.USER, "Reconnect");
+        this.addon.chatClient().disconnect(Initiator.USER, "Reconnecting to Chat Server...", "Reconnect");
         chatReconnectButton.setEnabled(false);
         Task.builder(() -> {
           this.addon.chatClient().connect();

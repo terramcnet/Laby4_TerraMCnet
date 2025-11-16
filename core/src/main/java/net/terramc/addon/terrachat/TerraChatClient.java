@@ -80,7 +80,7 @@ public class TerraChatClient {
         long durationKeepAlive = TimeUtil.getMillis() - this.timeLastKeepAlive;
         long durationConnect = this.timeNextConnect - TimeUtil.getMillis();
         if (this.state != ChatState.OFFLINE && durationKeepAlive > 25000L) {
-          this.disconnect(Initiator.CLIENT, I18n.translate("terramc.chat.protocol.disconnect.timeout"));
+          this.disconnect(Initiator.CLIENT, I18n.translate("terramc.chat.protocol.disconnect.timeout"), "Timeout");
         }
 
         if (this.state == ChatState.LOGIN && durationConnect < 0 && this.failedAuthenticationTries < 3) {
@@ -140,7 +140,7 @@ public class TerraChatClient {
   @Subscribe
   public void onSessionUpdate(SessionUpdateEvent event) {
     if (event.isAnotherAccount()) {
-      this.disconnect(Initiator.USER, I18n.translate("terramc.chat.protocol.disconnect.sessionSwitch"));
+      this.disconnect(Initiator.USER, I18n.translate("terramc.chat.protocol.disconnect.sessionSwitch"), "Session Switch");
       if (event.newSession().isPremium()) {
         this.connect();
       }
@@ -166,7 +166,7 @@ public class TerraChatClient {
 
   }
 
-  public void disconnect(Initiator initiator, String reason) {
+  public void disconnect(Initiator initiator, String reason, String serverReason) {
     long delay = (long)((double)1000.0F * Math.random() * (double)60.0F);
     this.timeNextConnect = TimeUtil.getMillis() + 10000L + delay;
     if (this.doNotConnect && this.lastDisconnectReason != null) {
@@ -180,7 +180,7 @@ public class TerraChatClient {
 
       this.fireEventSync(new TerraChatDisconnectEvent(this, initiator, I18n.translate(reason)));
       this.updateState(ChatState.OFFLINE);
-      this.sendPacket(new TerraPacketDisconnect(reason), (channel) -> {
+      this.sendPacket(new TerraPacketDisconnect(serverReason == null ? "Logout" : serverReason), (channel) -> {
         if (channel.isOpen()) {
           channel.close();
         }
