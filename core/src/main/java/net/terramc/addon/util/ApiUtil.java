@@ -20,7 +20,7 @@ public class ApiUtil {
     this.addon = addon;
   }
 
-  private static String BASE_URL = "http://api.terramc.net/";
+  private final String BASE_URL = "https://api.terramc.net/";
 
   public void loadRankData(UUID playerUuid) {
     AddonData.getToggleRanked().clear();
