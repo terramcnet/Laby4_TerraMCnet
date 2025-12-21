@@ -1,5 +1,3 @@
-import net.labymod.labygradle.common.extension.model.labymod.ReleaseChannels
-
 plugins {
     id("net.labymod.labygradle")
     id("net.labymod.labygradle.addon")
@@ -44,7 +42,6 @@ labyMod {
         description = "This addon offers you advanced information on TerraMC.net. For example it will show you your current nickname, game rank and much more."
         minecraftVersion = "*"
         version = System.getenv().getOrDefault("VERSION", addonVersion)
-        releaseChannel = ReleaseChannels.SNAPSHOT
     }
 }
 
