@@ -1,0 +1,92 @@
+1.6.0 - 21.12.2025
+~ Reworked Backend
+~ Update Text and Icon Tag to new Render System
+
+1.5.0 - 04.02.2025
+~ Updated the addon to use the new ServerAPI
+
+1.4.8 - 09.12.2024
+~ Redesigned Overview & Statistics UI
+~ Icon & Text Tag will now be hidden when sneaking
+
+1.4.7 - 10.09.2024
+* Fixed UI opening with Hotkey while writing in chat etc
+
+1.4.6 - 08.09.2024
+~ Internal Bugfix
+
+1.4.5 - 12.08.2024
++ Added support for 1.21.1
+
+1.4.4 - 21.07.2024
++ Added Setting to open Terra UI with Hotkey
++ Added swiss translations
+~ Updated english translations
+* Fixed Nickname not resetting
+
+1.4.3 - 03.07.2024
++ Added support for 1.21
+
+1.4.2 - 07.05.2024
++ Added Support for 1.20.6
+~ Hud Widgets are now hidden if the value of the Widget is 0
+
+1.4.1 - 23.04.2024
++ Added Support for 1.20.5
+* Fixed Nametag Settings not available anymore
+
+1.4.0 - 31.03.2024
+~ Internal Changes
+
+1.3.9 - 19.03.2024
+- Internal Changes
+
+1.3.8 - 24.02.2024
+* Fixed notifications
+
+1.3.7 - 16.01.2024
+- Changed release channel to production
+
+1.3.6 - 04.01.2024
+- Added 1.20.4
+- Fixed text overlapping
+
+1.3.5 - 26.10.2023
+- Added anonymous statistics (can be disabled in the addon settings)
+- Added IconTag for all Addon Users
+- Internal changes
+- Fixed an error that occurred in the latest addon version
+
+1.3.4 - 22.09.2023
+- Added some more translated messages
+- Made some Internal changes
+
+1.3.3 - 09.09.2023
+- Made some changes due to changes in the backend
+- Added some new Translations
+- Reworked Stats and updated Pictures
+
+1.3.2 - 22.08.2023
+- Changed Tablist Icons to new Badge System
+
+1.3.1 - 18.08.2023
+- Fixed Navigation Element not shown when connected to server
+
+1.3.0 - 06.07.2023
+- General Improvements
+- Navigation Entry will now only be shown when connected to server
+- Improved Rendering of the staff nametags
+
+1.2.0 - 30.05.2023
+- Fixed Crash in Statistics (1.19.4)
+- Updated to the latest api
+- Some Design changes in vanilla theme
+- General Improvements and Optimizations
+
+1.1.0 - 27.03.2023
+- Added missing translations
+- Updated API
+- General improvements
+
+1.0.0 - 10.03.2023
+- Initial release
