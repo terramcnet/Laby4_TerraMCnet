@@ -90,6 +90,16 @@
       "success": {
         "title": "§7§l§o▎§8§l§o▏ §2TerraMC",
         "stats-updated": "Dini Statistike sind erfolgrich glade worde."
+      },
+      "other": {
+        "tag-disabled": "%s het sin Team-Tag deaktiviert.",
+        "tag-enabled": "%s het sin Team-Tag aktiviert."
+      },
+      "chat": {
+        "title": "TerraChat",
+        "connected": "Erfolgrich zum Chat-Server verbunde.",
+        "no-connection": "Kei Verbindig zum Chat-Server möglich.",
+        "timed": "Verbindig zum Chat-Server verlore."
       }
     },
     "hudWidget": {
@@ -148,7 +158,7 @@
           "played": "Gspielt",
           "wins": "Gwunne",
           "looses": "Verlore",
-          "ranking": "Rangfolg",
+          "ranking": "Ranking",
           "levelRecord": "Level-Rekord",
           "brokenBeds": "Abbauti Bett",
           "brokenOres": "Abbauti Erz",
