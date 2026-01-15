@@ -55,12 +55,13 @@ public class TerraPacketAddonMessage extends TerraPacket {
       StringBuilder outStr = new StringBuilder();
       if (this.data != null && this.data.length != 0) {
         if (this.isCompressed(this.data)) {
-          GZIPInputStream gis = new GZIPInputStream(new ByteArrayInputStream(this.data));
-          BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(gis, StandardCharsets.UTF_8));
+          try (GZIPInputStream gis = new GZIPInputStream(new ByteArrayInputStream(this.data));
+              BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(gis, StandardCharsets.UTF_8))) {
 
-          String line;
-          while((line = bufferedReader.readLine()) != null) {
-            outStr.append(line);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+              outStr.append(line);
+            }
           }
         } else {
           outStr.append(Arrays.toString(this.data));
@@ -82,12 +83,12 @@ public class TerraPacketAddonMessage extends TerraPacket {
       if (str.length == 0) {
         return new byte[0];
       } else {
-        ByteArrayOutputStream obj = new ByteArrayOutputStream();
-        GZIPOutputStream gzip = new GZIPOutputStream(obj);
-        gzip.write(str);
-        gzip.flush();
-        gzip.close();
-        return obj.toByteArray();
+        try (ByteArrayOutputStream obj = new ByteArrayOutputStream();
+            GZIPOutputStream gzip = new GZIPOutputStream(obj)) {
+          gzip.write(str);
+          gzip.finish();
+          return obj.toByteArray();
+        }
       }
     } catch (IOException ex) {
       throw new RuntimeException(ex);
