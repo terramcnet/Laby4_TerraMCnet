@@ -22,9 +22,6 @@ public class TerraNameTagConfiguration extends Config {
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
-  @SwitchSetting
-  private final ConfigProperty<Boolean> hideOwnTag = new ConfigProperty<>(false);
-
   @SpriteSlot()
   @SettingRequires(value = "enabled")
   @SwitchSetting
@@ -53,10 +50,6 @@ public class TerraNameTagConfiguration extends Config {
 
   public ConfigProperty<Boolean> enabled() {
     return this.enabled;
-  }
-
-  public ConfigProperty<Boolean> hideOwnTag() {
-    return hideOwnTag;
   }
 
   public ConfigProperty<Boolean> showTag() {

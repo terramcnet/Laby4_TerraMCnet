@@ -41,9 +41,6 @@
         "enabled": {
           "name": "Tags aktiviert"
         },
-        "hideOwnTag": {
-          "name": "Eigenen Tag verstecken"
-        },
         "showTag": {
           "name": "Text-Tag anzeigen",
           "description": "Zeigt den Rang von Teammitgliedern über dem Namen an."
@@ -95,29 +92,6 @@
       "success": {
         "title": "§7§l§o▎§8§l§o▏ §2TerraMC",
         "stats-updated": "Deine Statistiken wurden erfolgreich aktualisiert."
-      },
-      "other": {
-        "tag-disabled": "%s hat seinen Team-Tag deaktiviert.",
-        "tag-enabled": "%s hat seinen Team-Tag aktiviert."
-      }
-    },
-
-    "chat": {
-      "title": "TerraChat",
-      "status": {
-        "connected": "Verbunden",
-        "disconnected": "Getrennt",
-        "button": "Neu verbinden"
-      },
-      "notification": {
-        "disconnect": "Getrennt: %s"
-      },
-      "protocol": {
-        "disconnect": {
-          "timeout": "Verbindung zum Server aufgrund von Inaktivität getrennt",
-          "sessionSwitch": "Zu anderer Sitzung gewechselt",
-          "notPremium": "Dieser Account ist kein Minecraft Premium-Account"
-        }
       }
     },
 

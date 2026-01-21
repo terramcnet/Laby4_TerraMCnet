@@ -6,14 +6,14 @@ import net.labymod.api.laby3d.renderer.snapshot.LabySnapshotFactory;
 import net.labymod.api.service.annotation.AutoService;
 
 @AutoService(LabySnapshotFactory.class)
-public class TerraChatUserSnapshotFactory extends LabySnapshotFactory<Player, TerraChatUserSnapshot> {
+public class TerraChatUserSnapshotFactory extends LabySnapshotFactory<Player, TerraUserSnapshot> {
 
   public TerraChatUserSnapshotFactory() {
-    super(TerraAddonKeys.TERRA_CHAT_USER);
+    super(TerraAddonKeys.TERRA_USER);
   }
 
   @Override
-  protected TerraChatUserSnapshot create(Player player, Extras extras) {
-    return new TerraChatUserSnapshot(player, extras);
+  protected TerraUserSnapshot create(Player player, Extras extras) {
+    return new TerraUserSnapshot(player, extras);
   }
 }

@@ -5,6 +5,7 @@ import net.labymod.api.event.client.chat.ChatReceiveEvent;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.game.BedWarsGame;
 import net.terramc.addon.data.AddonData;
+import net.terramc.addon.group.GroupService;
 
 public class ChatMessageListener {
 
@@ -69,13 +70,13 @@ public class ChatMessageListener {
 
     if(plain.equalsIgnoreCase(bedWarsPrefix + "Das Spiel ist nun beendet.") || plain.equalsIgnoreCase(bedWarsPrefix + "The game has now ended.")) {
       AddonData.setBedWarsGame(null);
-      if(this.addon.configuration().enableAutoGG().get() & this.addon.rankUtil().hasAutoGG()) {
+      if(this.addon.configuration().enableAutoGG().get() && (GroupService.getPremiumGroups().contains(AddonData.getRank()) || GroupService.getSpecialPremiumGroups().contains(AddonData.getRank()))) {
         if(AddonData.isInRound() & !AddonData.isSpectator() & !AddonData.isGgSent()) {
           AddonData.setGgSent(true);
           if(AddonData.getNickName() != null || AddonData.rankToggled()) {
             this.addon.sendMessage("GG");
           } else {
-            if(this.addon.rankUtil().hasSpecialAutoGG()) {
+            if(GroupService.getSpecialPremiumGroups().contains(AddonData.getRank())) {
               this.addon.sendMessage("&8&k|&7&k|&r &eGG &7&k|&8&k|");
             } else {
               this.addon.sendMessage("GG");
@@ -88,13 +89,13 @@ public class ChatMessageListener {
     // AutoGG-Section
 
     if(plain.contains("Die Runde wurde beendet.") || plain.contains("The round ended.")) {
-      if(this.addon.configuration().enableAutoGG().get() & this.addon.rankUtil().hasAutoGG()) {
+      if(this.addon.configuration().enableAutoGG().get() && (GroupService.getPremiumGroups().contains(AddonData.getRank()) || GroupService.getSpecialPremiumGroups().contains(AddonData.getRank()))) {
         if(AddonData.isInRound() & !AddonData.isSpectator() & !AddonData.isGgSent()) {
           AddonData.setGgSent(true);
           if(AddonData.getNickName() != null || AddonData.rankToggled()) {
             this.addon.sendMessage("GG");
           } else {
-            if(this.addon.rankUtil().hasSpecialAutoGG()) {
+            if(GroupService.getSpecialPremiumGroups().contains(AddonData.getRank())) {
               this.addon.sendMessage("&8&k|&7&k|&r &eGG &7&k|&8&k|");
             } else {
               this.addon.sendMessage("GG");

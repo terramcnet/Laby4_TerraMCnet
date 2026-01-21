@@ -40,9 +40,6 @@
         "enabled": {
           "name": "Enable Tags"
         },
-        "hideOwnTag": {
-          "name": "Hide own Tag"
-        },
         "showTag": {
           "name": "Show Text-Tag",
           "description": "Displays the Rank of a Staff member above their name."
@@ -93,29 +90,6 @@
       "success": {
         "title": "§7§l§o▎§8§l§o▏ §2TerraMC",
         "stats-updated": "§aYour stats has been successfully updated."
-      },
-      "other": {
-        "tag-disabled": "%s has disabled his Staff-Tag.",
-        "tag-enabled": "%s has enabled his Staff-Tag."
-      }
-    },
-
-    "chat": {
-      "title": "TerraChat",
-      "status": {
-        "connected": "Connected",
-        "disconnected": "Disconnected",
-        "button": "Reconnect"
-      },
-      "notification": {
-        "disconnect": "Disconnected: %s"
-      },
-      "protocol": {
-        "disconnect": {
-          "timeout": "Disconnected from Server due to inactivity",
-          "sessionSwitch": "Switched to another session",
-          "notPremium": "The account is not a Minecraft premium Account"
-        }
       }
     },
 

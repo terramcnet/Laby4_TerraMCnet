@@ -1,7 +1,5 @@
 package net.terramc.addon.activities;
 
-import net.labymod.api.client.component.Component;
-import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.activity.Activity;
@@ -14,13 +12,10 @@ import net.labymod.api.client.gui.screen.widget.widgets.input.ButtonWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.TilesGridWidget;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.util.I18n;
-import net.labymod.api.util.concurrent.task.Task;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.activities.widget.OverviewWidget;
 import net.terramc.addon.data.AddonData;
-import net.terramc.addon.terrachat.TerraChatClient.Initiator;
 import net.terramc.addon.util.Util;
-import java.util.concurrent.TimeUnit;
 
 @AutoActivity
 @Links({@Link("overview.lss"), @Link("general.lss")})
@@ -41,28 +36,6 @@ public class TerraOverviewActivity extends Activity {
     DivWidget header = new DivWidget().addId("header");
     header.addChild(ComponentWidget.i18n("terramc.ui.activity.overview.title").addId("header-text"));
     container.addChild(header);
-
-    if(this.addon.rankUtil().isStaff()) {
-      ButtonWidget chatReconnectButton = ButtonWidget.text(I18n.translate("terramc.chat.status.button"));
-      chatReconnectButton.setPressable(() -> {
-        this.addon.chatClient().disconnect(Initiator.USER, "Reconnecting to Chat Server...", "Reconnect");
-        chatReconnectButton.setEnabled(false);
-        Task.builder(() -> {
-          this.addon.chatClient().connect();
-          this.addon.labyAPI().minecraft().executeOnRenderThread(() -> chatReconnectButton.setEnabled(true));
-        }).delay(5, TimeUnit.SECONDS).build().execute();
-      });
-      container.addChild(chatReconnectButton.addId("chat-reconnect-button"));
-    }
-
-    Component chatStatus;
-    if(this.addon.chatClient().isAuthenticated()) {
-      chatStatus = Component.translatable("terramc.chat.status.connected", NamedTextColor.DARK_GREEN);
-    } else {
-      chatStatus = Component.translatable("terramc.chat.status.disconnected", NamedTextColor.DARK_RED);
-    }
-    Component chatStatusDisplay = Component.translatable("terramc.chat.title", NamedTextColor.GREEN).append(Component.text(" » ", NamedTextColor.DARK_GRAY));
-    container.addChild(ComponentWidget.component(chatStatusDisplay.append(chatStatus)).addId("chat-status"));
 
     if(this.addon.isConnected()) {
 

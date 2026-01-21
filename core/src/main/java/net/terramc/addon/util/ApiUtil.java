@@ -9,7 +9,8 @@ import net.labymod.api.util.I18n;
 import net.labymod.api.util.io.web.request.Request;
 import net.terramc.addon.TerraAddon;
 import net.terramc.addon.data.AddonData;
-import net.terramc.addon.group.TerraGroup;
+import net.terramc.addon.group.Group;
+import net.terramc.addon.group.GroupService;
 import net.terramc.addon.util.PlayerStats.Stats;
 
 public class ApiUtil {
@@ -20,7 +21,7 @@ public class ApiUtil {
     this.addon = addon;
   }
 
-  private final String BASE_URL = "https://api.terramc.net/";
+  public static final String BASE_URL = "https://api.terramc.net/";
 
   public void loadRankData(UUID playerUuid) {
     AddonData.getToggleRanked().clear();
@@ -51,8 +52,9 @@ public class ApiUtil {
                 object.entrySet().forEach(entry -> {
                   String uuid = entry.getKey();
                   int rankId = entry.getValue().getAsInt();
-                  if(TerraGroup.byId(rankId) != null) {
-                    AddonData.getStaffRankMap().put(UUID.fromString(uuid), TerraGroup.byId(rankId));
+                  Group group = GroupService.getGroup(rankId);
+                  if(group != null) {
+                    AddonData.getStaffRankMap().put(UUID.fromString(uuid), group);
                   }
                 });
               }
