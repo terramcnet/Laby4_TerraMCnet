@@ -1,5 +1,5 @@
-1.6.1 - 06.01.2026
-* Fixed Backend not working in 1.21.11 and newer
+1.6.1 - 21.01.2026
+~ Reworked Nametags and Groups
 
 1.6.0 - 21.12.2025
 ~ Reworked Backend
