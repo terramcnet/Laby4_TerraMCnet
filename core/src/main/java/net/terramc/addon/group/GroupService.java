@@ -16,12 +16,15 @@ public class GroupService {
 
   private static Map<String, Group> groups = new HashMap<>();
 
+  private static List<String> staffGroups = new ArrayList<>();
   private static List<String> specialPremiumGroups = new ArrayList<>();
   private static List<String> premiumGroups = new ArrayList<>();
 
   public void loadGroups() {
     groups.clear();
+    staffGroups.clear();
     specialPremiumGroups.clear();
+    premiumGroups.clear();
     Request.ofGson(JsonObject.class)
         .url(ApiUtil.BASE_URL + "/groups")
         .async()
@@ -51,6 +54,14 @@ public class GroupService {
                 );
                 group.initialize();
                 groups.put(group.getName(), group);
+              }
+            });
+          }
+
+          if(object.has("staff_groups") && object.get("staff_groups").isJsonArray()) {
+            object.get("staff_groups").getAsJsonArray().forEach(jsonElement -> {
+              if(jsonElement.isJsonPrimitive()) {
+                staffGroups.add(jsonElement.getAsString());
               }
             });
           }
@@ -91,6 +102,10 @@ public class GroupService {
 
   public Collection<Group> getGroups() {
     return groups.values();
+  }
+
+  public static List<String> getStaffGroups() {
+    return staffGroups;
   }
 
   public static List<String> getSpecialPremiumGroups() {

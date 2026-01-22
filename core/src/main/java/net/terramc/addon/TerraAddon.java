@@ -31,7 +31,6 @@ import net.terramc.addon.listener.KeyListener;
 import net.terramc.addon.listener.NetworkListener;
 import net.terramc.addon.listener.SessionListener;
 import net.terramc.addon.util.ApiUtil;
-import net.terramc.addon.util.RankUtil;
 import net.terramc.addon.protocol.ServerAddonProtocol;
 
 @AddonMain
@@ -44,7 +43,6 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
   public TerraMainActivity terraMainActivity;
 
   private ApiUtil apiUtil;
-  private RankUtil rankUtil;
   private ServerAddonProtocol serverAddonProtocol;
 
   private boolean connected = false;
@@ -67,8 +65,6 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
     new GroupService().loadGroups();
 
     this.terraMainActivity = new TerraMainActivity(this);
-
-    this.rankUtil = new RankUtil();
 
     this.serverAddonProtocol = new ServerAddonProtocol(this);
     this.serverAddonProtocol.registerPackets();
@@ -139,10 +135,6 @@ public class TerraAddon extends LabyAddon<TerraConfiguration> {
 
   public ApiUtil apiUtil() {
     return apiUtil;
-  }
-
-  public RankUtil rankUtil() {
-    return rankUtil;
   }
 
   public ServerAddonProtocol serverAddonProtocol() {

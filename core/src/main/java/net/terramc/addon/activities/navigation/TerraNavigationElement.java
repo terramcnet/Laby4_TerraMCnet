@@ -5,6 +5,8 @@ import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.navigation.elements.ScreenNavigationElement;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.terramc.addon.TerraAddon;
+import net.terramc.addon.data.AddonData;
+import net.terramc.addon.group.GroupService;
 
 public class TerraNavigationElement extends ScreenNavigationElement {
 
@@ -32,6 +34,6 @@ public class TerraNavigationElement extends ScreenNavigationElement {
 
   @Override
   public boolean isVisible() {
-    return this.addon.rankUtil().isStaff() || this.addon.isConnected();
+    return GroupService.getStaffGroups().contains(AddonData.getRank()) || this.addon.isConnected();
   }
 }
