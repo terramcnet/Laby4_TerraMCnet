@@ -17,19 +17,19 @@ public class PlayerDataPacket implements Packet {
     public static final int PACKET_ID = 7;
 
     private String dataType;
-    private int value;
+    private long value;
 
   @Override
   public void read(@NotNull PayloadReader reader) {
     this.dataType = reader.readString();
-    this.value = reader.readInt();
+    this.value = reader.readLong();
   }
 
   public String dataType() {
     return dataType;
   }
 
-  public int value() {
+  public long value() {
     return value;
   }
 

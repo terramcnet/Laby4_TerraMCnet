@@ -36,7 +36,7 @@ public class Util {
     document.addChild(container);
   }
 
-  public static String format(int value) {
+  public static String format(long value) {
     DecimalFormat decimalFormat = new DecimalFormat("#,###", new DecimalFormatSymbols(Locale.GERMAN));
     return decimalFormat.format(value);
   }

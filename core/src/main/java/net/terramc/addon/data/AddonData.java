@@ -21,14 +21,14 @@ public class AddonData {
   // Normal - Functions
 
   private static String gameRank = null;
-  private static int coins = 0;
-  private static int points = 0;
+  private static long coins = 0;
+  private static long points = 0;
   private static String pointsRank = null;
 
   private static String rank = "Spieler";
 
   private static String playTime = null;
-  private static int joinCount = 0;
+  private static long joinCount = 0;
 
   private static boolean rankToggled = false;
 
@@ -74,19 +74,19 @@ public class AddonData {
     AddonData.gameRank = gameRank;
   }
 
-  public static int getCoins() {
+  public static long getCoins() {
     return coins;
   }
 
-  public static void setCoins(int coins) {
+  public static void setCoins(long coins) {
     AddonData.coins = coins;
   }
 
-  public static int getPoints() {
+  public static long getPoints() {
     return points;
   }
 
-  public static void setPoints(int points) {
+  public static void setPoints(long points) {
     AddonData.points = points;
   }
 
@@ -106,11 +106,11 @@ public class AddonData {
     AddonData.playTime = playTime;
   }
 
-  public static int getJoinCount() {
+  public static long getJoinCount() {
     return joinCount;
   }
 
-  public static void setJoinCount(int joinCount) {
+  public static void setJoinCount(long joinCount) {
     AddonData.joinCount = joinCount;
   }
 
