@@ -16,7 +16,7 @@ import net.terramc.addon.util.CustomTextDecoration;
 @SpriteTexture("sprite/settings")
 public class TerraNameTagConfiguration extends Config {
 
-  @SettingSection(value = "general", center = true)
+  @SettingSection(value = "general")
 
   @SpriteSlot(x = 3)
   @SwitchSetting
@@ -37,7 +37,7 @@ public class TerraNameTagConfiguration extends Config {
   @SwitchSetting
   private final ConfigProperty<Boolean> showIconInTab = new ConfigProperty<>(true);
 
-  @SettingSection(value = "customization", center = true)
+  @SettingSection(value = "customization")
 
   @SettingRequires(value = "showTag")
   @ColorPickerSetting(chroma = true)

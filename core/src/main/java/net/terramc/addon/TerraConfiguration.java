@@ -20,7 +20,7 @@ public class TerraConfiguration extends AddonConfig {
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
-  @SettingSection(value = "general", center = true)
+  @SettingSection(value = "general")
 
   @SpriteSlot()
   public TerraNameTagConfiguration nameTagConfiguration = new TerraNameTagConfiguration();
@@ -34,7 +34,7 @@ public class TerraConfiguration extends AddonConfig {
   @KeyBindSetting
   private final ConfigProperty<Key> uiHotKey = new ConfigProperty<>(Key.NONE);
 
-  @SettingSection(value = "premium", center = true)
+  @SettingSection(value = "premium")
 
   @SpriteSlot(x = 2)
   @SwitchSetting
