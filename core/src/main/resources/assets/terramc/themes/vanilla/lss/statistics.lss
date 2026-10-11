@@ -14,8 +14,9 @@
   bottom: 25;
   left: 5;
   right: 5;
-  box-shadow: classic left top right bottom;
-  renderer: "DirtBackground";
+  border: 1;
+  border-color: var(--background-color-border);
+  background-color: var(--background-color);
 
   .header {
     top: 0;
