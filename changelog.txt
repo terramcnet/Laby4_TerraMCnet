@@ -1,3 +1,6 @@
+1.6.2 - WIP
++ Added Styling for Laby Theme
+
 1.6.1 - 21.01.2026
 ~ Reworked Nametags and Groups
 
